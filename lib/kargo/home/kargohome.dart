@@ -10,7 +10,7 @@ class KargoHomeScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: kbackgroundColor,
       bottomNavigationBar: BottomNavBar(),
-      body: ,
+      // body: ,
     );
   }
 }
