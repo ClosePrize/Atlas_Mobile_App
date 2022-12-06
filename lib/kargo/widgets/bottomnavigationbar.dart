@@ -17,7 +17,17 @@ class _BottomNavBarState extends State<BottomNavBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(color: Colors.grey.withOpacity(0.5),
+        spreadRadius: 5,
+        blurRadius: 7,
+        offset: Offset(0, 3),)
+        ]
+      ),
+      height: MediaQuery.of(context).size.height/11,
       child: BottomNavigationBar(
+      
         backgroundColor: Colors.white,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
@@ -34,7 +44,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
             ),
           ],
           currentIndex: _selectedIndex,
-          selectedItemColor: kargoPrimaryColor,
+          selectedItemColor: kitblueColor,
           onTap: _onItemTapped,
       ),
     );
