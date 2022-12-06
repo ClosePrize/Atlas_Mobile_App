@@ -31,6 +31,36 @@ TextField reusableTextField(String text, IconData icon, bool isPasswordType,
   );
 }
 
+TextField reusableTextField_1(String text, IconData icon, bool isPasswordType,
+    TextEditingController controller) {
+  return TextField(
+    controller: controller,
+    obscureText: isPasswordType,
+    enableSuggestions: !isPasswordType,
+    autocorrect: !isPasswordType,
+    cursorColor: Colors.white,
+    style: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+    decoration: InputDecoration(
+      suffixIcon: Icon(Icons.drive_file_rename_outline),
+      prefixIcon: Icon(
+        icon,
+        color: Color.fromARGB(255, 114, 112, 112),
+      ),
+      labelText: text,
+      labelStyle: TextStyle(color: Color.fromARGB(255, 100, 89, 89).withOpacity(0.9)),
+      filled: true,
+      floatingLabelBehavior: FloatingLabelBehavior.never,
+      fillColor: Color.fromARGB(255, 255, 255, 255),
+      border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(30.0),
+          borderSide: const BorderSide(width: 0, style: BorderStyle.none)),
+    ),
+    keyboardType: isPasswordType
+        ? TextInputType.visiblePassword
+        : TextInputType.emailAddress,
+  );
+}
+
 Container firebaseUIButton(BuildContext context, String title, Function onTap) {
   return Container(
     width: MediaQuery.of(context).size.width/2,
