@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:v01/kargo/cargo_add/body.dart';
 import 'package:v01/kargo/constants.dart';
+import 'package:v01/kargo/home/body.dart';
 
 
 TextField reusableTextField(String text, IconData icon, bool isPasswordType,
@@ -152,25 +154,31 @@ class textbox extends StatelessWidget {
   }
 }
 
-class addbutton extends StatelessWidget {
-  const addbutton({
+class addButton extends StatelessWidget {
+  const addButton({
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-       onPressed: () {},
-       color: kargoPrimaryColor,
-       textColor: Colors.white,
-       // ignore: sort_child_properties_last
-       child: Icon(
-         Icons.add,
-         size: 90,
-       ),
-       padding: EdgeInsets.all(16),
-       shape: CircleBorder(),
-     );
+          onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const KargoAdd()),
+                      );
+                      },
+          color: kargogreenColor,
+          textColor: Colors.white,
+          // ignore: sort_child_properties_last
+          child: Icon(
+            Icons.add,
+            size: 100,
+          ),
+          // padding: EdgeInsets.all(16),
+          shape: CircleBorder(),
+        );
   }
 }
 
