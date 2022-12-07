@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_final_fields
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +11,7 @@ class KargoSignUpScreen extends StatefulWidget {
   const KargoSignUpScreen({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _KargoSignUpScreenState createState() => _KargoSignUpScreenState();
 }
 
