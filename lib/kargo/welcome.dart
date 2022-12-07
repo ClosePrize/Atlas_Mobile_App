@@ -16,8 +16,8 @@ class LogosPage extends StatelessWidget {
         Flexible(
           child: InkWell(
             onTap: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => const SignInScreen()));
+              // Navigator.push(
+              //     context, MaterialPageRoute(builder: (context) => const SignInScreen()));
             },
             child: Image.asset(
               "assets/kitlogo.png",
