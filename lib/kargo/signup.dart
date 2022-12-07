@@ -3,7 +3,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:v01/kargo/constants.dart';
-import 'package:v01/kargo/kargohome.dart';
+import 'package:v01/kargo/home/kargohome.dart';
 
 import 'widgets/reusable_widgets.dart';
 
@@ -16,6 +16,7 @@ class KargoSignUpScreen extends StatefulWidget {
 
 class _KargoSignUpScreenState extends State<KargoSignUpScreen> {
   TextEditingController _passwordTextController = TextEditingController();
+  TextEditingController _phoneTextController = TextEditingController();
   TextEditingController _emailTextController = TextEditingController();
   TextEditingController _userNameTextController = TextEditingController();
   @override
@@ -54,12 +55,12 @@ class _KargoSignUpScreenState extends State<KargoSignUpScreen> {
                 const SizedBox(
                   height: 25,
                 ),
-                reusableTextField("Şifre", Icons.lock_outlined, true,
-                    _passwordTextController),
+                reusableTextField("Telefon Numarası", Icons.phone, false,
+                    _phoneTextController),
                 const SizedBox(
                   height: 25,
                 ),
-                 reusableTextField("Şifre Tekrarı", Icons.lock_outlined, true,
+                 reusableTextField("Şifre", Icons.lock_outlined, true,
                     _passwordTextController),
                 const SizedBox(
                   height: 70,
