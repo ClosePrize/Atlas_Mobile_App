@@ -1,4 +1,7 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
+import 'package:v01/kargo/constants.dart';
 
 
 class KargoBody extends StatelessWidget {
@@ -10,6 +13,7 @@ class KargoBody extends StatelessWidget {
       body: Center(
         
         child: Column(
+          textDirection: TextDirection.rtl,
           crossAxisAlignment: CrossAxisAlignment.start,
           
           children: [
@@ -48,30 +52,52 @@ class KargoBody extends StatelessWidget {
           )
           ]
               ),
+  child: Flexible(
+    child: const Padding(
+      padding: EdgeInsets.only(right:10.0, left: 20, bottom: 30),
+      child: Center(
+        child: Text.rich(TextSpan(
+          text: ' \n\nNasıl Kargo Eklenir?  \n\n',
+          style: TextStyle(
+            fontSize: 25,fontWeight: FontWeight.bold,
+            decoration: TextDecoration.underline),
+            children: <TextSpan>[
+            TextSpan(
+                  text: '•Kargo ekle tuşuna basınız.\n\n•Kargonuzun ait olduğu firma adını seçiniz.\n\n•Sipariş numaranızı giriniz.\n\n•Kargomu getir tuşuna basarak kaydınızı oluşturunuz.\n',
+                  style: TextStyle(fontSize: 20,fontWeight: FontWeight.normal,
+            decoration: TextDecoration.none
+                  )),
+            // can add more TextSpans here...
+          ],
+            ),
+            
+            
+            ),
+            
+      ),
+          
+    ),
     
-  child: const Padding(
-    padding: EdgeInsets.only(right:10.0, left: 20, bottom: 30),
-    child: Text.rich(TextSpan(
-      text: ' \n\nNasıl Kargo Eklenir?  \n\n',
-      style: TextStyle(
-        fontSize: 25,fontWeight: FontWeight.bold,
-        decoration: TextDecoration.underline),
-        children: <TextSpan>[
-        TextSpan(
-              text: '•Kargo ekle tuşuna basınız.\n\n•Kargonuzun ait olduğu firma adını seçiniz.\n\n•Sipariş numaranızı giriniz.\n\n•Kargomu getir tuşuna basarak kaydınızı oluşturunuz.\n',
-              style: TextStyle(fontSize: 20,fontWeight: FontWeight.normal,
-        decoration: TextDecoration.none
-              )),
-        // can add more TextSpans here...
-      ],
-        ),),
   ),
+  
 
       
             )
+            
       
           ),
           
+        ),
+       MaterialButton(
+          onPressed: () {},
+          color: kargoPrimaryColor,
+          textColor: Colors.white,
+          child: Icon(
+            Icons.add,
+            size: 90,
+          ),
+          padding: EdgeInsets.all(16),
+          shape: CircleBorder(),
         ),
         
           ],
@@ -81,6 +107,6 @@ class KargoBody extends StatelessWidget {
       )
       
       );
-        
+
   }
 }

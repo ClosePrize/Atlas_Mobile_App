@@ -71,6 +71,7 @@ Container firebaseUIButton(BuildContext context, String title, Function onTap) {
       onPressed: () {
         onTap();
       },
+      // ignore: sort_child_properties_last
       child: Text(
         title,
         style: const TextStyle(
@@ -87,5 +88,89 @@ Container firebaseUIButton(BuildContext context, String title, Function onTap) {
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)))),
     ),
   );
+}
+
+class textbox extends StatelessWidget {
+  const textbox({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(right: 20, left: 20),
+      child: Container(
+        alignment:Alignment.center,
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            boxShadow: [
+        BoxShadow(color: Colors.grey.withOpacity(0.5),
+      spreadRadius: 5,
+      blurRadius: 7,
+      offset: const Offset(3, 3),
+      )
+      ]
+          ),
+          
+  // ignore: prefer_const_constructors
+  child: Flexible(
+    child: const Padding(
+      padding: EdgeInsets.only(right:10.0, left: 20, bottom: 30),
+      child: Center(
+    child: Text.rich(TextSpan(
+      text: ' \n\nNasıl Kargo Eklenir?  \n\n',
+      style: TextStyle(
+        fontSize: 25,fontWeight: FontWeight.bold,
+        decoration: TextDecoration.underline),
+        children: <TextSpan>[
+        TextSpan(
+              text: '•Kargo ekle tuşuna basınız.\n\n•Kargonuzun ait olduğu firma adını seçiniz.\n\n•Sipariş numaranızı giriniz.\n\n•Kargomu getir tuşuna basarak kaydınızı oluşturunuz.\n',
+              style: TextStyle(fontSize: 20,fontWeight: FontWeight.normal,
+        decoration: TextDecoration.none
+              )),
+              
+        // can add more TextSpans here...
+      ],
+        ),
+        ),
+        
+      ),
+      
+    ),
+    
+  ),
+  
+
+      
+        )
+        
+      
+      ),
+      
+    );
+  }
+}
+
+class addbutton extends StatelessWidget {
+  const addbutton({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialButton(
+       onPressed: () {},
+       color: kargoPrimaryColor,
+       textColor: Colors.white,
+       // ignore: sort_child_properties_last
+       child: Icon(
+         Icons.add,
+         size: 90,
+       ),
+       padding: EdgeInsets.all(16),
+       shape: CircleBorder(),
+     );
+  }
 }
 

@@ -26,7 +26,7 @@ class _SignInScreenState extends State<SignInScreen> {
             Flexible(
               child: Container(
                 height: MediaQuery.of(context).size.height*0.45,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   borderRadius: BorderRadius.only(bottomLeft:Radius.circular(50),
                   bottomRight: Radius.circular(50) ),
                   image: DecorationImage(
