@@ -80,7 +80,7 @@ Container firebaseUIButton_1(BuildContext context) {
     decoration: BoxDecoration(borderRadius: BorderRadius.circular(90)),
     child: ElevatedButton(
       onPressed: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => KargoHomeScreen()));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => SignInScreen()));
       },
       child: Text(
         'Çıkış yap',
