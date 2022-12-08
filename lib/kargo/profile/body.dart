@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:v01/kargo/constants.dart';
+import 'package:v01/kargo/home/kargohome.dart';
 import 'package:v01/kargo/widgets/reusable_widgets.dart';
-import 'package:v01/kargo/login.dart';
-import '';
 class ProfileScreen extends StatefulWidget{
   const ProfileScreen({Key? key}) : super(key: key);
 
@@ -19,13 +17,13 @@ class _ProfileScreenState extends State<ProfileScreen>{
       backgroundColor: kbackgroundColor,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-          backgroundColor: kitblueColor,
+          backgroundColor: const Color.fromARGB(255, 2, 12, 36),
            leading: IconButton(
              icon: Icon(
                Icons.close, color: Colors.white, size: 50,),
              onPressed: () => Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => SignInScreen())),
+              MaterialPageRoute(builder: (context) => KargoHomeScreen())),
            ),
           elevation: 0,
           title: const Text(
