@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:v01/kargo/constants.dart';
+import 'package:v01/kargo/signup.dart';
+
+import '../cargo_add/cargo_add.dart';
  
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({super.key});
@@ -28,6 +31,16 @@ class _BottomNavBarState extends State<BottomNavBar> {
       height: MediaQuery.of(context).size.height/11,
       child: BottomNavigationBar(
       
+      onTap: (value) {
+        if (value == 0) Navigator.push(context,
+                        MaterialPageRoute(builder: (context) =>  KargoHomeScreen()));
+        if (value == 1) Navigator.push(context,
+                        MaterialPageRoute(builder: (context) =>  KargoSignUpScreen()));
+        if (value == 2) Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => const KargoHomeScreen()));
+      },
+    
+      
         backgroundColor: Colors.white,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
@@ -45,7 +58,6 @@ class _BottomNavBarState extends State<BottomNavBar> {
           ],
           currentIndex: _selectedIndex,
           selectedItemColor: kitblueColor,
-          onTap: _onItemTapped,
       ),
     );
   }

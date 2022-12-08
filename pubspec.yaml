@@ -40,6 +40,7 @@ dependencies:
   provider: ^6.0.4
   firebase_auth: ^4.1.5
   assorted_layout_widgets: ^7.0.0
+  dropdown_button2: ^1.9.2
 
 dev_dependencies:
   flutter_test:
