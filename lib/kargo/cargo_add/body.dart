@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:v01/kargo/constants.dart';
 import 'package:v01/kargo/widgets/bottomnavigationbar.dart';
+import 'package:v01/kargo/widgets/optionsdownbox.dart';
 
 class KargoAdd extends StatelessWidget {
   const KargoAdd({super.key});
@@ -15,6 +16,11 @@ class KargoAdd extends StatelessWidget {
       ),
       bottomNavigationBar: const BottomNavBar(),
       backgroundColor: kbackgroundColor,
+      body: Row(
+      children: [
+        OptionsBox()
+      ],
+      ),
     );
   }
 }
