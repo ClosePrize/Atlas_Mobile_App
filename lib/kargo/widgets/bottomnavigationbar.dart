@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:v01/kargo/constants.dart';
+import 'package:v01/kargo/profile/body.dart';
 import 'package:v01/kargo/signup.dart';
 
 import '../cargo_add/cargo_add.dart';
+import '../home/kargohome.dart';
  
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({super.key});
@@ -37,7 +39,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
         if (value == 1) Navigator.push(context,
                         MaterialPageRoute(builder: (context) =>  KargoSignUpScreen()));
         if (value == 2) Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => const KargoHomeScreen()));
+                        MaterialPageRoute(builder: (context) => ProfileScreen()));
       },
     
       
