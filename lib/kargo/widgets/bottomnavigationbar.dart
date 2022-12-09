@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:v01/kargo/constants.dart';
+<<<<<<< HEAD
 import 'package:v01/kargo/profile/body.dart';
 import 'package:v01/kargo/profile/profile.dart';
 import 'package:v01/kargo/signup.dart';
 
 import '../cargo_add/cargo_add.dart';
+=======
+import 'package:v01/kargo/my_cargos/my_cargos.dart';
+>>>>>>> main
 import '../home/kargohome.dart';
+import '../profile/profile.dart';
  
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({super.key});
@@ -35,12 +40,27 @@ class _BottomNavBarState extends State<BottomNavBar> {
       child: BottomNavigationBar(
       
       onTap: (value) {
+<<<<<<< HEAD
         if (value == 0) Navigator.push(context,
                         MaterialPageRoute(builder: (context) =>  KargoHomeScreen()));
         if (value == 1) Navigator.push(context,
                         MaterialPageRoute(builder: (context) =>  KargoSignUpScreen()));
         if (value == 2) Navigator.push(context,
                         MaterialPageRoute(builder: (context) => KargoProfileScreen()));
+=======
+        if (value == 0) {
+          Navigator.push(context,
+                        MaterialPageRoute(builder: (context) =>  MyCargosScreen()));
+        }
+        if (value == 1) {
+          Navigator.push(context,
+                        MaterialPageRoute(builder: (context) =>   KargoHomeScreen()));
+        }
+        if (value == 2) {
+          Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => KargoProfileScreen()));
+        }
+>>>>>>> main
       },
     
       
@@ -61,6 +81,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
           ],
           currentIndex: _selectedIndex,
           selectedItemColor: kitblueColor,
+          unselectedItemColor: kitblueColor,
       ),
     );
   }
