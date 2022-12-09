@@ -41,8 +41,6 @@ class _SignInScreenState extends State<SignInScreen> {
                 20, MediaQuery.of(context).size.height * 0.09, 30, 0),
                 child: Column(
                   children:<Widget>[
-
-            
                 reusableTextField("E-posta", Icons.person_outline, false,
                     _emailTextController),
                 const SizedBox(
