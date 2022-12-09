@@ -8,6 +8,7 @@ class ProfileScreen extends StatefulWidget{
   const ProfileScreen({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _ProfileScreenState createState() => _ProfileScreenState();
 }
 
@@ -21,11 +22,11 @@ class _ProfileScreenState extends State<ProfileScreen>{
       appBar: AppBar(
           backgroundColor: const Color.fromARGB(255, 2, 12, 36),
            leading: IconButton(
-             icon: Icon(
-               Icons.close, color: Colors.white, size: 50,),
+             icon: const Icon(
+               Icons.close_rounded, color: Colors.white, size: 30,),
              onPressed: () => Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => KargoHomeScreen())),
+              MaterialPageRoute(builder: (context) => const KargoHomeScreen())),
            ),
           elevation: 0,
           title: const Text(
@@ -36,7 +37,7 @@ class _ProfileScreenState extends State<ProfileScreen>{
       body: Container(
         width: MediaQuery.of(context).size.width,
         height:MediaQuery.of(context).size.height,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: kbackgroundColor,),
           /*image: DecorationImage(
             image: AssetImage(
@@ -47,7 +48,7 @@ class _ProfileScreenState extends State<ProfileScreen>{
       )*/
         child: SingleChildScrollView(
             child: Padding(
-          padding: EdgeInsets.fromLTRB(22, 120, 22, 0),
+          padding: const EdgeInsets.fromLTRB(22, 120, 22, 0),
           child: Column(
             children: <Widget>[
               Image.asset(
@@ -61,7 +62,7 @@ class _ProfileScreenState extends State<ProfileScreen>{
                 width: double.infinity,
                 child: Container (
                   color: kbackgroundColor,
-                  child: Text(
+                  child: const Text(
                     "  Ad-Soyad",
                     textAlign: TextAlign.left,
                     style: TextStyle(
@@ -81,7 +82,7 @@ class _ProfileScreenState extends State<ProfileScreen>{
                 width: double.infinity,
                 child: Container (
                   color: kbackgroundColor,
-                  child: Text(
+                  child: const Text(
                     "  E-Posta",
                     textAlign: TextAlign.left,
                     style: TextStyle(
@@ -94,14 +95,14 @@ class _ProfileScreenState extends State<ProfileScreen>{
                 height: 10,
               ),
               reusableTextField_1("Datadan alınan mail",Icons.drive_file_rename_outline,),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               SizedBox(
                 width: double.infinity,
                 child: Container (
                   color: kbackgroundColor,
-                  child: Text(
+                  child: const Text(
                     "  Şifre",
                     textAlign: TextAlign.left,
                     style: TextStyle(
@@ -121,7 +122,7 @@ class _ProfileScreenState extends State<ProfileScreen>{
                 width: double.infinity,
                 child: Container (
                   color: kbackgroundColor,
-                  child: Text(
+                  child: const Text(
                     "  Cep Telefonu",
                     textAlign: TextAlign.left,
                     style: TextStyle(

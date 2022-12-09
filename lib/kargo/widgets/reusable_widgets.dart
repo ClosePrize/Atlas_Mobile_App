@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:v01/kargo/cargo_add/body.dart';
+import 'package:v01/kargo/cargo_add/kargooptions.dart';
+import 'package:v01/kargo/cargo_add/cargo_add.dart';
 import 'package:v01/kargo/constants.dart';
 import 'package:v01/kargo/home/kargohome.dart';
 
@@ -207,14 +208,8 @@ class textbox extends StatelessWidget {
     ),
     
   ),
-  
-
-      
         )
-        
-      
-      ),
-      
+      ),  
     );
   }
 }
@@ -231,7 +226,7 @@ class addButton extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const KargoAdd()),
+                      builder: (context) => KargoAddScreen()),
                       );
                       },
           color: kargogreenColor,
