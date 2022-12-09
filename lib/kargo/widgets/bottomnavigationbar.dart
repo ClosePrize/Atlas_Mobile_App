@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:v01/kargo/constants.dart';
 import 'package:v01/kargo/profile/body.dart';
+import 'package:v01/kargo/profile/profile.dart';
 import 'package:v01/kargo/signup.dart';
 
 import '../cargo_add/cargo_add.dart';
@@ -39,7 +40,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
         if (value == 1) Navigator.push(context,
                         MaterialPageRoute(builder: (context) =>  KargoSignUpScreen()));
         if (value == 2) Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => ProfileScreen()));
+                        MaterialPageRoute(builder: (context) => KargoProfileScreen()));
       },
     
       
