@@ -128,6 +128,35 @@ Container firebaseUIButton(BuildContext context, String title, Function onTap) {
   );
 }
 
+Container firebaseUIButton_2(BuildContext context, String title, Function onTap) {
+  return Container(
+    width: MediaQuery.of(context).size.width*20,
+    height: 50,
+    margin: const EdgeInsets.fromLTRB(10, 30, 10, 50),
+    decoration: BoxDecoration(borderRadius: BorderRadius.circular(90)),
+    child: ElevatedButton(
+      onPressed: () {
+        onTap();
+      },
+      // ignore: sort_child_properties_last
+      child: Text(
+        title,
+        style: const TextStyle(
+            color: Color.fromARGB(221, 255, 255, 255), fontWeight: FontWeight.bold, fontSize: 16),
+      ),
+      style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.resolveWith((states) {
+            if (states.contains(MaterialState.pressed)) {
+              return Color.fromARGB(66, 255, 255, 255);
+            }
+            return kitgreenColor;
+          }),
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)))),
+    ),
+  );
+}
+
 class textbox extends StatelessWidget {
   const textbox({
     Key? key,

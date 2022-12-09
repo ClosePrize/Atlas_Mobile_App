@@ -71,6 +71,7 @@ flutter:
     - assets/kargobaslik.png
     - assets/kargoslogan.png
     - assets/profile.png
+    - assets/taleponay.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

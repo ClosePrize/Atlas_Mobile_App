@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:v01/kargo/constants.dart';
 import 'package:v01/kargo/home/kargohome.dart';
 import 'package:v01/kargo/widgets/reusable_widgets.dart';
+import 'package:v01/kargo/signup.dart';
+
 class ProfileScreen extends StatefulWidget{
   const ProfileScreen({Key? key}) : super(key: key);
 
@@ -42,7 +44,7 @@ class _ProfileScreenState extends State<ProfileScreen>{
             /*fit: ,*/
           ),
           shape: BoxShape.circle,
-        ),*/
+      )*/
         child: SingleChildScrollView(
             child: Padding(
           padding: EdgeInsets.fromLTRB(22, 120, 22, 0),
@@ -71,7 +73,7 @@ class _ProfileScreenState extends State<ProfileScreen>{
               const SizedBox(
                 height: 10,
               ),
-              reusableTextField_1("Datadan alınan isim ve soyisim",Icons.drive_file_rename_outline,),
+              reusableTextField_1('Datadan alınan ad-soyad',Icons.drive_file_rename_outline,),
               const SizedBox(
                 height: 20,
               ),
