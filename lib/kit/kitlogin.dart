@@ -1,21 +1,19 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:v01/kargo/home/kargohome.dart';
-import 'package:v01/kargo/kit_talep.dart';
-import 'package:v01/kargo/widgets/talep_onay.dart';
+
+import '../kargo/widgets/reusable_widgets.dart';
+import 'kitsignup.dart';
 // import 'package:v01/kargo/constants.dart';
 
-import 'signup.dart';
-import 'widgets/reusable_widgets.dart';
-
-class SignInScreen extends StatefulWidget {
-  const SignInScreen({Key? key}) : super(key: key);
+class KitSignInScreen extends StatefulWidget {
+  const KitSignInScreen({Key? key}) : super(key: key);
 
   @override
-  _SignInScreenState createState() => _SignInScreenState();
+  _KitSignInScreenState createState() => _KitSignInScreenState();
 }
 
-class _SignInScreenState extends State<SignInScreen> {
+class _KitSignInScreenState extends State<KitSignInScreen> {
   TextEditingController _passwordTextController = TextEditingController();
   TextEditingController _emailTextController = TextEditingController();
   @override
@@ -33,7 +31,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   bottomRight: Radius.circular(50) ),
                   image: DecorationImage(
                     fit: BoxFit.cover,
-                    image:AssetImage("assets/kargobaslik.png"),
+                    image:AssetImage("assets/kitbaslik.png"),
                   ),
                 ),
               ),
@@ -88,7 +86,7 @@ class _SignInScreenState extends State<SignInScreen> {
         GestureDetector(
           onTap: () {
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const KargoSignUpScreen()));
+                MaterialPageRoute(builder: (context) => const KitSignUpScreen()));
           },
           child: const Text(
             " Kaydol",

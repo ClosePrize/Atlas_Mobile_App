@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:v01/kargo/widgets/reusable_widgets.dart';
+import 'package:v01/kargo/widgets/talep_onay.dart';
 class KargoOptions extends StatefulWidget {
   const KargoOptions({super.key});
 
@@ -75,10 +76,11 @@ class _KargoOptionsState extends State<KargoOptions> {
               const SizedBox(
               height: 15,),
        reusableTextField(
-            "Sipariş Numarası", Icons.abc,false, _siparisTextController), 
+            "Sipariş Numarası", Icons.shopping_bag,false, _siparisTextController), 
                  const SizedBox(
               height: 60,),
-              firebaseUIButton(context, "Kargomu Getir", (){})   ],
+              firebaseUIButton(context, "Kargomu Getir", (){Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => const TalepOnayScreen()));})   ],
         ),
       ),
       
