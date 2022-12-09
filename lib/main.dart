@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:v01/kargo/firebase_options.dart';
+import 'package:v01/firebase_options.dart';
 
-import 'kargo/welcome.dart';
+import 'welcome.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();

@@ -3,7 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:v01/kargo/constants.dart';
 import 'package:v01/kargo/home/kargohome.dart';
-import 'package:v01/kargo/talep_onay.dart';
+import 'package:v01/kargo/widgets/talep_onay.dart';
 import 'package:v01/kargo/widgets/bottomnavigationbar.dart';
 import 'package:v01/kargo/widgets/reusable_widgets.dart';
 import 'package:v01/kargo/signup.dart';
@@ -24,7 +24,7 @@ class _KitTalepScreenState extends State<KitTalepScreen>{
         backgroundColor: const Color.fromARGB(255, 2, 12, 36),
     leading: IconButton(
     icon: Icon(
-    Icons.close, color: Colors.white, size: 50,),
+    Icons.close_rounded, color: Colors.white, size: 30,),
     onPressed: () => Navigator.push(
     context,
     MaterialPageRoute(builder: (context) => KargoHomeScreen())),

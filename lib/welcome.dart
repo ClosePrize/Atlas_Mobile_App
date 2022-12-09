@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'login.dart';
+import 'kargo/login.dart';
+import 'kit/kitlogin.dart';
 
 class LogosPage extends StatelessWidget {
   const LogosPage({super.key});
@@ -16,8 +17,8 @@ class LogosPage extends StatelessWidget {
         Flexible(
           child: InkWell(
             onTap: () {
-              // Navigator.push(
-              //     context, MaterialPageRoute(builder: (context) => const SignInScreen()));
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => const KitSignInScreen()));
             },
             child: Image.asset(
               "assets/kitlogo.png",
