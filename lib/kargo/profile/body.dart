@@ -3,7 +3,6 @@ import 'package:v01/kargo/constants.dart';
 import 'package:v01/kargo/home/kargohome.dart';
 import 'package:v01/kargo/widgets/reusable_widgets.dart';
 import 'package:v01/kargo/signup.dart';
-import 'package:http/http.dart' as http;
 
 class ProfileScreen extends StatefulWidget{
   const ProfileScreen({Key? key}) : super(key: key);

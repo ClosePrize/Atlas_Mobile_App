@@ -4,8 +4,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:v01/kargo/constants.dart';
 import 'package:v01/kargo/home/kargohome.dart';
+
 import 'widgets/reusable_widgets.dart';
-import 'package:http/http.dart' as http;
+/*import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
 
@@ -43,7 +44,7 @@ class User {
       title: json['title'],
     );
   }
-}
+}*/
 
 
 
@@ -67,8 +68,6 @@ class _KargoSignUpScreenState extends State<KargoSignUpScreen> {
   TextEditingController _phoneTextController = TextEditingController();
   TextEditingController _emailTextController = TextEditingController();
   TextEditingController _userNameTextController = TextEditingController();
-  Future<User>? _futureUser;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -101,57 +100,36 @@ class _KargoSignUpScreenState extends State<KargoSignUpScreen> {
                   height: 25,
                 ),
                 reusableTextField("E-posta", Icons.person_outline, false,
-                    _userNameTextController),
+                    _emailTextController),
                 const SizedBox(
                   height: 25,
                 ),
                 reusableTextField("Telefon Numarası", Icons.phone, false,
-                    _userNameTextController),
+                    _phoneTextController),
                 const SizedBox(
                   height: 25,
                 ),
                  reusableTextField("Şifre", Icons.lock_outlined, true,
-                    _userNameTextController),
+                    _passwordTextController),
                 const SizedBox(
                   height: 70,
                 ),
                 firebaseUIButton(context, "KAYIT OL", () {
-                  /*FirebaseAuth.instance
+                  FirebaseAuth.instance
                       .createUserWithEmailAndPassword(
                           email: _emailTextController.text,
                           password: _passwordTextController.text)
                       .then((value) {
-                    print("Created New Account");*/
-                  setState(() {
-                    _futureUser = createUser(_userNameTextController.text);
+                    print("Created New Account");
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => KargoHomeScreen()));
+                  }).onError((error, stackTrace) {
+                    print("Error ${error.toString()}");
                   });
-                  Navigator.push(context,
-                      MaterialPageRoute(
-                          builder: (context) => KargoHomeScreen()));
-                  /*}).onError((error, stackTrace) {
-                    print("Error ${error.toString()}");*/
-                }
-                );
-                ),
+                })
               ],
             ),
-          )
-    )
-    ),
-    );
-  }
-  FutureBuilder<User> buildFutureBuilder() {
-    return FutureBuilder<User>(
-      future: _futureUser,
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          return Text(snapshot.data!.title);
-        } else if (snapshot.hasError) {
-          return Text('${snapshot.error}');
-        }
-
-        return const CircularProgressIndicator();
-      },
+          ))),
     );
   }
 }
