@@ -4,8 +4,55 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:v01/kargo/constants.dart';
 import 'package:v01/kargo/home/kargohome.dart';
-
 import 'widgets/reusable_widgets.dart';
+import 'package:http/http.dart' as http;
+import 'dart:async';
+import 'dart:convert';
+
+Future<User> createUser(String title) async {
+  final response = await http.post(
+    Uri.parse('https://jsonplaceholder.typicode.com/albums'),
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+    body: jsonEncode(<String, String>{
+      'title': title,
+    }),
+  );
+
+  if (response.statusCode == 201) {
+    // If the server did return a 201 CREATED response,
+    // then parse the JSON.
+    return User.fromJson(jsonDecode(response.body));
+  } else {
+    // If the server did not return a 201 CREATED response,
+    // then throw an exception.
+    throw Exception('Failed to create album.');
+  }
+}
+
+class User {
+  final int id;
+  final String title;
+
+  const User({required this.id, required this.title});
+
+  factory User.fromJson(Map<String, dynamic> json) {
+    return User(
+      id: json['id'],
+      title: json['title'],
+    );
+  }
+}
+
+
+
+
+
+
+
+
+
 
 class KargoSignUpScreen extends StatefulWidget {
   const KargoSignUpScreen({Key? key}) : super(key: key);
@@ -20,6 +67,8 @@ class _KargoSignUpScreenState extends State<KargoSignUpScreen> {
   TextEditingController _phoneTextController = TextEditingController();
   TextEditingController _emailTextController = TextEditingController();
   TextEditingController _userNameTextController = TextEditingController();
+  Future<User>? _futureUser;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,36 +101,57 @@ class _KargoSignUpScreenState extends State<KargoSignUpScreen> {
                   height: 25,
                 ),
                 reusableTextField("E-posta", Icons.person_outline, false,
-                    _emailTextController),
+                    _userNameTextController),
                 const SizedBox(
                   height: 25,
                 ),
                 reusableTextField("Telefon Numarası", Icons.phone, false,
-                    _phoneTextController),
+                    _userNameTextController),
                 const SizedBox(
                   height: 25,
                 ),
                  reusableTextField("Şifre", Icons.lock_outlined, true,
-                    _passwordTextController),
+                    _userNameTextController),
                 const SizedBox(
                   height: 70,
                 ),
                 firebaseUIButton(context, "KAYIT OL", () {
-                  FirebaseAuth.instance
+                  /*FirebaseAuth.instance
                       .createUserWithEmailAndPassword(
                           email: _emailTextController.text,
                           password: _passwordTextController.text)
                       .then((value) {
-                    print("Created New Account");
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => KargoHomeScreen()));
-                  }).onError((error, stackTrace) {
-                    print("Error ${error.toString()}");
+                    print("Created New Account");*/
+                  setState(() {
+                    _futureUser = createUser(_userNameTextController.text);
                   });
-                })
+                  Navigator.push(context,
+                      MaterialPageRoute(
+                          builder: (context) => KargoHomeScreen()));
+                  /*}).onError((error, stackTrace) {
+                    print("Error ${error.toString()}");*/
+                }
+                );
+                ),
               ],
             ),
-          ))),
+          )
+    )
+    ),
+    );
+  }
+  FutureBuilder<User> buildFutureBuilder() {
+    return FutureBuilder<User>(
+      future: _futureUser,
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return Text(snapshot.data!.title);
+        } else if (snapshot.hasError) {
+          return Text('${snapshot.error}');
+        }
+
+        return const CircularProgressIndicator();
+      },
     );
   }
 }
