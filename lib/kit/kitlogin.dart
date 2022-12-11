@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:v01/kargo/home/kargohome.dart';
-
+import 'package:v01/kargo/kit_özel.dart';
 import '../kargo/widgets/reusable_widgets.dart';
 import 'kitsignup.dart';
 // import 'package:v01/kargo/constants.dart';
@@ -59,7 +59,7 @@ class _KitSignInScreenState extends State<KitSignInScreen> {
                           password: _passwordTextController.text)
                       .then((value) {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => const KargoHomeScreen()));
+                        MaterialPageRoute(builder: (context) => const KargoKitOzelScreen()));
                   }).onError((error, stackTrace) {
                     print("Error ${error.toString()}");
                   });

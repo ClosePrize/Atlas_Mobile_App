@@ -44,6 +44,7 @@ class User {
       title: json['title'],
     );
   }
+// Data gönderimiyle alakalı:  https://docs.flutter.dev/cookbook/networking/send-data
 }*/
 
 
