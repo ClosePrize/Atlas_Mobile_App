@@ -19,7 +19,7 @@ class _KitProfileScreenState extends State<KitProfileScreen>{
       backgroundColor: kbackgroundColor,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-          backgroundColor: const Color.fromARGB(255, 2, 12, 36),
+          backgroundColor: kitPrimaryColor,
            leading: IconButton(
              icon: const Icon(
                Icons.close_rounded, color: Colors.white, size: 30,),

@@ -392,10 +392,10 @@ SizedBox kit_button(BuildContext context, String assetName, Function onTab) {
 
 SizedBox kit_button1(BuildContext context, String text, String assetName) {
   return SizedBox(
-      height: 130,
-      width: 500,
+      height: 145,
+      width: MediaQuery.of(context).size.width/1.2,
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(18),
+        // borderRadius: BorderRadius.circular(18),
         child: Material(
           child: InkWell(
             onTap: (){
