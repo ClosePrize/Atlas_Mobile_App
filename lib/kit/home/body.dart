@@ -1,16 +1,9 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
+
 import 'package:flutter/material.dart';
-import 'package:v01/kargo/constants.dart';
-import 'package:v01/kargo/home/kargohome.dart';
-import 'package:v01/kargo/kit_talep.dart';
-import 'package:v01/kargo/widgets/talep_onay.dart';
-import 'package:v01/kargo/widgets/bottomnavigationbar.dart';
 import 'package:v01/kargo/widgets/reusable_widgets.dart';
-import 'package:v01/kargo/signup.dart';
-import 'package:v01/kit/kit_özel_yol_yardim.dart';
-import 'package:v01/kit/kit_özel_besin.dart';
-import 'package:v01/kargo/kit_özel_saglık.dart';
+import '../kit_talep/besin/besin.dart';
+import '../kit_talep/saglik/saglik.dart';
+import '../kit_talep/yol/yol_yardim.dart';
 
 class KitHomeScreen extends StatefulWidget{
   const KitHomeScreen({Key? key}) : super(key: key);
@@ -63,21 +56,21 @@ class _KitHomeScreenState extends State<KitHomeScreen>{
                 ),
                 kit_button(context, 'assets/saglık_kitleri/saglikkitleri.png', (){
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => KargoKitOzelScreen()));
+                      MaterialPageRoute(builder: (context) => SaglikPage()));
                 } ),
                 SizedBox(
                   height: 25,
                 ),
                 kit_button(context,'assets/yol_yardim_kitleri/yolyardimkitleri.png', (){
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => KargoKitOzelYolYardimScreen()));
+                      MaterialPageRoute(builder: (context) => YolYardimPage()));
                 } ),
                 SizedBox(
                   height: 25,
                 ),
                 kit_button(context,'assets/besin_kitleri/besinkitleri.png', (){
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => KargoKitOzelBesinScreen()));
+                      MaterialPageRoute(builder: (context) => BesinPage()));
                 } ),
                 SizedBox(
                   height: 25,
@@ -96,14 +89,3 @@ class _KitHomeScreenState extends State<KitHomeScreen>{
   }
 }
 
-class KargoKitHomeScreen extends StatelessWidget{
-  const KargoKitHomeScreen({super.key});
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: kbackgroundColor,
-      bottomNavigationBar: BottomNavBar(),
-      body: KitHomeScreen(),
-    );
-  }
-}
