@@ -1,22 +1,15 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:v01/kargo/constants.dart';
-import 'package:v01/kargo/home/kargohome.dart';
-import 'package:v01/kargo/kit_talep.dart';
-import 'package:v01/kargo/widgets/talep_onay.dart';
-import 'package:v01/kargo/widgets/bottomnavigationbar.dart';
 import 'package:v01/kargo/widgets/reusable_widgets.dart';
-import 'package:v01/kargo/signup.dart';
+import 'package:v01/kit/home/home.dart';
 
-class KitOzelBesinScreen extends StatefulWidget{
-  const KitOzelBesinScreen({Key? key}) : super(key: key);
+class KitOzelScreen extends StatefulWidget{
+  const KitOzelScreen({Key? key}) : super(key: key);
 
   @override
-  _KitOzelBesinScreenState createState() => _KitOzelBesinScreenState();
+  _KitOzelScreenState createState() => _KitOzelScreenState();
 }
 
-class _KitOzelBesinScreenState extends State<KitOzelBesinScreen>{
+class _KitOzelScreenState extends State<KitOzelScreen>{
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +21,7 @@ class _KitOzelBesinScreenState extends State<KitOzelBesinScreen>{
               Icons.close_rounded, color: Colors.white, size: 30,),
             onPressed: () => Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => KargoHomeScreen())),
+                MaterialPageRoute(builder: (context) => KitHomePage())),
           ),
           elevation: 0,
           title: const Text(
@@ -59,15 +52,19 @@ class _KitOzelBesinScreenState extends State<KitOzelBesinScreen>{
                 SizedBox(
                   height: 40,
                 ),
-                kit_button1(context, '', 'assets/besin_kitleri/bebekmamasikiti.png'),
+                kit_button1(context, '', 'assets/saglık_kitleri/astimkiti.png'),
                 SizedBox(
                   height: 25,
                 ),
-                kit_button1(context, '','assets/besin_kitleri/hazirgidakiti.png'),
+                kit_button1(context, '','assets/saglık_kitleri/hijyenkiti.png'),
                 SizedBox(
                   height: 25,
                 ),
-                kit_button1(context, '','assets/besin_kitleri/sokakhayvanimamakiti.png'),
+                kit_button1(context, '','assets/saglık_kitleri/pandemikiti.png'),
+                SizedBox(
+                  height: 25,
+                ),
+                kit_button1(context, '', 'assets/saglık_kitleri/kalpkrizikiti.png'),
                 SizedBox(
                   height: 25,
                 ),
@@ -85,14 +82,3 @@ class _KitOzelBesinScreenState extends State<KitOzelBesinScreen>{
   }
 }
 
-class KargoKitOzelBesinScreen extends StatelessWidget{
-  const KargoKitOzelBesinScreen({super.key});
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: kbackgroundColor,
-      bottomNavigationBar: BottomNavBar(),
-      body: KitOzelBesinScreen(),
-    );
-  }
-}
