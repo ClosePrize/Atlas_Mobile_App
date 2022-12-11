@@ -73,6 +73,67 @@ SizedBox reusableTextField_1(String text, IconData icon,/* bool isPasswordType,
   ),
   );
 }
+
+/*SizedBox SearchButton(String text, IconData icon,/* bool isPasswordType,
+    TextEditingController controller*/) {
+  return SizedBox(
+    height: 50,
+    width: 1000,
+    child: TextField(
+
+      /*controller: controller,
+      obscureText: isPasswordType,
+      enableSuggestions: !isPasswordType,
+      autocorrect: !isPasswordType,*/
+        cursorColor: Colors.white,
+        //cursorHeight: 100,
+        style: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+        decoration: InputDecoration(
+            suffixIcon: Icon(icon),
+            isDense: true,
+            /*prefixIcon: Icon(
+          icon,
+          color: Color.fromARGB(255, 114, 112, 112),
+        ),*/
+            labelText: text,
+            labelStyle: TextStyle(color: Color.fromARGB(255, 100, 89, 89).withOpacity(0.9)),
+            filled: true,
+            floatingLabelBehavior: FloatingLabelBehavior.never,
+            fillColor: Color.fromARGB(255, 230, 230, 230),
+            border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(30.0),
+                borderSide: const BorderSide(width: 0, style: BorderStyle.none),
+                gapPadding: 100000.0)
+        ),/*,
+    keyboardType: isPasswordType
+        ? TextInputType.visiblePassword
+        : TextInputType.emailAddress,*/
+      onTap: (){ showSearch(
+        context: context,
+        delegate: MySearchDelegate(),
+      );}
+    ),
+  );
+}*/
+
+/*class MySearchDelegate extends SearchDelegate {
+
+  @override
+  Widget? buildLeading(BuildContext context) => SizedBox(
+    child: TextField(
+      decoration: InputDecoration(
+        prefixIcon: Icon(Icons.search),
+        suffixIcon: Icon(Icons.clear)
+    ),
+  )
+  );
+  @override
+
+  @override
+
+  @override
+}*/
+
 Container firebaseUIButton_1(BuildContext context) {
   return Container(
     width: MediaQuery.of(context).size.width/2,
@@ -274,7 +335,7 @@ SizedBox firebaseUIButton_deneme(BuildContext context, String title, Function on
     )
   );
 }
-SizedBox kit_button(BuildContext context) {
+/*SizedBox kit_button(BuildContext context) {
   return SizedBox(
     height: 100,
     width: 500,
@@ -287,11 +348,6 @@ SizedBox kit_button(BuildContext context) {
               MaterialPageRoute(builder: (context) => KargoKitTalepScreen()));
         },
           child: Ink(
-            child: Center(
-              child: Text(
-                'abc',
-            ),
-          ),
             color: Color.fromARGB(255, 230, 230, 230),
             height: 100,
             width: 100,
@@ -303,11 +359,39 @@ SizedBox kit_button(BuildContext context) {
       ),*/
     )
   );
+}*/
+
+SizedBox kit_button(BuildContext context, String assetName, Function onTab) {
+  return SizedBox(
+      height: 180,
+      width: 500,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(18),
+        child: Material(
+          child: InkWell(
+            onTap: (){
+              onTab();
+            },
+            child: Ink(
+              decoration: BoxDecoration(
+                  color: kbackgroundColor,
+                  image: DecorationImage(
+                    image: AssetImage(
+                        assetName),
+                    fit: BoxFit.fill,
+                  )
+              )
+            ),
+          ),
+        ),
+      )
+  );
 }
 
-SizedBox kit_button1(BuildContext context, String text) {
+
+SizedBox kit_button1(BuildContext context, String text, String assetName) {
   return SizedBox(
-      height: 80,
+      height: 130,
       width: 500,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(18),
@@ -326,12 +410,17 @@ SizedBox kit_button1(BuildContext context, String text) {
                   ),
                 ),
               ),
-              color: Color.fromARGB(255, 230, 230, 230),
-              height: 100,
-              width: 100,
+              decoration: BoxDecoration(
+                color: kbackgroundColor,
+                image: DecorationImage(
+                  image: AssetImage(
+                    assetName),
+                  fit: BoxFit.fill,
+                  )
+                )
+              ),
             ),
           ),
         )
-      ),
   );
 }
