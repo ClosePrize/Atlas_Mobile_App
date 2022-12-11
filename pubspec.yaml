@@ -73,6 +73,19 @@ flutter:
     - assets/kargoslogan.png
     - assets/profile.png
     - assets/taleponay.png
+    - assets/saglık_kitleri/astimkiti.png
+    - assets/saglık_kitleri/hijyenkiti.png
+    - assets/saglık_kitleri/kalpkrizikiti.png
+    - assets/saglık_kitleri/pandemikiti.png
+    - assets/saglık_kitleri/saglikkitleri.png
+    - assets/yol_yardim_kitleri/lastiktamirkiti.png
+    - assets/yol_yardim_kitleri/motorbakimkiti.png
+    - assets/yol_yardim_kitleri/yakitkiti.png
+    - assets/yol_yardim_kitleri/yolyardimkitleri.png
+    - assets/besin_kitleri/bebekmamasikiti.png
+    - assets/besin_kitleri/besinkitleri.png
+    - assets/besin_kitleri/hazirgidakiti.png
+    - assets/besin_kitleri/sokakhayvanimamakiti.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
