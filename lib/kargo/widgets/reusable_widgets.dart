@@ -3,7 +3,7 @@ import 'package:v01/kargo/cargo_add/kargooptions.dart';
 import 'package:v01/kargo/cargo_add/cargo_add.dart';
 import 'package:v01/kargo/constants.dart';
 import 'package:v01/kargo/home/kargohome.dart';
-
+import 'package:v01/kargo/kit_talep.dart';
 import '../login.dart';
 
 TextField reusableTextField(String text, IconData icon, bool isPasswordType,
@@ -51,7 +51,7 @@ SizedBox reusableTextField_1(String text, IconData icon,/* bool isPasswordType,
       //cursorHeight: 100,
       style: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
       decoration: InputDecoration(
-        suffixIcon: Icon(Icons.drive_file_rename_outline),
+        suffixIcon: Icon(icon),
         isDense: true,
         /*prefixIcon: Icon(
           icon,
@@ -240,4 +240,98 @@ class addButton extends StatelessWidget {
           shape: CircleBorder(),
         );
   }
+}
+
+SizedBox firebaseUIButton_deneme(BuildContext context, String title, Function onTap) {
+  return SizedBox(
+    height: 500,
+    width: 500,
+    child: Container(
+      width: MediaQuery.of(context).size.width/2,
+      height: 50,
+      margin: const EdgeInsets.fromLTRB(0, 10, 0, 20),
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(90)),
+      child: ElevatedButton(
+        onPressed: () {
+          onTap();
+        },
+        // ignore: sort_child_properties_last
+        child: Text(
+          title,
+          style: const TextStyle(
+              color: Color.fromARGB(221, 255, 255, 255), fontWeight: FontWeight.bold, fontSize: 16),
+        ),
+        style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.resolveWith((states) {
+              if (states.contains(MaterialState.pressed)) {
+                return Color.fromARGB(66, 255, 255, 255);
+              }
+              return kitgreenColor;
+            }),
+            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)))),
+      ),
+    )
+  );
+}
+SizedBox kit_button(BuildContext context) {
+  return SizedBox(
+    height: 100,
+    width: 500,
+      child: Container(
+        height: 100,
+        width: 100,
+        child: InkWell(
+          onTap: (){
+            Navigator.push(context,
+              MaterialPageRoute(builder: (context) => KargoKitTalepScreen()));
+        },
+          child: Ink(
+            child: Center(
+              child: Text(
+                'abc',
+            ),
+          ),
+            color: Color.fromARGB(255, 230, 230, 230),
+            height: 100,
+            width: 100,
+        ),
+      ),
+        /*decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(50),
+          color: Colors.grey,
+      ),*/
+    )
+  );
+}
+
+SizedBox kit_button1(BuildContext context, String text) {
+  return SizedBox(
+      height: 80,
+      width: 500,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(18),
+        child: Material(
+          child: InkWell(
+            onTap: (){
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => KargoKitTalepScreen()));
+            },
+            child: Ink(
+              child: Center(
+                child: Text(
+                  text,
+                  style: TextStyle(
+
+                  ),
+                ),
+              ),
+              color: Color.fromARGB(255, 230, 230, 230),
+              height: 100,
+              width: 100,
+            ),
+          ),
+        )
+      ),
+  );
 }
