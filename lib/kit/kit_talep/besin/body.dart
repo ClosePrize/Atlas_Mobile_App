@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:v01/kargo/constants.dart';
 import 'package:v01/kargo/widgets/reusable_widgets.dart';
 import 'package:v01/kit/home/home.dart';
 
@@ -15,7 +16,7 @@ class _KitOzelBesinScreenState extends State<KitOzelBesinScreen>{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: const Color.fromARGB(255, 2, 12, 36),
+          backgroundColor:kitPrimaryColor,
           leading: IconButton(
             icon: Icon(
               Icons.close_rounded, color: Colors.white, size: 30,),
@@ -52,17 +53,17 @@ class _KitOzelBesinScreenState extends State<KitOzelBesinScreen>{
                 SizedBox(
                   height: 40,
                 ),
-                kit_button1(context, '', 'assets/besin_kitleri/bebekmamasikiti.png'),
+                kit_button1(context, '', 'assets/besin_kitleri/hazirgidakiti.png'),
                 SizedBox(
-                  height: 25,
+                  height: 30,
                 ),
-                kit_button1(context, '','assets/besin_kitleri/hazirgidakiti.png'),
+                kit_button1(context, '','assets/besin_kitleri/bebekmamasikiti.png'),
                 SizedBox(
-                  height: 25,
+                  height: 30,
                 ),
                 kit_button1(context, '','assets/besin_kitleri/sokakhayvanimamakiti.png'),
                 SizedBox(
-                  height: 25,
+                  height: 30,
                 ),
                 //kit_button1(context, '',)
                 /*firebaseUIButton_deneme(context,'Kiti Talep Et', () {

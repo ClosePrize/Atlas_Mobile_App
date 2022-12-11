@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:v01/kargo/constants.dart';
 import 'package:v01/kargo/widgets/reusable_widgets.dart';
 
 import '../../home/home.dart';
@@ -16,7 +17,7 @@ class _KitOzelYolYardimScreenState extends State<KitOzelYolYardimScreen>{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: const Color.fromARGB(255, 2, 12, 36),
+          backgroundColor:kitPrimaryColor,
           leading: IconButton(
             icon: Icon(
               Icons.close_rounded, color: Colors.white, size: 30,),
@@ -53,17 +54,17 @@ class _KitOzelYolYardimScreenState extends State<KitOzelYolYardimScreen>{
                 SizedBox(
                   height: 40,
                 ),
-                kit_button1(context, '','assets/yol_yardim_kitleri/motorbakimkiti.png'),
+                kit_button1(context, '','assets/yol_yardim_kitleri/yakitkiti.png'),
                 SizedBox(
-                  height: 25,
+                  height: 30,
                 ),
                 kit_button1(context, '', 'assets/yol_yardim_kitleri/lastiktamirkiti.png'),
                 SizedBox(
-                  height: 25,
+                  height: 30,
                 ),
-                kit_button1(context, '','assets/yol_yardim_kitleri/yakitkiti.png'),
+                kit_button1(context, '','assets/yol_yardim_kitleri/motorbakimkiti.png'),
                 SizedBox(
-                  height: 25,
+                  height: 30,
                 ),
                 //kit_button1(context, '',)
                 /*firebaseUIButton_deneme(context,'Kiti Talep Et', () {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:v01/kargo/constants.dart';
 import 'package:v01/kargo/widgets/reusable_widgets.dart';
 import 'package:v01/kit/home/home.dart';
 
@@ -17,7 +18,7 @@ class _KitTalepScreenState extends State<KitTalepScreen>{
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 2, 12, 36),
+        backgroundColor:kitPrimaryColor,
     leading: IconButton(
     icon: Icon(
     Icons.close_rounded, color: Colors.white, size: 30,),

@@ -17,7 +17,7 @@ class _KitTalepOnayScreenState extends State<KitTalepOnayScreen>{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: const Color.fromARGB(255, 2, 12, 36),
+          backgroundColor: kitPrimaryColor,
           leading: IconButton(
             icon: Icon(
               Icons.close_rounded, color: Colors.white, size: 30,),
