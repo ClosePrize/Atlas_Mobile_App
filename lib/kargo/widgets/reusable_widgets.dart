@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:v01/kargo/cargo_add/kargooptions.dart';
 import 'package:v01/kargo/cargo_add/cargo_add.dart';
@@ -74,7 +75,7 @@ SizedBox reusableTextField_1(String text, IconData icon,/* bool isPasswordType,
   );
 }
 
-/*SizedBox SearchButton(String text, IconData icon,/* bool isPasswordType,
+SizedBox SearchButton(String text, IconData icon,/* bool isPasswordType,
     TextEditingController controller*/) {
   return SizedBox(
     height: 50,
@@ -108,31 +109,62 @@ SizedBox reusableTextField_1(String text, IconData icon,/* bool isPasswordType,
     keyboardType: isPasswordType
         ? TextInputType.visiblePassword
         : TextInputType.emailAddress,*/
-      onTap: (){ showSearch(
-        context: context,
-        delegate: MySearchDelegate(),
+      onTap: (){
+        showSearch(context: context,
+          delegate: MySearchDelegate(),
       );}
     ),
   );
-}*/
+}
 
-/*class MySearchDelegate extends SearchDelegate {
+class MySearchDelegate extends SearchDelegate {
+  List<String> searchResults = [
+    'Astım Kiti',
+    'Hijyen Kiti',
+    'Pandemi Kiti',
+    'Kalp Krizi Kiti',
+  ];
 
   @override
-  Widget? buildLeading(BuildContext context) => SizedBox(
-    child: TextField(
-      decoration: InputDecoration(
-        prefixIcon: Icon(Icons.search),
-        suffixIcon: Icon(Icons.clear)
+  Widget? buildLeading(BuildContext context) => IconButton(
+      onPressed: () => close(context, null),
+      icon: Icon(Icons.clear));
+  @override
+  List<Widget>? buildActions(BuildContext context) => [
+
+  ];
+  @override
+  Widget buildResults(BuildContext context) => Center(
+    child: Text(
+      query,
+      style: TextStyle(fontSize: 64),
     ),
-  )
   );
-  @override
 
   @override
+  Widget buildSuggestions(BuildContext context) {
+    List<String> suggestions = searchResults.where((searchResult){
+      final result = searchResult.toLowerCase();
+      final input = query.toLowerCase();
 
-  @override
-}*/
+      return result.contains(input);
+    }).toList as List<String>;
+
+    return ListView.builder(
+      itemCount: suggestions.length,
+      itemBuilder: (context, index) {
+        final suggestion = suggestions [index];
+
+        return ListTile(
+          title: Text(suggestion),
+          onTap: (){
+            query = suggestion;
+          },
+        );
+  }
+      );
+  }
+}
 
 Container firebaseUIButton_1(BuildContext context) {
   return Container(
