@@ -111,6 +111,7 @@ SizedBox SearchButton(String text, IconData icon,/* bool isPasswordType,
         ? TextInputType.visiblePassword
         : TextInputType.emailAddress,*/
       onTap: (){
+        var context;
         showSearch(context: context,
           delegate: MySearchDelegate(),
       );}
