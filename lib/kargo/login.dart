@@ -4,7 +4,7 @@ import 'package:v01/kargo/home/kargohome.dart';
 import 'package:v01/kit/taleplerim/kit_talep.dart';
 import 'package:v01/kargo/widgets/talep_onay.dart';
 // import 'package:v01/kargo/constants.dart';
-
+import 'package:v01/kargo/map/map.dart';
 import 'signup.dart';
 import 'widgets/reusable_widgets.dart';
 
@@ -61,7 +61,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           password: _passwordTextController.text)
                       .then((value) {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => const KargoHomeScreen()));
+                        MaterialPageRoute(builder: (context) => GoogleMap()));
                   }).onError((error, stackTrace) {
                     print("Error ${error.toString()}");
                   });
