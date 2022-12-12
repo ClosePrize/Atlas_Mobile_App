@@ -49,7 +49,7 @@ class _KitOzelScreenState extends State<KitOzelScreen>{
                     ),
                   ),
                 ),*/
-                reusableTextField_1('Aramak isteğinizi giriniz', Icons.search),
+                SearchButton('Aramak isteğinizi giriniz', Icons.search),
                 SizedBox(
                   height: 40,
                 ),
