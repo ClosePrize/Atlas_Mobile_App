@@ -50,7 +50,7 @@ class _KitOzelYolYardimScreenState extends State<KitOzelYolYardimScreen>{
                     ),
                   ),
                 ),*/
-                reusableTextField_1('Aramak isteğinizi giriniz', Icons.search),
+                //reusableTextField_1('Aramak isteğinizi giriniz', Icons.search),
                 SizedBox(
                   height: 40,
                 ),
