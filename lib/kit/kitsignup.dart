@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:v01/kargo/constants.dart';
 import 'package:v01/kargo/home/kargohome.dart';
+import 'package:v01/kit/home/home.dart';
 
 import '../kargo/widgets/reusable_widgets.dart';
 /*import 'package:http/http.dart' as http;
@@ -122,7 +123,7 @@ class _KitSignUpScreenState extends State<KitSignUpScreen> {
                       .then((value) {
                     print("Created New Account");
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => KargoHomeScreen()));
+                        MaterialPageRoute(builder: (context) => KitHomePage()));
                   }).onError((error, stackTrace) {
                     print("Error ${error.toString()}");
                   });

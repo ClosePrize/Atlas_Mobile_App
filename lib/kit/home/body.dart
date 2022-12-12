@@ -1,27 +1,23 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/material.dart';
-import 'package:v01/kargo/constants.dart';
-import 'package:v01/kargo/home/kargohome.dart';
-import 'package:v01/kargo/kit_talep.dart';
-import 'package:v01/kargo/widgets/talep_onay.dart';
-import 'package:v01/kargo/widgets/bottomnavigationbar.dart';
-import 'package:v01/kargo/widgets/reusable_widgets.dart';
-import 'package:v01/kargo/signup.dart';
 
-class KitOzelScreen extends StatefulWidget{
-  const KitOzelScreen({Key? key}) : super(key: key);
+import 'package:flutter/material.dart';
+import 'package:v01/kargo/widgets/reusable_widgets.dart';
+import '../kit_talep/besin/besin.dart';
+import '../kit_talep/saglik/saglik.dart';
+import '../kit_talep/yol/yol_yardim.dart';
+
+class KitHomeScreen extends StatefulWidget{
+  const KitHomeScreen({Key? key}) : super(key: key);
 
   @override
-  _KitOzelScreenState createState() => _KitOzelScreenState();
+  _KitHomeScreenState createState() => _KitHomeScreenState();
 }
 
-class _KitOzelScreenState extends State<KitOzelScreen>{
+class _KitHomeScreenState extends State<KitHomeScreen>{
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      /*appBar: AppBar(
           backgroundColor: const Color.fromARGB(255, 2, 12, 36),
           leading: IconButton(
             icon: Icon(
@@ -35,7 +31,7 @@ class _KitOzelScreenState extends State<KitOzelScreen>{
               "",
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)
           )
-      ),
+      ),*/
       body: Container(
         child: SingleChildScrollView(
           child: Padding(
@@ -55,23 +51,27 @@ class _KitOzelScreenState extends State<KitOzelScreen>{
                     ),
                   ),
                 ),*/
-                SearchButton('Aramak isteğinizi giriniz', Icons.search),
                 SizedBox(
                   height: 40,
                 ),
-                kit_button1(context, '', 'assets/saglık_kitleri/astimkiti.png'),
+                kit_button(context, 'assets/saglık_kitleri/saglikkitleri.png', (){
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => SaglikPage()));
+                } ),
                 SizedBox(
                   height: 25,
                 ),
-                kit_button1(context, '','assets/saglık_kitleri/hijyenkiti.png'),
+                kit_button(context,'assets/yol_yardim_kitleri/yolyardimkitleri.png', (){
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => YolYardimPage()));
+                } ),
                 SizedBox(
                   height: 25,
                 ),
-                kit_button1(context, '','assets/saglık_kitleri/pandemikiti.png'),
-                SizedBox(
-                  height: 25,
-                ),
-                kit_button1(context, '', 'assets/saglık_kitleri/kalpkrizikiti.png'),
+                kit_button(context,'assets/besin_kitleri/besinkitleri.png', (){
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => BesinPage()));
+                } ),
                 SizedBox(
                   height: 25,
                 ),
@@ -89,14 +89,3 @@ class _KitOzelScreenState extends State<KitOzelScreen>{
   }
 }
 
-class KargoKitOzelScreen extends StatelessWidget{
-  const KargoKitOzelScreen({super.key});
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: kbackgroundColor,
-      bottomNavigationBar: BottomNavBar(),
-      body: KitOzelScreen(),
-    );
-  }
-}
