@@ -4,7 +4,8 @@ import 'package:v01/kargo/cargo_add/kargooptions.dart';
 import 'package:v01/kargo/cargo_add/cargo_add.dart';
 import 'package:v01/kargo/constants.dart';
 import 'package:v01/kargo/home/kargohome.dart';
-import 'package:v01/kargo/kit_talep.dart';
+import 'package:v01/kit/taleplerim/kit_talep.dart';
+import 'package:v01/welcome.dart';
 import '../login.dart';
 
 TextField reusableTextField(String text, IconData icon, bool isPasswordType,
@@ -174,7 +175,7 @@ Container firebaseUIButton_1(BuildContext context) {
     decoration: BoxDecoration(borderRadius: BorderRadius.circular(90)),
     child: ElevatedButton(
       onPressed: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => SignInScreen()));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => LogosPage()));
       },
       child: Text(
         'Çıkış yap',
@@ -431,7 +432,7 @@ SizedBox kit_button1(BuildContext context, String text, String assetName) {
           child: InkWell(
             onTap: (){
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => KargoKitTalepScreen()));
+                  MaterialPageRoute(builder: (context) => KitTalepScreen()));
             },
             child: Ink(
               child: Center(
