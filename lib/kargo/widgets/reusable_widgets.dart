@@ -4,7 +4,6 @@ import 'package:v01/kargo/cargo_add/kargooptions.dart';
 import 'package:v01/kargo/cargo_add/cargo_add.dart';
 import 'package:v01/kargo/constants.dart';
 import 'package:v01/kargo/home/kargohome.dart';
-import 'package:v01/kit/taleplerim/kit_talep.dart';
 import 'package:v01/welcome.dart';
 import '../login.dart';
 
@@ -433,7 +432,7 @@ SizedBox kit_button1(BuildContext context, String text, String assetName) {
           child: InkWell(
             onTap: (){
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => KitTalepScreen()));
+                  MaterialPageRoute(builder: (context) => KitPopUp()));
             },
             child: Ink(
               child: Center(
