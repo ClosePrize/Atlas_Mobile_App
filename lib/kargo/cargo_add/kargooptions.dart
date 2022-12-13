@@ -80,10 +80,14 @@ class _KargoOptionsState extends State<KargoOptions> {
                  const SizedBox(
               height: 60,),
               firebaseUIButton(context, "Kargomu Getir", (){Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => const TalepOnayScreen()));})   ],
+                        MaterialPageRoute(builder: (context) => const TalepOnayScreen()))
+              .then((value) {
+
+              });
+            })
+          ],
         ),
       ),
-      
     );
   }
   DropdownMenuItem<String> buildMenuItem (String item) =>

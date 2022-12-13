@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:v01/kargo/constants.dart';
 import 'package:v01/kargo/my_cargos/my_cargos.dart';
 import 'package:v01/kit/home/home.dart';
-
+import 'package:v01/kit/taleplerim/taleplerim.dart';
 import '../profile/profile.dart';
  
 class KitBottomNavBar extends StatefulWidget {
@@ -35,7 +35,7 @@ class _KitBottomNavBarState extends State<KitBottomNavBar> {
       onTap: (value) {
         if (value == 0) {
           Navigator.push(context,
-                        MaterialPageRoute(builder: (context) =>  MyCargosScreen()));
+                        MaterialPageRoute(builder: (context) =>  TaleplerimScreen()));
         }
         if (value == 1) {
           Navigator.push(context,
@@ -52,7 +52,7 @@ class _KitBottomNavBarState extends State<KitBottomNavBar> {
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(Icons.card_giftcard),
-              label: 'Kargolarım',
+              label: 'Taleplerim',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
@@ -64,8 +64,8 @@ class _KitBottomNavBarState extends State<KitBottomNavBar> {
             ),
           ],
           currentIndex: _selectedIndex,
-          selectedItemColor: kitblueColor,
-          unselectedItemColor: kitblueColor,
+          selectedItemColor: Color.fromARGB(255, 117, 117, 117),
+          unselectedItemColor: Color.fromARGB(255, 117, 117, 117),
       ),
     );
   }

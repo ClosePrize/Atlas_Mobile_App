@@ -458,3 +458,31 @@ SizedBox kit_button1(BuildContext context, String text, String assetName) {
         )
   );
 }
+
+SizedBox mykargosbutton(BuildContext context, Function onTab) {
+  return SizedBox(
+      height: 180,
+      width: 500,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(18),
+        child: Material(
+          child: InkWell(
+            onTap: (){
+              onTab();
+            },
+            child: Ink(
+              decoration: BoxDecoration(
+                color: Colors.grey,
+                  /*image: DecorationImage(
+                    image: AssetImage(
+                      assetName),
+                    fit: BoxFit.fill,
+                    )*/
+            )
+          ),
+        ),
+      ),
+    )
+  );
+}
+
