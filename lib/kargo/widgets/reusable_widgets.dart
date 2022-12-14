@@ -4,6 +4,7 @@ import 'package:v01/kargo/cargo_add/kargooptions.dart';
 import 'package:v01/kargo/cargo_add/cargo_add.dart';
 import 'package:v01/kargo/constants.dart';
 import 'package:v01/kargo/home/kargohome.dart';
+import 'package:v01/kit/home/body.dart';
 import 'package:v01/welcome.dart';
 import '../login.dart';
 
@@ -485,3 +486,51 @@ SizedBox mykargosbutton(BuildContext context, Function onTab) {
   );
 }
 
+class KitPopUp extends StatelessWidget {
+  const KitPopUp({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        decoration: BoxDecoration(
+          color: kitPrimaryColor,
+          image: DecorationImage(
+            image: AssetImage(
+              'assets/kitlogo.png',
+            ),
+              fit: BoxFit.fill
+          )
+        ),
+        child: AlertDialog(
+          backgroundColor: Colors.white,
+          title: Text("UYARI"),
+          content: Text(
+              "Kit seçiminiz tamamlandı, devam etmek istediğinizden emin misiniz?"),
+          actions: [
+            TextButton(
+              onPressed: (() {
+                Navigator.pop(context);
+              }),
+              child: Text(
+                "İptal",
+                style: TextStyle(color: Colors.red),
+              ),
+            ),
+            TextButton(
+                onPressed: (() {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => KitHomeScreen()));
+                }),
+                child: Text(
+                  "Onayla",
+                  style: TextStyle(color: Colors.green),
+                )),
+          ],
+        ),
+      ),
+    );
+  }
+}
