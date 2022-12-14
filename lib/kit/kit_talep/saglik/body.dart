@@ -25,10 +25,6 @@ class _KitOzelScreenState extends State<KitOzelScreen>{
                 MaterialPageRoute(builder: (context) => KitHomePage())),
           ),
           elevation: 0,
-          title: const Text(
-              "",
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)
-          )
       ),
       body: Container(
         child: SingleChildScrollView(
