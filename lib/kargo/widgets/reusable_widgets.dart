@@ -1,4 +1,4 @@
-
+import 'package:v01/kit/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:v01/kargo/cargo_add/kargooptions.dart';
 import 'package:v01/kargo/cargo_add/cargo_add.dart';
@@ -518,7 +518,7 @@ class KitPopUp extends StatelessWidget {
             TextButton(
                 onPressed: (() {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => KitHomeScreen()));
+                      MaterialPageRoute(builder: (context) => KitHomePage()));
                 }),
                 child: Text(
                   "Onayla",
