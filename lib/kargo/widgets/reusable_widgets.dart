@@ -399,23 +399,19 @@ SizedBox kit_button(BuildContext context, String assetName, Function onTab) {
   return SizedBox(
       height: 180,
       width: 500,
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(18),
-        child: Material(
-          child: InkWell(
-            onTap: (){
-              onTab();
-            },
-            child: Ink(
-              decoration: BoxDecoration(
-                  color: kbackgroundColor,
-                  image: DecorationImage(
-                    image: AssetImage(
-                        assetName),
-                    fit: BoxFit.fill,
-                  )
-              )
-            ),
+      child: GestureDetector( onTap: (){
+                onTab();
+              },
+        child: InkWell(
+          child: Ink(
+            decoration: BoxDecoration(
+                color: kbackgroundColor,
+                image: DecorationImage(
+                  image: AssetImage(
+                      assetName),
+                  fit: BoxFit.fill,
+                )
+            )
           ),
         ),
       )

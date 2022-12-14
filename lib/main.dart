@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:provider/provider.dart';
 import 'package:v01/firebase_options.dart';
 
+import 'kit/kit_talep/besin/cart_model.dart';
 import 'welcome.dart';
 
 Future main() async {
@@ -16,10 +18,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // ignore: prefer_const_constructors
-    return MaterialApp(
+    return ChangeNotifierProvider(
+      create: (context) => CartModel(),
+      child:  MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "ATLAS",
       home: const LogosPage(),
-    );
+    ),);
   }
 }

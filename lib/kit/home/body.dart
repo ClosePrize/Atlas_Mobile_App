@@ -69,7 +69,7 @@ class _KitHomeScreenState extends State<KitHomeScreen>{
                   height: 25,
                 ),
                 kit_button(context,'assets/besin_kitleri/besinkitleri.png', (){
-                  Navigator.push(context,
+                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => BesinPage()));
                 } ),
                 SizedBox(
