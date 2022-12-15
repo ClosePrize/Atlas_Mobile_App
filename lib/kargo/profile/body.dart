@@ -19,20 +19,14 @@ class _ProfileScreenState extends State<ProfileScreen>{
     return Scaffold(
       backgroundColor: kbackgroundColor,
       extendBodyBehindAppBar: true,
-      appBar: AppBar(
-          backgroundColor: const Color.fromARGB(255, 2, 12, 36),
-           leading: IconButton(
-             icon: const Icon(
-               Icons.close_rounded, color: Colors.white, size: 30,),
-             onPressed: () => Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const KargoHomeScreen())),
-           ),
-          elevation: 0,
-          title: const Text(
-              "",
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)
-          )
+          appBar: AppBar(
+          backgroundColor:const Color.fromARGB(255, 2, 12, 36),
+          leading: IconButton(
+            icon: Icon(
+              Icons.close_rounded, color: Colors.white, size: 35,),
+            onPressed: () => Navigator.pop(context, false)
+          ),
+          elevation: 2,
       ),
       body: Container(
         width: MediaQuery.of(context).size.width,

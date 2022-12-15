@@ -15,20 +15,14 @@ class _TalepOnayScreenState extends State<TalepOnayScreen>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          backgroundColor: const Color.fromARGB(255, 2, 12, 36),
+        appBar: AppBar(
+          backgroundColor:const Color.fromARGB(255, 2, 12, 36),
           leading: IconButton(
             icon: Icon(
-              Icons.close_rounded, color: Colors.white, size: 30,),
-            onPressed: () => Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => KargoHomeScreen())),
+              Icons.close_rounded, color: Colors.white, size: 35,),
+            onPressed: () => Navigator.pop(context, false)
           ),
-          elevation: 0,
-          title: const Text(
-              "",
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)
-          )
+          elevation: 2,
       ),
       body: Container(
         /*decoration: BoxDecoration(
