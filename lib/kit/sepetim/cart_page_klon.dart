@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:v01/kit/kit_talep/saglik/cart_model_saglik.dart';
 import 'package:v01/kit/taleplerim/taleplerim.dart';
 import '../../kargo/constants.dart';
-import '../home/home.dart';
 import '../kit_talep/besin/cart_model_besin.dart';
 import 'package:v01/kit/kit_talep/yol/cart_model_yol.dart';
 
@@ -14,81 +12,198 @@ class CartPage1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: Padding(
+                padding: const EdgeInsets.fromLTRB(160, 30, 0, 0),
+                  child: SizedBox(
+                      height: 70,
+                      width: MediaQuery.of(context).size.width/2,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: Material(
+                          child: InkWell(
+                            onTap: (){
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) => const TaleplerimScreen()));
+                            },
+                            child: Ink(
+                                // ignore: sort_child_properties_last
+                                child: const Center(
+                                  child: Text(
+                                    'Sepeti Onayla',
+                                    style: TextStyle(
+                                      fontSize: 20,color: Colors.white, fontWeight: FontWeight.bold
+                                    ),
+                                  ),
+                                ),
+                                decoration: const BoxDecoration(
+                                  color: kitgreenColor,
+                                  /*image: DecorationImage(
+                                      image: AssetImage(
+                                          assetName),
+                                      fit: BoxFit.fill,
+                                    )*/
+                                )
+                            ),
+                          ),
+                        ),
+                      )
+                  )
+              ),
       appBar: AppBar(
         backgroundColor:kitPrimaryColor,
         leading: IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.close_rounded, color: Colors.white, size: 30,),
             onPressed: () => Navigator.pop(context, false)
         ),
         elevation: 1,
       ),
-      body: Container(
-        padding: EdgeInsets.fromLTRB(40, 20, 40, 0),
-        child: Column(
-          children: [
-            SizedBox(
-              height: 100,
-              width: 500,
-              child: Text(
-                'Sepetiniz',
-                style: GoogleFonts.notoSerif(
-                fontSize: 36,
-                fontWeight: FontWeight.bold,
-                ),
-              )
+      body: SingleChildScrollView(
+        child: Container(
+          padding: const EdgeInsets.fromLTRB(30, 40, 30, 40),
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 40,
+                // width: 500,
+                // child: Text(
+                //   'Sepetiniz',
+                //   style: GoogleFonts.notoSerif(
+                //   fontSize: 36,
+                //   fontWeight: FontWeight.bold,
+                //   ),
+                // )
+              ),
+              Container(
+              decoration: BoxDecoration(
+                // border: Border.all(color: Colors.black),
+                borderRadius: BorderRadius.circular(25),
+                color: Colors.white,
+                boxShadow: [
+      BoxShadow(
+        color: Colors.grey.withOpacity(0.5),
+        spreadRadius: 5,
+        blurRadius: 7,
+        offset: const Offset(0, 3), // changes position of shadow
+      ),
+    ],
+              ),
+              child: Column(
+                children: [
+                  const SizedBox(
+                    child: Text(
+                      'Sağlık Kitleri', 
+                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: kitgreenColor, 
+                              shadows:[
+            Shadow(
+                 blurRadius:5.0,  // shadow blur
+                  color: Colors.grey, // shadow color
+                  offset: Offset(0.5,0.5), // how much shadow will be shown
             ),
-            SizedBox(
-              height: 130,
-              width: 600,
-              child: SingleChildScrollView(
-                child: Container(
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black)
-                ),
-                child: Column(
-                  children: [
-                    SizedBox(
-                      child: Text(
-                        'Sağlık Kitleri'
-                      ),
+        ],
+                              ),
                     ),
-                    SizedBox(
-                        child: Consumer<CartModelSaglik>(
-                    builder: (context, value, child) {
-                      return Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            child: ListView.builder(
-                              shrinkWrap: true,
+                  ),
+                  SizedBox(
+                      child: Consumer<CartModelSaglik>(
+                  builder: (context, value, child) {
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          child: ListView.builder(
+                            shrinkWrap: true,
+                              itemCount: value.cartItems.length,
+                              padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                              itemBuilder: (context, index) {
+                                return Padding(
+                                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                
+                                  child: ListTile(
+                                    leading: Text(
+                                      value.cartItems[index][0],
+      
+                                    ),
+                                
+                                    trailing: IconButton(
+                                      icon: const Icon(Icons.cancel),
+                                      onPressed: () =>
+                                          Provider.of<CartModelSaglik>(context, listen: false)
+                                              .removeItemFromCart(index),
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
+      
+                      ],
+                    );
+                  }
+                    
+                  )
+                   )
+                ]
+              )
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              Container(
+                  decoration: BoxDecoration(
+                // border: Border.all(color: Colors.black),
+                borderRadius: BorderRadius.circular(25),
+                color: Colors.white,
+                boxShadow: [
+      BoxShadow(
+        color: Colors.grey.withOpacity(0.5),
+        spreadRadius: 5,
+        blurRadius: 7,
+        offset: const Offset(0, 3), // changes position of shadow
+      ),
+    ],
+              ),
+                  child: Column(
+                      children: [
+                        const SizedBox(
+                          child: Text(
+                            
+                              'Yol Yardım Kitleri',
+                               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black, 
+                              shadows:[
+            Shadow(
+                 blurRadius:5.0,  // shadow blur
+                  color: Colors.grey, // shadow color
+                  offset: Offset(0.5,0.5), // how much shadow will be shown
+            ),
+        ],
+                              ),
+                          ),
+                        ),
+              SizedBox(
+                  child: Consumer<CartModelYol>(
+                      builder: (context, value, child) {
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              child: ListView.builder(
+                                shrinkWrap: true,
                                 itemCount: value.cartItems.length,
-                                padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                                 itemBuilder: (context, index) {
                                   return Padding(
-                                    padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                                    // child: Container(
-                                    //   decoration: BoxDecoration(
-                                    //       color: Colors.white,
-                                    //       // borderRadius: BorderRadius.circular(8)
-                                    //       ),
+                                    padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                  
                                     child: ListTile(
                                       leading: Text(
                                         value.cartItems[index][0],
-
+      
                                       ),
-                                      // title: Text(
-                                      //   value.cartItems[index][0],
-                                      //   style: const TextStyle(fontSize: 18),
-                                      // ),
-                                      // subtitle: Text(
-                                      //   '\$' + value.cartItems[index][1],
-                                      //   style: const TextStyle(fontSize: 12),
-                                      // ),
                                       trailing: IconButton(
                                         icon: const Icon(Icons.cancel),
                                         onPressed: () =>
-                                            Provider.of<CartModelSaglik>(context, listen: false)
+                                            Provider.of<CartModelYol>(context, listen: false)
                                                 .removeItemFromCart(index),
                                       ),
                                     ),
@@ -96,229 +211,100 @@ class CartPage1 extends StatelessWidget {
                                 },
                               ),
                             ),
-
-                        ],
-                      );
-                    }
-                      /*Consumer<CartModelSaglik>(
-                      builder: (context, value, child) {
-                      return Container(
-                        //padding: EdgeInsets.fromLTRB(100, 100, 100, 100),
-                        child:
-                            ListView.builder(
-                                itemCount: value.cartItems.length,
-                                itemBuilder: (context, index) {
-                                  return ListTile(
-                                      leading: Text(
-                                        value.cartItems[index][0],
-
-                                      ),
-                                      // title: Text(
-                                      //   value.cartItems[index][0],
-                                      //   style: const TextStyle(fontSize: 18),
-                                      // ),
-                                      // subtitle: Text(
-                                      //   '\$' + value.cartItems[index][1],
-                                      //   style: const TextStyle(fontSize: 12),
-                                      // ),
-                                      trailing: IconButton(
-                                        icon: const Icon(Icons.cancel),
-                                        onPressed: () =>
-                                            Provider.of<CartModelSaglik>(context, listen: false)
-                                                .removeItemFromCart(index),
-                                      )
-                                  );
-                                },
-                              ),
-
+                          ],
                         );
-                      },*/
+                      }
                     )
-                     )
-                  ]
-                )
+                  )
+                ]
               )
+                ),
+              const SizedBox(
+                height: 30,
+              ),
+              Container(
+                  decoration: BoxDecoration(
+                // border: Border.all(color: Colors.black),
+                borderRadius: BorderRadius.circular(25),
+                color: Colors.white,
+                boxShadow: [
+      BoxShadow(
+        color: Colors.grey.withOpacity(0.5),
+        spreadRadius: 5,
+        blurRadius: 7,
+        offset: const Offset(0, 3), // changes position of shadow
+      ),
+    ],
+              ),
+                  child: Column(
+                      children: [
+                        const SizedBox(
+                          child: Text(
+                              'Besin Kitleri',style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black, 
+                              shadows:[
+            Shadow(
+                 blurRadius:5.0,  // shadow blur
+                  color: Colors.grey, // shadow color
+                  offset: Offset(0.5,0.5), // how much shadow will be shown
             ),
-            ),
-            SizedBox(
-              height: 30,
-            ),
-            SizedBox(
-                height: 130,
-                width: 600,
-                child: SingleChildScrollView(
-                child: Container(
-                    decoration: BoxDecoration(
-                        border: Border.all(color: Colors.black)
-                    ),
-                    child: Column(
-                        children: [
-                          SizedBox(
-                            child: Text(
-                                'Yol Yardım Kitleri'
-                            ),
-                          ),
-                SizedBox(
-                    child: Consumer<CartModelYol>(
-                        builder: (context, value, child) {
-                          return Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              SizedBox(
-                                child: ListView.builder(
-                                  shrinkWrap: true,
-                                  itemCount: value.cartItems.length,
-                                  padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                                  itemBuilder: (context, index) {
-                                    return Padding(
-                                      padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                                      // child: Container(
-                                      //   decoration: BoxDecoration(
-                                      //       color: Colors.white,
-                                      //       // borderRadius: BorderRadius.circular(8)
-                                      //       ),
-                                      child: ListTile(
-                                        leading: Text(
-                                          value.cartItems[index][0],
-
-                                        ),
-                                        // title: Text(
-                                        //   value.cartItems[index][0],
-                                        //   style: const TextStyle(fontSize: 18),
-                                        // ),
-                                        // subtitle: Text(
-                                        //   '\$' + value.cartItems[index][1],
-                                        //   style: const TextStyle(fontSize: 12),
-                                        // ),
-                                        trailing: IconButton(
-                                          icon: const Icon(Icons.cancel),
-                                          onPressed: () =>
-                                              Provider.of<CartModelYol>(context, listen: false)
-                                                  .removeItemFromCart(index),
-                                        ),
-                                      ),
-                                    );
-                                  },
-                                ),
+        ],
                               ),
-                            ],
-                          );
-                        }
-                      )
-                    )
-                  ]
-                )
-              )
-            ),
-            ),
-            SizedBox(
-              height: 30,
-            ),
-            SizedBox(
-                height: 130,
-                width: 600,
-                child: SingleChildScrollView(
-                child: Container(
-                    decoration: BoxDecoration(
-                        border: Border.all(color: Colors.black)
-                    ),
-                    child: Column(
-                        children: [
-                          SizedBox(
-                            child: Text(
-                                'Besin Kitleri'
-                            ),
-                          ),
-                          SizedBox(
-                              child: Consumer<CartModel>(
-                                  builder: (context, value, child) {
-                                    return Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        SizedBox(
-                                          child: ListView.builder(
-                                            shrinkWrap: true,
-                                            itemCount: value.cartItems.length,
-                                            padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                                            itemBuilder: (context, index) {
-                                              return Padding(
-                                                padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                                                // child: Container(
-                                                //   decoration: BoxDecoration(
-                                                //       color: Colors.white,
-                                                //       // borderRadius: BorderRadius.circular(8)
-                                                //       ),
-                                                child: ListTile(
-                                                  leading: Text(
-                                                    value.cartItems[index][0],
-
-                                                  ),
-                                                  // title: Text(
-                                                  //   value.cartItems[index][0],
-                                                  //   style: const TextStyle(fontSize: 18),
-                                                  // ),
-                                                  // subtitle: Text(
-                                                  //   '\$' + value.cartItems[index][1],
-                                                  //   style: const TextStyle(fontSize: 12),
-                                                  // ),
-                                                  trailing: IconButton(
-                                                    icon: const Icon(Icons.cancel),
-                                                    onPressed: () =>
-                                                        Provider.of<CartModel>(context, listen: false)
-                                                            .removeItemFromCart(index),
-                                                  ),
-                                                ),
-                                              );
-                                            },
-                                          ),
-                                        ),
-                                      ],
-                                    );
-                                  }
-                              )
-                          )
-                        ]
-                    )
-                )
-            ),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(160, 30, 0, 0),
-                child: SizedBox(
-                    height: 70,
-                    width: MediaQuery.of(context).size.width/2,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(20),
-                      child: Material(
-                        child: InkWell(
-                          onTap: (){
-                            Navigator.push(context,
-                                MaterialPageRoute(builder: (context) => TaleplerimScreen()));
-                          },
-                          child: Ink(
-                              child: Center(
-                                child: Text(
-                                  'Sepeti Onayla',
-                                  style: TextStyle(
-
-                                  ),
-                                ),
-                              ),
-                              decoration: BoxDecoration(
-                                color: kitgreenColor,
-                                /*image: DecorationImage(
-                                    image: AssetImage(
-                                        assetName),
-                                    fit: BoxFit.fill,
-                                  )*/
-                              )
                           ),
                         ),
-                      ),
-                    )
-                )
-            )
-          ],
+                        SizedBox(
+                            child: Consumer<CartModel>(
+                                builder: (context, value, child) {
+                                  return Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      SizedBox(
+                                        child: ListView.builder(
+                                          shrinkWrap: true,
+                                          itemCount: value.cartItems.length,
+                                          padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                          itemBuilder: (context, index) {
+                                            return Padding(
+                                              padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                              // child: Container(
+                                              //   decoration: BoxDecoration(
+                                              //       color: Colors.white,
+                                              //       // borderRadius: BorderRadius.circular(8)
+                                              //       ),
+                                              child: ListTile(
+                                                leading: Text(
+                                                  value.cartItems[index][0],
+      
+                                                ),
+                                                // title: Text(
+                                                //   value.cartItems[index][0],
+                                                //   style: const TextStyle(fontSize: 18),
+                                                // ),
+                                                // subtitle: Text(
+                                                //   '\$' + value.cartItems[index][1],
+                                                //   style: const TextStyle(fontSize: 12),
+                                                // ),
+                                                trailing: IconButton(
+                                                  icon: const Icon(Icons.cancel),
+                                                  onPressed: () =>
+                                                      Provider.of<CartModel>(context, listen: false)
+                                                          .removeItemFromCart(index),
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                        ),
+                                      ),
+                                    ],
+                                  );
+                                }
+                            )
+                        )
+                      ]
+                  )
+              ),
+              
+            ],
+          ),
         ),
       )
     );
