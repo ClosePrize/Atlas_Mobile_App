@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:v01/kargo/constants.dart';
 import 'package:v01/kargo/widgets/reusable_widgets.dart';
 import 'package:v01/kit/home/home.dart';
+import 'package:v01/kit/sepetim/cart_page.dart';
 
 class KitOzelScreen extends StatefulWidget{
   const KitOzelScreen({Key? key}) : super(key: key);
@@ -16,15 +17,13 @@ class _KitOzelScreenState extends State<KitOzelScreen>{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          backgroundColor:kitPrimaryColor,
-          leading: IconButton(
+        backgroundColor:kitPrimaryColor,
+        leading: IconButton(
             icon: Icon(
               Icons.close_rounded, color: Colors.white, size: 30,),
-            onPressed: () => Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => KitHomePage())),
-          ),
-          elevation: 0,
+            onPressed: () => Navigator.pop(context, false)
+        ),
+        elevation: 1,
       ),
       body: Container(
         child: SingleChildScrollView(
@@ -45,7 +44,7 @@ class _KitOzelScreenState extends State<KitOzelScreen>{
                     ),
                   ),
                 ),*/
-                SearchButton('Aramak isteğinizi giriniz', Icons.search),
+                //SearchButton('Aramak isteğinizi giriniz', Icons.search),
                 SizedBox(
                   height: 40,
                 ),
@@ -73,6 +72,19 @@ class _KitOzelScreenState extends State<KitOzelScreen>{
               ],
             ),
           ),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.black,
+        onPressed: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) {
+              return CartPage();
+            },
+          ),
+        ),
+        child: const Icon(Icons.shopping_bag
         ),
       ),
     );

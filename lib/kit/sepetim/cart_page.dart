@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:v01/kit/kit_talep/saglik/cart_model_saglik.dart';
+import 'package:v01/kit/taleplerim/taleplerim.dart';
 
 import '../../kargo/constants.dart';
 import '../home/home.dart';
-import '../kit_talep/besin/cart_model.dart';
+import '../kit_talep/besin/cart_model_besin.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
@@ -87,7 +89,7 @@ class CartPage extends StatelessWidget {
 
               // total amount + pay now
 
-              Padding(
+              /*Padding(
                 padding: const EdgeInsets.all(36.0),
                 child: Container(
                   decoration: BoxDecoration(
@@ -98,7 +100,7 @@ class CartPage extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Column(
+                      /*Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         // ignore: prefer_const_literals_to_create_immutables
                         children: [
@@ -106,10 +108,10 @@ class CartPage extends StatelessWidget {
                           const SizedBox(height: 8),
                          
                         ],
-                      ),
+                      ),*/
 
                       // pay now
-                      Container(
+                      /*Container(
                         decoration: BoxDecoration(
                           border: Border.all(color: Colors.green.shade200),
                           borderRadius: BorderRadius.circular(28),
@@ -128,10 +130,46 @@ class CartPage extends StatelessWidget {
                             ),
                           ],
                         ),
-                      ),
+                      ),*/
                     ],
                   ),
                 ),
+              )*/
+              Padding(
+                padding: const EdgeInsets.fromLTRB(230, 20, 22, 60),
+                child: SizedBox(
+                    height: 60,
+                    width: MediaQuery.of(context).size.width/3,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(20),
+                      child: Material(
+                        child: InkWell(
+                          onTap: (){
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) => TaleplerimScreen()));
+                          },
+                          child: Ink(
+                              child: Center(
+                                child: Text(
+                                  'Sepeti Onayla',
+                                  style: TextStyle(
+
+                                  ),
+                                ),
+                              ),
+                              decoration: BoxDecoration(
+                                  color: kitgreenColor,
+                                  /*image: DecorationImage(
+                                    image: AssetImage(
+                                        assetName),
+                                    fit: BoxFit.fill,
+                                  )*/
+                              )
+                          ),
+                        ),
+                      ),
+                    )
+                )
               )
             ],
           );
