@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:v01/kargo/constants.dart';
+import 'package:v01/kargo/widgets/reusable_widgets.dart';
 import 'package:v01/kit/widgets/bottomnavigationbar.dart';
 import 'package:v01/kit/widgets/items.dart';
 import '../../sepetim/cart_page.dart';
-import 'cart_model.dart';
+import 'cart_model_besin.dart';
 
 class BesinPage extends StatefulWidget {
   const BesinPage({super.key});
@@ -21,7 +22,7 @@ class _BesinPageState extends State<BesinPage> {
           backgroundColor:kitPrimaryColor,
           leading: IconButton(
             icon: Icon(
-              Icons.chevron_left, color: Colors.white, size: 30,),
+              Icons.close_rounded, color: Colors.white, size: 30,),
             onPressed: () => Navigator.pop(context, false)
           ),
           elevation: 1,
@@ -36,7 +37,10 @@ class _BesinPageState extends State<BesinPage> {
               return CartPage();
             },
           ),
-        ),),
+        ),
+        child: const Icon(Icons.shopping_bag
+          ),
+        ),
            body: Container(
              child: Padding(
             padding: EdgeInsets.fromLTRB(27,60, 27, 7),
@@ -58,15 +62,32 @@ class _BesinPageState extends State<BesinPage> {
                      // itemPrice: value.shopItems[index][1],
                      imagePath: value.shopItems[index][1],
                      // color: value.shopItems[index][3],
-                     onPressed: () =>
-                         Provider.of<CartModel>(context, listen: false)
-                             .addItemToCart(index),
+                     onPressed: () => showDialog<String>(
+                       context: context,
+                       builder: (BuildContext context) => AlertDialog(
+                         title: const Text('Kit Onay'),
+                         content: const Text('Bu kiti seçmek istediğinize emin misiniz?'),
+                         actions: <Widget>[
+                           TextButton(
+                             onPressed: () => Navigator.pop(context, 'İptal'),
+                             child: const Text('İptal'),
+                           ),
+                           TextButton(
+                             onPressed: () { Navigator.pop(context, 'Onayla');
+                                 Provider.of<CartModel>(context, listen: false)
+                                 .addItemToCart(index);},
+                             child: const Text('Onayla'),
+                           ),
+                         ],
+                       ),
+                     ),
                    );
                  },
                );
              },
-             ),),
-           ),
+          ),
+        ),
+      ),
     );
   }
 }

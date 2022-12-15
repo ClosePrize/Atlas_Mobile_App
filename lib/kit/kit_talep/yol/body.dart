@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:v01/kargo/constants.dart';
 import 'package:v01/kargo/widgets/reusable_widgets.dart';
-
+import 'package:v01/kit/sepetim/cart_page.dart';
 import '../../home/home.dart';
 
 class KitOzelYolYardimScreen extends StatefulWidget{
@@ -17,19 +17,13 @@ class _KitOzelYolYardimScreenState extends State<KitOzelYolYardimScreen>{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          backgroundColor:kitPrimaryColor,
-          leading: IconButton(
+        backgroundColor:kitPrimaryColor,
+        leading: IconButton(
             icon: Icon(
               Icons.close_rounded, color: Colors.white, size: 30,),
-            onPressed: () => Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => KitHomePage())),
-          ),
-          elevation: 0,
-          title: const Text(
-              "",
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)
-          )
+            onPressed: () => Navigator.pop(context, false)
+        ),
+        elevation: 1,
       ),
       body: Container(
         child: SingleChildScrollView(
@@ -74,6 +68,19 @@ class _KitOzelYolYardimScreenState extends State<KitOzelYolYardimScreen>{
               ],
             ),
           ),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.black,
+        onPressed: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) {
+              return CartPage();
+            },
+          ),
+        ),
+        child: const Icon(Icons.shopping_bag
         ),
       ),
     );
