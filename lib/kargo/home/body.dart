@@ -35,7 +35,7 @@ class KargoBody extends StatelessWidget {
               
         ),
         SizedBox(
-          height: MediaQuery.of(context).size.height/10,
+          height:70,
         ),
         Stack(
           children:[ Padding(
@@ -81,6 +81,7 @@ class KargoBody extends StatelessWidget {
             ),
           
           ),
+          
           ),
           
         
@@ -89,10 +90,9 @@ class KargoBody extends StatelessWidget {
               
               
             ),
-          
          
-              Positioned(left: 275,
-              bottom:0,child: addButton(),)
+              // Positioned(left: 275,
+              // bottom:0,child: addButton(),)
           
           ], 
         

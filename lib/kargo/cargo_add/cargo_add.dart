@@ -12,9 +12,14 @@ class KargoAddScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      appBar:AppBar(
-        backgroundColor: const Color.fromARGB(255, 2, 12, 36),
-        elevation: 2,
+      appBar: AppBar(
+          backgroundColor:const Color.fromARGB(255, 2, 12, 36),
+          leading: IconButton(
+            icon: Icon(
+              Icons.arrow_back, color: Colors.white, size: 30,),
+            onPressed: () => Navigator.pop(context, false)
+          ),
+          elevation: 2,
       ),
       backgroundColor: kbackgroundColor,
       bottomNavigationBar: const BottomNavBar(),
