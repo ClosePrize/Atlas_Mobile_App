@@ -6,6 +6,7 @@ import 'package:v01/kit/widgets/bottomnavigationbar.dart';
 import 'package:v01/kit/widgets/items.dart';
 import '../../sepetim/cart_page.dart';
 import 'cart_model_besin.dart';
+import 'package:v01/kit/sepetim/cart_page_klon.dart';
 
 class BesinPage extends StatefulWidget {
   const BesinPage({super.key});
@@ -34,7 +35,7 @@ class _BesinPageState extends State<BesinPage> {
           context,
           MaterialPageRoute(
             builder: (context) {
-              return CartPage();
+              return CartPage1();
             },
           ),
         ),

@@ -9,7 +9,7 @@ import 'package:v01/kargo/widgets/reusable_widgets.dart';
 import 'package:v01/kit/widgets/bottomnavigationbar.dart';
 import 'package:v01/kit/widgets/items.dart';
 import '../../sepetim/cart_page.dart';
-import 'package:v01/kit/kit_talep/besin//cart_model_besin.dart';
+import 'cart_model_saglik.dart';
 
 class SaglikPage extends StatefulWidget{
   const SaglikPage({super.key});
@@ -48,12 +48,12 @@ class _SaglikPageState extends State<SaglikPage> {
       body: Container(
         child: Padding(
           padding: EdgeInsets.fromLTRB(27,60, 27, 7),
-          child: Consumer<CartModel>(
+          child: Consumer<CartModelSaglik>(
             builder: (context, value, child) {
               return GridView.builder(
                 //  padding: const EdgeInsets.only(right:0, left:30),
                 // physics: const NeverScrollableScrollPhysics(),
-                itemCount: value.shopItems1.length,
+                itemCount: value.shopItems.length,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 1,
                     mainAxisSpacing: 25,
@@ -62,9 +62,9 @@ class _SaglikPageState extends State<SaglikPage> {
                 ),
                 itemBuilder: (context, index) {
                   return CardItems(
-                    kitName: value.shopItems1[index][0],
+                    kitName: value.shopItems[index][0],
                     // itemPrice: value.shopItems[index][1],
-                    imagePath: value.shopItems1[index][1],
+                    imagePath: value.shopItems[index][1],
                     // color: value.shopItems[index][3],
                     onPressed: () => showDialog<String>(
                       context: context,
@@ -78,7 +78,7 @@ class _SaglikPageState extends State<SaglikPage> {
                           ),
                           TextButton(
                             onPressed: () { Navigator.pop(context, 'Onayla');
-                            Provider.of<CartModel>(context, listen: false)
+                            Provider.of<CartModelSaglik>(context, listen: false)
                                 .addItemToCart(index);},
                             child: const Text('Onayla'),
                           ),
@@ -95,18 +95,3 @@ class _SaglikPageState extends State<SaglikPage> {
     );
   }
 }
-
-
-
-
-/*class SaglikPage extends StatelessWidget{
-  const SaglikPage({super.key});
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: kbackgroundColor,
-      bottomNavigationBar: KitBottomNavBar(),
-      body: KitOzelScreen(),
-    );
-  }
-}*/
