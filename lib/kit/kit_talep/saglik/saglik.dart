@@ -33,7 +33,7 @@ class _SaglikPageState extends State<SaglikPage> {
       ),
       bottomNavigationBar: KitBottomNavBar(),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.black,
+        backgroundColor: kitgreenColor,
         onPressed: () => Navigator.push(
           context,
           MaterialPageRoute(

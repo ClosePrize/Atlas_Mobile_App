@@ -1,9 +1,12 @@
-
+import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
+import 'package:v01/kargo/constants.dart';
 import 'package:v01/kargo/widgets/reusable_widgets.dart';
 import '../kit_talep/besin/besin.dart';
 import '../kit_talep/saglik/saglik.dart';
 import '../kit_talep/yol/yol_yardim.dart';
+import 'package:v01/kit/sepetim/cart_page_klon.dart';
+
 
 class KitHomeScreen extends StatefulWidget{
   const KitHomeScreen({Key? key}) : super(key: key);
@@ -17,6 +20,19 @@ class _KitHomeScreenState extends State<KitHomeScreen>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: kitgreenColor,
+        onPressed: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) {
+              return CartPage1();
+            },
+          ),
+        ),
+        child: const Icon(Icons.shopping_bag
+        ),
+      ),
       /*appBar: AppBar(
           backgroundColor: const Color.fromARGB(255, 2, 12, 36),
           leading: IconButton(
