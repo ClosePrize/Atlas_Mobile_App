@@ -5,6 +5,7 @@ import 'package:v01/kit/taleplerim/taleplerim.dart';
 import '../../kargo/constants.dart';
 import '../kit_talep/besin/cart_model_besin.dart';
 import 'package:v01/kit/kit_talep/yol/cart_model_yol.dart';
+import 'package:v01/kit/taleplerim/talep_onay.dart';
 
 class CartPage1 extends StatelessWidget {
   const CartPage1({super.key});
@@ -21,10 +22,38 @@ class CartPage1 extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20),
                         child: Material(
                           child: InkWell(
-                            onTap: (){
-                              Navigator.push(context,
-                                  MaterialPageRoute(builder: (context) => const TaleplerimScreen()));
-                            },
+                            onTap: () => showDialog<String>(
+                            context: context,
+                            builder: (BuildContext context) => AlertDialog(
+                              title: const Text('Sepet Onay'),
+                              content: const Text('Sepeti onaylamak istediğinize emin misiniz?'),
+                              actions: <Widget>[
+                                TextButton(
+                                  onPressed: () => Navigator.pop(context, 'İptal'),
+                                  child: const Text('İptal'),
+                                ),
+                                TextButton(
+                                  onPressed: () { Navigator.pop(context, 'Onayla');
+                                    //Navigator.push(context,
+                                      //MaterialPageRoute(builder: (context)=> KitTalepOnayPage())).then((value){});
+                                  Navigator.pushReplacement<void, void>(
+                                    context,
+                                    MaterialPageRoute<void>(
+                                      builder: (BuildContext context) => const KitTalepOnayPage(),
+                                    ),
+                                  );
+                                  Provider.of<CartModelSaglik>(context, listen: false)
+                                      .removeItemFromCart(1);
+                                  Provider.of<CartModelYol>(context, listen: false)
+                                      .removeItemFromCart(1);
+                                  Provider.of<CartModel>(context, listen: false)
+                                      .removeItemFromCart(1);
+                                  },
+                                  child: const Text('Onayla'),
+                                ),
+                              ],
+                            ),
+                            ),
                             child: Ink(
                                 // ignore: sort_child_properties_last
                                 child: const Center(
@@ -169,7 +198,7 @@ class CartPage1 extends StatelessWidget {
                           child: Text(
                             
                               'Yol Yardım Kitleri',
-                               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black, 
+                               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.red,
                               shadows:[
             Shadow(
                  blurRadius:5.0,  // shadow blur
@@ -240,7 +269,7 @@ class CartPage1 extends StatelessWidget {
                       children: [
                         const SizedBox(
                           child: Text(
-                              'Besin Kitleri',style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black, 
+                              'Besin Kitleri',style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.blue,
                               shadows:[
             Shadow(
                  blurRadius:5.0,  // shadow blur

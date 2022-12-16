@@ -12,19 +12,13 @@ class TaleplerimBody extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: kitPrimaryColor,
-          leading: IconButton(
-            icon: const Icon(
+        backgroundColor:kitPrimaryColor,
+        leading: IconButton(
+            icon: Icon(
               Icons.close_rounded, color: Colors.white, size: 30,),
-            onPressed: () => Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const KitHomePage())),
-          ),
-          elevation: 0,
-          title: const Text(
-              "",
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)
-          )
+            onPressed: () => Navigator.pop(context, false)
+        ),
+        elevation: 1,
       ),
       body: Container(
         child: SingleChildScrollView(
