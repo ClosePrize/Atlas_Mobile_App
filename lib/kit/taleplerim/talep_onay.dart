@@ -17,19 +17,20 @@ class _KitTalepOnayScreenState extends State<KitTalepOnayScreen>{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: kitPrimaryColor,
-          leading: IconButton(
-            icon: Icon(
+        backgroundColor:kitPrimaryColor,
+        leading: IconButton(
+            icon: const Icon(
               Icons.close_rounded, color: Colors.white, size: 30,),
-            onPressed: () => Navigator.push(
+            onPressed: () {
+              Navigator.pushReplacement<void, void>(
                 context,
-                MaterialPageRoute(builder: (context) => KitHomePage())),
-          ),
-          elevation: 0,
-          title: const Text(
-              "",
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)
-          )
+                MaterialPageRoute<void>(
+                  builder: (BuildContext context) => const KitHomePage(),
+                ),
+              );
+            }
+        ),
+        elevation: 1,
       ),
       body: Container(
         /*decoration: BoxDecoration(

@@ -15,3 +15,4 @@ class TaleplerimScreen extends StatelessWidget {
     );
   }
 }
+
