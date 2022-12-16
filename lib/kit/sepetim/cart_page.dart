@@ -1,180 +1,312 @@
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
-import 'package:v01/kit/kit_talep/saglik/cart_model_saglik.dart';
-import 'package:v01/kit/taleplerim/taleplerim.dart';
+// import 'package:flutter/material.dart';
+// import 'package:provider/provider.dart';
+// import 'package:v01/kit/kit_talep/saglik/cart_model_saglik.dart';
+// import 'package:v01/kit/taleplerim/taleplerim.dart';
+// import '../../kargo/constants.dart';
+// import '../kit_talep/besin/cart_model_besin.dart';
+// import 'package:v01/kit/kit_talep/yol/cart_model_yol.dart';
 
-import '../../kargo/constants.dart';
-import '../home/home.dart';
-import '../kit_talep/besin/cart_model_besin.dart';
+// class CartPage1 extends StatelessWidget {
+//   const CartPage1({super.key});
 
-class CartPage extends StatelessWidget {
-  const CartPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-          backgroundColor:kitPrimaryColor,
-          leading: IconButton(
-            icon: Icon(
-              Icons.close_rounded, color: Colors.white, size: 30,),
-            onPressed: () => Navigator.pop(context, false)
-          ),
-          elevation: 1,
-      ),
-        
-      body: Consumer<CartModel>(
-        builder: (context, value, child) {
-          return Column(
-            
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Let's order fresh items for you
-              SizedBox(
-                height: 25,),
-               Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 24.0),
-                  child: Text(
-                    "Sepetim",
-                    style: GoogleFonts.notoSerif(
-                      fontSize: 36,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              
-
-              // list view of cart
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: ListView.builder(
-                    itemCount: value.cartItems.length,
-                    padding: EdgeInsets.all(12),
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.all(12.0),
-                        // child: Container(
-                        //   decoration: BoxDecoration(
-                        //       color: Colors.white,
-                        //       // borderRadius: BorderRadius.circular(8)
-                        //       ),
-                          child: ListTile(
-                            leading: Text(
-                              value.cartItems[index][0],
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       floatingActionButton: Padding(
+//                 padding: const EdgeInsets.fromLTRB(160, 30, 0, 0),
+//                   child: SizedBox(
+//                       height: 70,
+//                       width: MediaQuery.of(context).size.width/2,
+//                       child: ClipRRect(
+//                         borderRadius: BorderRadius.circular(20),
+//                         child: Material(
+//                           child: InkWell(
+//                             onTap: (){
+//                               Navigator.push(context,
+//                                   MaterialPageRoute(builder: (context) => const TaleplerimScreen()));
+//                             },
+//                             child: Ink(
+//                                 // ignore: sort_child_properties_last
+//                                 child: const Center(
+//                                   child: Text(
+//                                     'Sepeti Onayla',
+//                                     style: TextStyle(
+//                                       fontSize: 20,color: Colors.white, fontWeight: FontWeight.bold
+//                                     ),
+//                                   ),
+//                                 ),
+//                                 decoration: const BoxDecoration(
+//                                   color: kitgreenColor,
+//                                   /*image: DecorationImage(
+//                                       image: AssetImage(
+//                                           assetName),
+//                                       fit: BoxFit.fill,
+//                                     )*/
+//                                 )
+//                             ),
+//                           ),
+//                         ),
+//                       )
+//                   )
+//               ),
+//       appBar: AppBar(
+//         backgroundColor:kitPrimaryColor,
+//         leading: IconButton(
+//             icon: const Icon(
+//               Icons.close_rounded, color: Colors.white, size: 30,),
+//             onPressed: () => Navigator.pop(context, false)
+//         ),
+//         elevation: 1,
+//       ),
+//       body: SingleChildScrollView(
+//         child: Container(
+//           padding: const EdgeInsets.fromLTRB(30, 40, 30, 40),
+//           child: Column(
+//             children: [
+//               const SizedBox(
+//                 height: 40,
+//                 // width: 500,
+//                 // child: Text(
+//                 //   'Sepetiniz',
+//                 //   style: GoogleFonts.notoSerif(
+//                 //   fontSize: 36,
+//                 //   fontWeight: FontWeight.bold,
+//                 //   ),
+//                 // )
+//               ),
+//               Container(
+//               decoration: BoxDecoration(
+//                 // border: Border.all(color: Colors.black),
+//                 borderRadius: BorderRadius.circular(25),
+//                 color: Colors.white,
+//                 boxShadow: [
+//       BoxShadow(
+//         color: Colors.grey.withOpacity(0.5),
+//         spreadRadius: 5,
+//         blurRadius: 7,
+//         offset: const Offset(0, 3), // changes position of shadow
+//       ),
+//     ],
+//               ),
+//               child: Column(
+//                 children: [
+//                   const SizedBox(
+//                     child: Text(
+//                       'Sağlık Kitleri', 
+//                       style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: kitgreenColor, 
+//                               shadows:[
+//             Shadow(
+//                  blurRadius:5.0,  // shadow blur
+//                   color: Colors.grey, // shadow color
+//                   offset: Offset(0.5,0.5), // how much shadow will be shown
+//             ),
+//         ],
+//                               ),
+//                     ),
+//                   ),
+//                   SizedBox(
+//                       child: Consumer<CartModelSaglik>(
+//                   builder: (context, value, child) {
+//                     return Column(
+//                       crossAxisAlignment: CrossAxisAlignment.start,
+//                       children: [
+//                         SizedBox(
+//                           child: ListView.builder(
+//                             shrinkWrap: true,
+//                               itemCount: value.cartItems.length,
+//                               padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+//                               itemBuilder: (context, index) {
+//                                 return Padding(
+//                                   padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                
+//                                   child: ListTile(
+//                                     leading: Text(
+//                                       value.cartItems[index][0],
+      
+//                                     ),
+                                
+//                                     trailing: IconButton(
+//                                       icon: const Icon(Icons.cancel),
+//                                       onPressed: () =>
+//                                           Provider.of<CartModelSaglik>(context, listen: false)
+//                                               .removeItemFromCart(index),
+//                                     ),
+//                                   ),
+//                                 );
+//                               },
+//                             ),
+//                           ),
+      
+//                       ],
+//                     );
+//                   }
+                    
+//                   )
+//                    )
+//                 ]
+//               )
+//               ),
+//               const SizedBox(
+//                 height: 30,
+//               ),
+//               Container(
+//                   decoration: BoxDecoration(
+//                 // border: Border.all(color: Colors.black),
+//                 borderRadius: BorderRadius.circular(25),
+//                 color: Colors.white,
+//                 boxShadow: [
+//       BoxShadow(
+//         color: Colors.grey.withOpacity(0.5),
+//         spreadRadius: 5,
+//         blurRadius: 7,
+//         offset: const Offset(0, 3), // changes position of shadow
+//       ),
+//     ],
+//               ),
+//                   child: Column(
+//                       children: [
+//                         const SizedBox(
+//                           child: Text(
                             
-                            ),
-                            // title: Text(
-                            //   value.cartItems[index][0],
-                            //   style: const TextStyle(fontSize: 18),
-                            // ),
-                            // subtitle: Text(
-                            //   '\$' + value.cartItems[index][1],
-                            //   style: const TextStyle(fontSize: 12),
-                            // ),
-                            trailing: IconButton(
-                              icon: const Icon(Icons.cancel),
-                              onPressed: () =>
-                                  Provider.of<CartModel>(context, listen: false)
-                                      .removeItemFromCart(index),
-                            ),
-                          ),
-                        
-                      );
-                    },
-                  ),
-                ),
-              ),
-
-              // total amount + pay now
-
-              /*Padding(
-                padding: const EdgeInsets.all(36.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    color: Colors.green,
-                  ),
-                  padding: const EdgeInsets.all(24),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      /*Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        // ignore: prefer_const_literals_to_create_immutables
-                        children: [
-            
-                          const SizedBox(height: 8),
-                         
-                        ],
-                      ),*/
-
-                      // pay now
-                      /*Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.green.shade200),
-                          borderRadius: BorderRadius.circular(28),
-                        ),
-                        padding: const EdgeInsets.all(12),
-                        child: Row(
-                          children: const [
-                            Text(
-                              'Kiti Talep Et',
-                              style: TextStyle(color: Colors.white),
-                            ),
-                            Icon(
-                              Icons.arrow_forward_ios,
-                              size: 16,
-                              color: Colors.white,
-                            ),
-                          ],
-                        ),
-                      ),*/
-                    ],
-                  ),
-                ),
-              )*/
-              Padding(
-                padding: const EdgeInsets.fromLTRB(230, 20, 22, 60),
-                child: SizedBox(
-                    height: 60,
-                    width: MediaQuery.of(context).size.width/3,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(20),
-                      child: Material(
-                        child: InkWell(
-                          onTap: (){
-                            Navigator.push(context,
-                                MaterialPageRoute(builder: (context) => TaleplerimScreen()));
-                          },
-                          child: Ink(
-                              child: Center(
-                                child: Text(
-                                  'Sepeti Onayla',
-                                  style: TextStyle(
-
-                                  ),
-                                ),
-                              ),
-                              decoration: BoxDecoration(
-                                  color: kitgreenColor,
-                                  /*image: DecorationImage(
-                                    image: AssetImage(
-                                        assetName),
-                                    fit: BoxFit.fill,
-                                  )*/
-                              )
-                          ),
-                        ),
-                      ),
-                    )
-                )
-              )
-            ],
-          );
-        },
-      ),
-    );
-  }
-}
+//                               'Yol Yardım Kitleri',
+//                                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black, 
+//                               shadows:[
+//             Shadow(
+//                  blurRadius:5.0,  // shadow blur
+//                   color: Colors.grey, // shadow color
+//                   offset: Offset(0.5,0.5), // how much shadow will be shown
+//             ),
+//         ],
+//                               ),
+//                           ),
+//                         ),
+//               SizedBox(
+//                   child: Consumer<CartModelYol>(
+//                       builder: (context, value, child) {
+//                         return Column(
+//                           crossAxisAlignment: CrossAxisAlignment.start,
+//                           children: [
+//                             SizedBox(
+//                               child: ListView.builder(
+//                                 shrinkWrap: true,
+//                                 itemCount: value.cartItems.length,
+//                                 padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+//                                 itemBuilder: (context, index) {
+//                                   return Padding(
+//                                     padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                  
+//                                     child: ListTile(
+//                                       leading: Text(
+//                                         value.cartItems[index][0],
+      
+//                                       ),
+//                                       trailing: IconButton(
+//                                         icon: const Icon(Icons.cancel),
+//                                         onPressed: () =>
+//                                             Provider.of<CartModelYol>(context, listen: false)
+//                                                 .removeItemFromCart(index),
+//                                       ),
+//                                     ),
+//                                   );
+//                                 },
+//                               ),
+//                             ),
+//                           ],
+//                         );
+//                       }
+//                     )
+//                   )
+//                 ]
+//               )
+//                 ),
+//               const SizedBox(
+//                 height: 30,
+//               ),
+//               Container(
+//                   decoration: BoxDecoration(
+//                 // border: Border.all(color: Colors.black),
+//                 borderRadius: BorderRadius.circular(25),
+//                 color: Colors.white,
+//                 boxShadow: [
+//       BoxShadow(
+//         color: Colors.grey.withOpacity(0.5),
+//         spreadRadius: 5,
+//         blurRadius: 7,
+//         offset: const Offset(0, 3), // changes position of shadow
+//       ),
+//     ],
+//               ),
+//                   child: Column(
+//                       children: [
+//                         const SizedBox(
+//                           child: Text(
+//                               'Besin Kitleri',style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black, 
+//                               shadows:[
+//             Shadow(
+//                  blurRadius:5.0,  // shadow blur
+//                   color: Colors.grey, // shadow color
+//                   offset: Offset(0.5,0.5), // how much shadow will be shown
+//             ),
+//         ],
+//                               ),
+//                           ),
+//                         ),
+//                         SizedBox(
+//                             child: Consumer<CartModel>(
+//                                 builder: (context, value, child) {
+//                                   return Column(
+//                                     crossAxisAlignment: CrossAxisAlignment.start,
+//                                     children: [
+//                                       SizedBox(
+//                                         child: ListView.builder(
+//                                           shrinkWrap: true,
+//                                           itemCount: value.cartItems.length,
+//                                           padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+//                                           itemBuilder: (context, index) {
+//                                             return Padding(
+//                                               padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+//                                               // child: Container(
+//                                               //   decoration: BoxDecoration(
+//                                               //       color: Colors.white,
+//                                               //       // borderRadius: BorderRadius.circular(8)
+//                                               //       ),
+//                                               child: ListTile(
+//                                                 leading: Text(
+//                                                   value.cartItems[index][0],
+      
+//                                                 ),
+//                                                 // title: Text(
+//                                                 //   value.cartItems[index][0],
+//                                                 //   style: const TextStyle(fontSize: 18),
+//                                                 // ),
+//                                                 // subtitle: Text(
+//                                                 //   '\$' + value.cartItems[index][1],
+//                                                 //   style: const TextStyle(fontSize: 12),
+//                                                 // ),
+//                                                 trailing: IconButton(
+//                                                   icon: const Icon(Icons.cancel),
+//                                                   onPressed: () =>
+//                                                       Provider.of<CartModel>(context, listen: false)
+//                                                           .removeItemFromCart(index),
+//                                                 ),
+//                                               ),
+//                                             );
+//                                           },
+//                                         ),
+//                                       ),
+//                                     ],
+//                                   );
+//                                 }
+//                             )
+//                         )
+//                       ]
+//                   )
+//               ),
+              
+//             ],
+//           ),
+//         ),
+//       )
+//     );
+//   }
+// }

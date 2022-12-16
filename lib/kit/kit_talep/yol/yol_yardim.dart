@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../../kargo/constants.dart';
 import '../../widgets/bottomnavigationbar.dart';
-import 'package:v01/kit/sepetim/cart_page_klon.dart';
 import 'package:provider/provider.dart';
 import 'package:v01/kit/widgets/items.dart';
-import '../../sepetim/cart_page.dart';
 import 'cart_model_yol.dart';
 
 class YolYardimPage extends StatefulWidget{
@@ -21,6 +19,7 @@ class _YolYardimPageState extends State<YolYardimPage> {
       appBar: AppBar(
         backgroundColor:kitPrimaryColor,
         leading: IconButton(
+            // ignore: prefer_const_constructors
             icon: Icon(
               Icons.close_rounded, color: Colors.white, size: 30,),
             onPressed: () => Navigator.pop(context, false)
@@ -28,19 +27,19 @@ class _YolYardimPageState extends State<YolYardimPage> {
         elevation: 1,
       ),
       bottomNavigationBar: KitBottomNavBar(),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.black,
-        onPressed: () => Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) {
-              return CartPage1();
-            },
-          ),
-        ),
-        child: const Icon(Icons.shopping_bag
-        ),
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   backgroundColor: Colors.black,
+      //   onPressed: () => Navigator.push(
+      //     context,
+      //     MaterialPageRoute(
+      //       builder: (context) {
+      //         return CartPage1();
+      //       },
+      //     ),
+      //   ),
+      //   child: const Icon(Icons.shopping_bag
+      //   ),
+      // ),
       body: Container(
         child: Padding(
           padding: EdgeInsets.fromLTRB(27,60, 27, 7),

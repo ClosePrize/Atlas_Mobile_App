@@ -4,9 +4,7 @@ import 'package:v01/kargo/constants.dart';
 import 'package:v01/kargo/widgets/reusable_widgets.dart';
 import 'package:v01/kit/widgets/bottomnavigationbar.dart';
 import 'package:v01/kit/widgets/items.dart';
-import '../../sepetim/cart_page.dart';
 import 'cart_model_besin.dart';
-import 'package:v01/kit/sepetim/cart_page_klon.dart';
 
 class BesinPage extends StatefulWidget {
   const BesinPage({super.key});
@@ -29,19 +27,19 @@ class _BesinPageState extends State<BesinPage> {
           elevation: 1,
       ),
           bottomNavigationBar: KitBottomNavBar(),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.black,
-        onPressed: () => Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) {
-              return CartPage1();
-            },
-          ),
-        ),
-        child: const Icon(Icons.shopping_bag
-          ),
-        ),
+      // floatingActionButton: FloatingActionButton(
+      //   backgroundColor: Colors.black,
+      //   onPressed: () => Navigator.push(
+      //     context,
+      //     MaterialPageRoute(
+      //       builder: (context) {
+      //         return CartPage1();
+      //       },
+      //     ),
+      //   ),
+      //   child: const Icon(Icons.shopping_bag
+      //     ),
+      //   ),
            body: Container(
              child: Padding(
             padding: EdgeInsets.fromLTRB(27,60, 27, 7),
@@ -62,7 +60,7 @@ class _BesinPageState extends State<BesinPage> {
                      kitName: value.shopItems[index][0],
                      // itemPrice: value.shopItems[index][1],
                      imagePath: value.shopItems[index][1],
-                     // color: value.shopItems[index][3],
+                    //  color: value.shopItems[index][3],
                      onPressed: () => showDialog<String>(
                        context: context,
                        builder: (BuildContext context) => AlertDialog(
