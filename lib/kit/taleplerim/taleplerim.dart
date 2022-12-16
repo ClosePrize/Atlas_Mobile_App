@@ -101,17 +101,17 @@ class TaleplerimScreen extends StatelessWidget {
                           child: ListView.builder(
                             shrinkWrap: true,
                               itemCount: value.cartItems.length,
-                              padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                          padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
                               itemBuilder: (context, index) {
                                 return Padding(
                                   padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                                 
                                   child: ListTile(
-                                    leading: Text(
-                                      value.cartItems[index][0],
+                                     leading: Text( "${"Talep Edilen Kit: " +
+                                                value.cartItems[index][0] +"\nSipariş Numarası: "+
+                                                value.cartItems[index][2]}\nKargo Durumu: İşleniyor ", 
       
-                                    ),
-                                
+                                              ),
                                     trailing: IconButton(
                                       icon: const Icon(Icons.cancel),
                                       onPressed: () =>
@@ -163,16 +163,17 @@ class TaleplerimScreen extends StatelessWidget {
                               child: ListView.builder(
                                 shrinkWrap: true,
                                 itemCount: value.cartItems.length,
-                                padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                          padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
                                 itemBuilder: (context, index) {
                                   return Padding(
                                     padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                                   
                                     child: ListTile(
-                                      leading: Text(
-                                        value.cartItems[index][0],
+                                       leading: Text( "${"Talep Edilen Kit: " +
+                                                value.cartItems[index][0] +"\nSipariş Numarası: "+
+                                                value.cartItems[index][2]}\nKargo Durumu: İşleniyor ", 
       
-                                      ),
+                                              ),
                                       trailing: IconButton(
                                         icon: const Icon(Icons.cancel),
                                         onPressed: () =>
@@ -211,17 +212,16 @@ class TaleplerimScreen extends StatelessWidget {
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       SizedBox(
-                                        height: 150,
+                                        // height: 10,
                                         child: ListView.builder(
                                           shrinkWrap: true,
                                           itemCount: value.cartItems.length,
                                           padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
                                           itemBuilder: (context, index) {
                                             return ListTile(
-                                              leading: Text( "Talep Edilen Kit: " +
+                                              leading: Text( "${"Talep Edilen Kit: " +
                                                 value.cartItems[index][0] +"\nSipariş Numarası: "+
-                                                value.cartItems[index][2]
-                                                +"\nKargo Durumu: İşleniyor ", 
+                                                value.cartItems[index][2]}\nKargo Durumu: İşleniyor ", 
       
                                               ),
                                               // title: Text(
@@ -233,12 +233,12 @@ class TaleplerimScreen extends StatelessWidget {
                                               //   '\$' + value.cartItems[index][1],
                                               //   style: const TextStyle(fontSize: 12),
                                               // ),
-                                              // trailing: IconButton(
-                                              //   icon: const Icon(Icons.cancel),
-                                              //   onPressed: () =>
-                                              //       Provider.of<CartModel>(context, listen: false)
-                                              //           .removeItemFromCart(index),
-                                              // ),
+                                              trailing: IconButton(
+                                                icon: const Icon(Icons.cancel),
+                                                onPressed: () =>
+                                                    Provider.of<CartModel>(context, listen: false)
+                                                        .removeItemFromCart(index),
+                                              ),
                                             );
                                           },
                                         ),
