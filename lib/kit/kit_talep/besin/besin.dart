@@ -30,7 +30,7 @@ class _BesinPageState extends State<BesinPage> {
       ),
           bottomNavigationBar: KitBottomNavBar(),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.black,
+        backgroundColor: kitgreenColor,
         onPressed: () => Navigator.push(
           context,
           MaterialPageRoute(
