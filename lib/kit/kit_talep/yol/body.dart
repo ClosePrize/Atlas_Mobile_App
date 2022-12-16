@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:v01/kargo/constants.dart';
 import 'package:v01/kargo/widgets/reusable_widgets.dart';
-import 'package:v01/kit/sepetim/cart_page.dart';
 import '../../home/home.dart';
 
 class KitOzelYolYardimScreen extends StatefulWidget{
@@ -70,19 +69,19 @@ class _KitOzelYolYardimScreenState extends State<KitOzelYolYardimScreen>{
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.black,
-        onPressed: () => Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) {
-              return CartPage();
-            },
-          ),
-        ),
-        child: const Icon(Icons.shopping_bag
-        ),
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   backgroundColor: Colors.black,
+      //   onPressed: () => Navigator.push(
+      //     context,
+      //     MaterialPageRoute(
+      //       builder: (context) {
+      //         return CartPage();
+      //       },
+      //     ),
+      //   ),
+      //   child: const Icon(Icons.shopping_bag
+      //   ),
+      // ),
     );
   }
 }

@@ -4,9 +4,9 @@ class CartModel extends ChangeNotifier {
   // list of items on sale
   final List _shopItems = const [
     // [ itemName, itemPrice, imagePath, color ]
-    [" Bebek Maması Kiti ", "assets/besin_kitleri/bebekmamasikiti.png" ],
-    [" Hazır Gıda Kiti", "assets/besin_kitleri/hazirgidakiti.png"],
-    [" Sokak Hayvanı Maması Kiti",  "assets/besin_kitleri/sokakhayvanimamakiti.png"],
+    [" Bebek Maması Kiti ", "assets/besin_kitleri/bebekmamasikiti.png", "22152wqsaw" ],
+    [" Hazır Gıda Kiti", "assets/besin_kitleri/hazirgidakiti.png", "22152wqsaw"],
+    [" Sokak Hayvanı Maması Kiti",  "assets/besin_kitleri/sokakhayvanimamakiti.png", "22152wqsaw"],
   ];
 
   // list of cart items

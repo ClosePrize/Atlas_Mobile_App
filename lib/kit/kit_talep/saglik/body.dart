@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:v01/kargo/constants.dart';
 import 'package:v01/kargo/widgets/reusable_widgets.dart';
 import 'package:v01/kit/home/home.dart';
-import 'package:v01/kit/sepetim/cart_page.dart';
 
 class KitOzelScreen extends StatefulWidget{
   const KitOzelScreen({Key? key}) : super(key: key);
@@ -74,19 +73,19 @@ class _KitOzelScreenState extends State<KitOzelScreen>{
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.black,
-        onPressed: () => Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) {
-              return CartPage();
-            },
-          ),
-        ),
-        child: const Icon(Icons.shopping_bag
-        ),
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   backgroundColor: Colors.black,
+      //   onPressed: () => Navigator.push(
+      //     context,
+      //     MaterialPageRoute(
+      //       builder: (context) {
+      //         return CartPage();
+      //       },
+      //     ),
+      //   ),
+      //   child: const Icon(Icons.shopping_bag
+      //   ),
+      // ),
     );
   }
 }
