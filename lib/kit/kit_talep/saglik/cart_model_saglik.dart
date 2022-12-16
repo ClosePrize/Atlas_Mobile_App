@@ -4,10 +4,10 @@ class CartModelSaglik extends ChangeNotifier {
   // list of items on sale
   final List _shopItems = const [
     // [ itemName, itemPrice, imagePath, color ]
-    [" Kalp Krizi Kiti ", "assets/saglık_kitleri/kalpkrizikiti.png" ],
-    [" Astım Kiti", "assets/saglık_kitleri/astimkiti.png"],
-    [" Pandemi Kiti",  "assets/saglık_kitleri/pandemikiti.png"],
-    [" Hijyen Kiti",  "assets/saglık_kitleri/hijyenkiti.png"],
+    [" Kalp Krizi Kiti ", "assets/saglık_kitleri/kalpkrizikiti.png","2w232wq" ],
+    [" Astım Kiti", "assets/saglık_kitleri/astimkiti.png", "2w232wq"],
+    [" Pandemi Kiti",  "assets/saglık_kitleri/pandemikiti.png", "2w232wq"],
+    [" Hijyen Kiti",  "assets/saglık_kitleri/hijyenkiti.png", "2w232wq"],
   ];
 
   // list of cart items
