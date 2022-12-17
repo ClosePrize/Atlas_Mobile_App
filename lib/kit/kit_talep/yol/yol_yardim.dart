@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:v01/kit/widgets/items.dart';
 import '../../sepetim/cart_page.dart';
 import 'cart_model_yol.dart';
+import 'package:back_button_interceptor/back_button_interceptor.dart';
 
 class YolYardimPage extends StatefulWidget{
   const YolYardimPage({super.key});
@@ -70,7 +71,8 @@ class _YolYardimPageState extends State<YolYardimPage> {
                         actions: <Widget>[
                           TextButton(
                             onPressed: () => Navigator.pop(context, 'İptal'),
-                            child: const Text('İptal'),
+                            child: const Text('İptal',
+                              style: TextStyle(color: kitPrimaryColor),),
                           ),
                           TextButton(
                             onPressed: () { Navigator.pop(context, 'Onayla');

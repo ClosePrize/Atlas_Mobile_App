@@ -27,7 +27,7 @@ class _BesinPageState extends State<BesinPage> {
             onPressed: () => Navigator.pop(context, false)
           ),
           elevation: 1,
-      ),
+         ),
           bottomNavigationBar: KitBottomNavBar(),
       floatingActionButton: FloatingActionButton(
         backgroundColor: kitgreenColor,
@@ -71,7 +71,8 @@ class _BesinPageState extends State<BesinPage> {
                          actions: <Widget>[
                            TextButton(
                              onPressed: () => Navigator.pop(context, 'İptal'),
-                             child: const Text('İptal'),
+                             child: const Text('İptal',
+                               style: TextStyle(color: kitPrimaryColor),),
                            ),
                            TextButton(
                              onPressed: () { Navigator.pop(context, 'Onayla');

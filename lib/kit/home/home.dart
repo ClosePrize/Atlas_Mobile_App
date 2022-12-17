@@ -9,7 +9,7 @@ class KitHomePage extends StatelessWidget{
   Widget build(BuildContext context) {
     return const Scaffold(
       backgroundColor: kbackgroundColor,
-      bottomNavigationBar: KitBottomNavBar(),
+      bottomNavigationBar: KitBottomNavBarForHome(),
       body: KitHomeScreen(),
     );
   }
