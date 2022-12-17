@@ -10,7 +10,7 @@ class TaleplerimScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kbackgroundColor,
-      bottomNavigationBar: KitBottomNavBar(),
+      bottomNavigationBar: KitBottomNavBarForTaleplerim(),
       body:TaleplerimBody() ,
     );
   }

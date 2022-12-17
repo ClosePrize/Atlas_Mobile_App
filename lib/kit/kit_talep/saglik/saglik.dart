@@ -74,7 +74,8 @@ class _SaglikPageState extends State<SaglikPage> {
                         actions: <Widget>[
                           TextButton(
                             onPressed: () => Navigator.pop(context, 'İptal'),
-                            child: const Text('İptal'),
+                            child: const Text('İptal',
+                              style: TextStyle(color: kitPrimaryColor),),
                           ),
                           TextButton(
                             onPressed: () { Navigator.pop(context, 'Onayla');

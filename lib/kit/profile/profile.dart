@@ -10,7 +10,7 @@ class KitProfilePage extends StatelessWidget{
   Widget build(BuildContext context) {
     return const Scaffold(
       backgroundColor: kbackgroundColor,
-      bottomNavigationBar: KitBottomNavBar(),
+      bottomNavigationBar: KitBottomNavBarForProfile(),
       body: KitProfileScreen(),
     );
   }

@@ -175,9 +175,32 @@ Container firebaseUIButton_1(BuildContext context) {
     margin: const EdgeInsets.fromLTRB(0, 10, 0, 20),
     decoration: BoxDecoration(borderRadius: BorderRadius.circular(90)),
     child: ElevatedButton(
-      onPressed: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => LogosPage()));
-      },
+      onPressed: () => showDialog<String>(
+        context: context,
+        builder: (BuildContext context) => AlertDialog(
+          title: const Text('Çıkış Onay'),
+          content: const Text('Uygulamadan çıkış yapmak istediğinize emin misiniz?'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () => Navigator.pop(context, 'İptal'),
+              child: const Text('İptal',
+              style: TextStyle(color: kitPrimaryColor),),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context, 'Onayla');
+                Navigator.pushReplacement<void, void>(
+                  context,
+                  MaterialPageRoute<void>(
+                    builder: (BuildContext context) => const LogosPage(),
+                  ),
+                );
+              },
+              child: const Text('Onayla'),
+            ),
+          ],
+        ),
+      ),
       child: Text(
         'Çıkış yap',
         style: const TextStyle(

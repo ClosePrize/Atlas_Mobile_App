@@ -44,6 +44,7 @@ dependencies:
   circle_bottom_navigation_bar: ^1.0.0
   google_maps_flutter: ^2.2.1
   google_fonts: 2.1.0
+  back_button_interceptor: ^6.0.2
   # provider: 
 
 

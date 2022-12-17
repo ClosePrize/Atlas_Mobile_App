@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:v01/kargo/constants.dart';
 import 'package:v01/kargo/widgets/reusable_widgets.dart';
 import 'package:v01/kit/home/home.dart';
+import 'package:back_button_interceptor/back_button_interceptor.dart';
+import 'package:v01/welcome.dart';
 
 class KitProfileScreen extends StatefulWidget{
   const KitProfileScreen({Key? key}) : super(key: key);
@@ -13,25 +15,66 @@ class KitProfileScreen extends StatefulWidget{
 
 class _KitProfileScreenState extends State<KitProfileScreen>{
 
+/*  @override
+  void initState() {
+    super.initState();
+    BackButtonInterceptor.add(myInterceptor);
+  }
+
+  @override
+  void dispose() {
+    BackButtonInterceptor.remove(myInterceptor);
+    super.dispose();
+  }
+
+  bool myInterceptor(bool stopDefaultButtonEvent, RouteInfo info) {
+    showDialog<String>(
+      context: context,
+      builder: (BuildContext context) => AlertDialog(
+        title: const Text('Çıkış Onay'),
+        content: const Text('Uygulamadan çıkış yapmak istediğinize emin misiniz?'),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () => Navigator.pop(context, 'İptal'),
+            child: const Text('İptal',
+              style: TextStyle(color: Colors.red),),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context, 'Onayla');
+              Navigator.pushReplacement<void, void>(
+                context,
+                MaterialPageRoute<void>(
+                  builder: (BuildContext context) => LogosPage(),
+                ),
+              );
+            },
+            child: const Text('Onayla'),
+          ),
+        ],
+      ),
+    );
+    return true;
+  }*/
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kbackgroundColor,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-          backgroundColor: kitPrimaryColor,
-           leading: IconButton(
-             icon: const Icon(
-               Icons.close_rounded, color: Colors.white, size: 30,),
-             onPressed: () => Navigator.push(
+        backgroundColor:kitPrimaryColor,
+        leading: IconButton(
+            icon: Icon(
+              Icons.close_rounded, color: Colors.white, size: 30,),
+            onPressed: () => Navigator.pushReplacement<void, void>(
               context,
-              MaterialPageRoute(builder: (context) => const KitHomePage())),
-           ),
-          elevation: 0,
-          title: const Text(
-              "",
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)
-          )
+              MaterialPageRoute<void>(
+                builder: (BuildContext context) => const KitHomePage(),
+              ),
+            )
+        ),
+        elevation: 1,
       ),
       body: Container(
         width: MediaQuery.of(context).size.width,
