@@ -7,7 +7,6 @@ import '../kit_talep/besin/besin.dart';
 import '../kit_talep/saglik/saglik.dart';
 import '../kit_talep/yol/yol_yardim.dart';
 import 'package:v01/kit/sepetim/cart_page_klon.dart';
-import 'package:back_button_interceptor/back_button_interceptor.dart';
 
 class KitHomeScreen extends StatefulWidget{
   const KitHomeScreen({Key? key}) : super(key: key);
@@ -18,16 +17,10 @@ class KitHomeScreen extends StatefulWidget{
 
 class _KitHomeScreenState extends State<KitHomeScreen>{
 
-/*  @override
-  void dispose() {
-    BackButtonInterceptor.remove(myInterceptor);
-    super.dispose();
-  }
-
-  bool myInterceptor(bool stopDefaultButtonEvent, RouteInfo info) {
-    showDialog<String>(
+  Future<bool> _onWillPop() async {
+    return (await showDialog(
       context: context,
-      builder: (BuildContext context) => AlertDialog(
+      builder: (context) => AlertDialog(
         title: const Text('Çıkış Onay'),
         content: const Text('Uygulamadan çıkış yapmak istediğinize emin misiniz?'),
         actions: <Widget>[
@@ -50,13 +43,14 @@ class _KitHomeScreenState extends State<KitHomeScreen>{
           ),
         ],
       ),
-    );
-    return false;
-  }*/
+    )) ?? false;
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return WillPopScope(
+      onWillPop: _onWillPop,
+      child: Scaffold(
         floatingActionButton: FloatingActionButton(
           backgroundColor: kitgreenColor,
           onPressed: () => Navigator.push(
@@ -138,7 +132,8 @@ class _KitHomeScreenState extends State<KitHomeScreen>{
             ),
           ),
         ),
-      );
+      ),
+    );
   }
 }
 

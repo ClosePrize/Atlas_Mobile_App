@@ -3,7 +3,6 @@ import 'package:v01/kargo/widgets/reusable_widgets.dart';
 import 'package:v01/kargo/map/map.dart';
 import 'package:v01/kargo/constants.dart';
 import 'package:v01/kit/home/home.dart';
-import 'package:back_button_interceptor/back_button_interceptor.dart';
 import 'package:v01/welcome.dart';
 
 class TaleplerimBody extends StatefulWidget{
@@ -16,22 +15,10 @@ class TaleplerimBody extends StatefulWidget{
 
 class _TaleplerimBodyState extends State<TaleplerimBody> {
 
- /* @override
-  void initState() {
-    super.initState();
-    BackButtonInterceptor.add(myInterceptor);
-  }
-
-  @override
-  /*void dispose() {
-    BackButtonInterceptor.remove(myInterceptor);
-    super.dispose();
-  }*/
-
-  bool myInterceptor(bool stopDefaultButtonEvent, RouteInfo info) {
-    showDialog<String>(
+  Future<bool> _onWillPop() async {
+    return (await showDialog(
       context: context,
-      builder: (BuildContext context) => AlertDialog(
+      builder: (context) => AlertDialog(
         title: const Text('Çıkış Onay'),
         content: const Text('Uygulamadan çıkış yapmak istediğinize emin misiniz?'),
         actions: <Widget>[
@@ -54,14 +41,14 @@ class _TaleplerimBodyState extends State<TaleplerimBody> {
           ),
         ],
       ),
-    );
-    return false;
-  }*/
+    )) ?? false;
+  }
 
   @override
   Widget build(BuildContext context) {
-
-    return Scaffold(
+    return WillPopScope(
+      onWillPop: _onWillPop,
+      child:Scaffold(
       appBar: AppBar(
         backgroundColor:kitPrimaryColor,
         leading: IconButton(
@@ -96,6 +83,7 @@ class _TaleplerimBodyState extends State<TaleplerimBody> {
           ),
         ),
       ),
+    ),
     );
   }
 }
