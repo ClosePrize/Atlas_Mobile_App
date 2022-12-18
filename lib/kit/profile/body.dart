@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:v01/kargo/constants.dart';
 import 'package:v01/kargo/widgets/reusable_widgets.dart';
 import 'package:v01/kit/home/home.dart';
-import 'package:back_button_interceptor/back_button_interceptor.dart';
 import 'package:v01/welcome.dart';
 
 class KitProfileScreen extends StatefulWidget{
@@ -15,22 +14,10 @@ class KitProfileScreen extends StatefulWidget{
 
 class _KitProfileScreenState extends State<KitProfileScreen>{
 
-/*  @override
-  void initState() {
-    super.initState();
-    BackButtonInterceptor.add(myInterceptor);
-  }
-
-  @override
-  void dispose() {
-    BackButtonInterceptor.remove(myInterceptor);
-    super.dispose();
-  }
-
-  bool myInterceptor(bool stopDefaultButtonEvent, RouteInfo info) {
-    showDialog<String>(
+  Future<bool> _onWillPop() async {
+    return (await showDialog(
       context: context,
-      builder: (BuildContext context) => AlertDialog(
+      builder: (context) => AlertDialog(
         title: const Text('Çıkış Onay'),
         content: const Text('Uygulamadan çıkış yapmak istediğinize emin misiniz?'),
         actions: <Widget>[
@@ -53,13 +40,14 @@ class _KitProfileScreenState extends State<KitProfileScreen>{
           ),
         ],
       ),
-    );
-    return true;
-  }*/
+    )) ?? false;
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return WillPopScope(
+    onWillPop: _onWillPop,
+      child: Scaffold(
       backgroundColor: kbackgroundColor,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -185,6 +173,7 @@ class _KitProfileScreenState extends State<KitProfileScreen>{
         ),
      )),
       floatingActionButton: firebaseUIButton_1(context),
+    ),
     );
 }
 }

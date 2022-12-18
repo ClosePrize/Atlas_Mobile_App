@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:v01/kargo/constants.dart';
-import 'package:v01/kargo/my_cargos/my_cargos.dart';
 import 'package:v01/kit/home/home.dart';
 import 'package:v01/kit/taleplerim/taleplerim.dart';
 import '../profile/profile.dart';
@@ -80,8 +79,8 @@ class _KitBottomNavBarState extends State<KitBottomNavBar> {
             ),
           ],
           currentIndex: _selectedIndex,
-          selectedItemColor: Color.fromARGB(255, 117, 117, 117),
-          unselectedItemColor: Color.fromARGB(255, 117, 117, 117),
+          selectedItemColor: Color.fromARGB(255, 70, 70, 70),
+          unselectedItemColor: Color.fromARGB(255, 70, 70, 70),
       ),
     );
   }
@@ -153,8 +152,8 @@ class _KitBottomNavBarForHomeState extends State<KitBottomNavBarForHome> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Color.fromARGB(255, 117, 117, 117),
-        unselectedItemColor: Color.fromARGB(255, 117, 117, 117),
+        selectedItemColor: Color.fromARGB(255, 70, 70, 70),
+        unselectedItemColor: Color.fromARGB(255, 70, 70, 70),
       ),
     );
   }
@@ -226,8 +225,8 @@ class _KitBottomNavBarForTaleplerimState extends State<KitBottomNavBarForTaleple
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Color.fromARGB(255, 117, 117, 117),
-        unselectedItemColor: Color.fromARGB(255, 117, 117, 117),
+        selectedItemColor: Color.fromARGB(255, 70, 70, 70),
+        unselectedItemColor: Color.fromARGB(255, 70, 70, 70),
       ),
     );
   }
@@ -300,8 +299,8 @@ class _KitBottomNavBarForProfileState extends State<KitBottomNavBarForProfile> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Color.fromARGB(255, 117, 117, 117),
-        unselectedItemColor: Color.fromARGB(255, 117, 117, 117),
+        selectedItemColor: Color.fromARGB(255, 70, 70, 70),
+        unselectedItemColor: Color.fromARGB(255, 70, 70, 70),
       ),
     );
   }
