@@ -32,9 +32,6 @@ class _KitBottomNavBarState extends State<KitBottomNavBar> {
       child: BottomNavigationBar(
       
       onTap: (value) {
-        if (_selectedIndex == value){
-          }
-        else{
           if (value == 0) {
             Navigator.pushReplacement<void, void>(
               context,
@@ -57,11 +54,9 @@ class _KitBottomNavBarState extends State<KitBottomNavBar> {
               MaterialPageRoute<void>(
                 builder: (BuildContext context) => const KitProfilePage(),
               ),
-            );
-            //Navigator.popAndPushNamed(context, 'KitProfilePage');
-          }
-        };
-      },
+            );//Navigator.popAndPushNamed(context, 'KitProfilePage');
+          };
+        },
 
         backgroundColor: Colors.white,
           items: const <BottomNavigationBarItem>[
