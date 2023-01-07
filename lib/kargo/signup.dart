@@ -128,6 +128,7 @@ class _KargoSignUpScreenState extends State<KargoSignUpScreen> {
                     print("Error ${error.toString()}");
                   });
                 })
+                
               ],
             ),
           ))),
