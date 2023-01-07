@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:v01/kargo/constants.dart';
 
 import '../widgets/bottomnavigationbar.dart';
-import 'body.dart';
+import 'boody.dart';
 
 class KitProfilePage extends StatelessWidget{
   const KitProfilePage({super.key});
