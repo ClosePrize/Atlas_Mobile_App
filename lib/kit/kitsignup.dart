@@ -48,14 +48,6 @@ class User {
 }*/
 
 
-
-
-
-
-
-
-
-
 class KitSignUpScreen extends StatefulWidget {
   const KitSignUpScreen({Key? key}) : super(key: key);
 
@@ -134,4 +126,6 @@ class _KitSignUpScreenState extends State<KitSignUpScreen> {
     );
   }
 }
+
+
 
