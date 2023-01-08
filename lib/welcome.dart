@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'kargo/login.dart';
-import 'kit/kitlogin.dart';
+import 'kit/kitsign/kitlogin.dart';
 
 class LogosPage extends StatelessWidget {
   const LogosPage({super.key});
