@@ -12,6 +12,7 @@ class TaleplerimScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+<<<<<<< HEAD
       // floatingActionButton: Padding(
       //           padding: const EdgeInsets.fromLTRB(160, 30, 0, 0),
       //             child: SizedBox(
@@ -256,6 +257,12 @@ class TaleplerimScreen extends StatelessWidget {
           ),
         ),
       )
+=======
+      backgroundColor: kbackgroundColor,
+      bottomNavigationBar: KitBottomNavBarForTaleplerim(),
+      body:TaleplerimBody() ,
+>>>>>>> origin/Mustafa_vol3_m
     );
   }
 }
+

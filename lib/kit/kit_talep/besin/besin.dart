@@ -25,8 +25,9 @@ class _BesinPageState extends State<BesinPage> {
             onPressed: () => Navigator.pop(context, false)
           ),
           elevation: 1,
-      ),
+         ),
           bottomNavigationBar: KitBottomNavBar(),
+<<<<<<< HEAD
       // floatingActionButton: FloatingActionButton(
       //   backgroundColor: Colors.black,
       //   onPressed: () => Navigator.push(
@@ -40,11 +41,26 @@ class _BesinPageState extends State<BesinPage> {
       //   child: const Icon(Icons.shopping_bag
       //     ),
       //   ),
+=======
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: kitgreenColor,
+        onPressed: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) {
+              return CartPage1();
+            },
+          ),
+        ),
+        child: const Icon(Icons.shopping_bag
+          ),
+        ),
+>>>>>>> origin/Mustafa_vol3_m
            body: Container(
              child: Padding(
-            padding: EdgeInsets.fromLTRB(27,60, 27, 7),
-            child: Consumer<CartModel>(
-             builder: (context, value, child) {
+              padding: EdgeInsets.fromLTRB(27,60, 27, 7),
+              child: Consumer<CartModel>(
+              builder: (context, value, child) {
                return GridView.builder(
                 //  padding: const EdgeInsets.only(right:0, left:30),
                  // physics: const NeverScrollableScrollPhysics(),
@@ -69,7 +85,8 @@ class _BesinPageState extends State<BesinPage> {
                          actions: <Widget>[
                            TextButton(
                              onPressed: () => Navigator.pop(context, 'İptal'),
-                             child: const Text('İptal'),
+                             child: const Text('İptal',
+                               style: TextStyle(color: kitPrimaryColor),),
                            ),
                            TextButton(
                              onPressed: () { Navigator.pop(context, 'Onayla');
