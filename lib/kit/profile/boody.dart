@@ -14,9 +14,10 @@ class KitProfileScreen extends StatefulWidget {
 }
 
 class _KitProfileScreenState extends State<KitProfileScreen> {
-  get index => 1;
+  get index => 0;
 
 
+  @override
   Future<bool> _onWillPop() async {
     return (await showDialog(
       context: context,
@@ -57,12 +58,28 @@ class _KitProfileScreenState extends State<KitProfileScreen> {
     getData();
   }
 
+  var username = "";
+  var email = "";
+  var password = "";
+  var phone = "";
+
   getData() async {
     posts = await RemoteService().getPosts();
     if (posts != null) {
+       username = posts![index].username ?? "";
+       email = posts![index].email ?? "";
+       password = posts![index].password ?? "";
+       phone = posts![index].phone ?? "";
       setState(() {
         isLoaded = true;
       });
+    }
+    if (posts == null){
+       username = "";
+       email = "";
+       password = "";
+       phone = "";
+      isLoaded = false;
     }
   }
 
@@ -87,8 +104,7 @@ class _KitProfileScreenState extends State<KitProfileScreen> {
           ),
           elevation: 1,
         ),
-        body: Visibility(
-          visible: isLoaded,
+        body: Container(
           child: SingleChildScrollView(
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(22, 120, 22, 0),
@@ -117,7 +133,7 @@ class _KitProfileScreenState extends State<KitProfileScreen> {
                       const SizedBox(
                         height: 10,
                       ),
-                      reusableTextField_1(posts![index].title,Icons.drive_file_rename_outline,),
+                      reusableTextField_1(username,Icons.drive_file_rename_outline,),
                       const SizedBox(
                         height: 20,
                       ),
@@ -137,7 +153,7 @@ class _KitProfileScreenState extends State<KitProfileScreen> {
                       const SizedBox(
                         height: 10,
                       ),
-                      reusableTextField_1(posts![index].body ?? '',Icons.drive_file_rename_outline,),
+                      reusableTextField_1(email,Icons.drive_file_rename_outline,),
                       const SizedBox(
                         height: 20,
                       ),
@@ -157,7 +173,7 @@ class _KitProfileScreenState extends State<KitProfileScreen> {
                       const SizedBox(
                         height: 10,
                       ),
-                      reusableTextField_1(posts![index].title , Icons.drive_file_rename_outline,),
+                      reusableTextField_1(password, Icons.drive_file_rename_outline,),
                       const SizedBox(
                         height: 20,
                       ),
@@ -177,7 +193,7 @@ class _KitProfileScreenState extends State<KitProfileScreen> {
                       const SizedBox(
                         height: 10,
                       ),
-                      reusableTextField_1(posts![index].title ,Icons.drive_file_rename_outline,),
+                      reusableTextField_1(phone,Icons.drive_file_rename_outline,),
                       const SizedBox(
                         height: 35,
                       ),
@@ -185,13 +201,9 @@ class _KitProfileScreenState extends State<KitProfileScreen> {
                   ),
                 ),
               ),
-          replacement: const Center(
-            child: CircularProgressIndicator(),
-          ),
         ),
         floatingActionButton: firebaseUIButton_1(context),
       ),
     );
   }
 }
-

@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:v01/kit/home/home.dart';
-import '../kargo/widgets/reusable_widgets.dart';
+import '../../kargo/widgets/reusable_widgets.dart';
 import 'kitsignup.dart';
 // import 'package:v01/kargo/constants.dart';
 class KitSignInScreen extends StatefulWidget {
