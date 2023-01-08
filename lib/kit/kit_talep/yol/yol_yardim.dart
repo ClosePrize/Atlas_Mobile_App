@@ -4,6 +4,7 @@ import '../../widgets/bottomnavigationbar.dart';
 import 'package:provider/provider.dart';
 import 'package:v01/kit/widgets/items.dart';
 import 'cart_model_yol.dart';
+import 'package:back_button_interceptor/back_button_interceptor.dart';
 
 class YolYardimPage extends StatefulWidget{
   const YolYardimPage({super.key});
@@ -27,6 +28,7 @@ class _YolYardimPageState extends State<YolYardimPage> {
         elevation: 1,
       ),
       bottomNavigationBar: KitBottomNavBar(),
+<<<<<<< HEAD
       // floatingActionButton: FloatingActionButton(
       //   backgroundColor: Colors.black,
       //   onPressed: () => Navigator.push(
@@ -40,6 +42,21 @@ class _YolYardimPageState extends State<YolYardimPage> {
       //   child: const Icon(Icons.shopping_bag
       //   ),
       // ),
+=======
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: kitgreenColor,
+        onPressed: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) {
+              return CartPage1();
+            },
+          ),
+        ),
+        child: const Icon(Icons.shopping_bag
+        ),
+      ),
+>>>>>>> origin/Mustafa_vol3_m
       body: Container(
         child: Padding(
           padding: EdgeInsets.fromLTRB(27,60, 27, 7),
@@ -69,7 +86,8 @@ class _YolYardimPageState extends State<YolYardimPage> {
                         actions: <Widget>[
                           TextButton(
                             onPressed: () => Navigator.pop(context, 'İptal'),
-                            child: const Text('İptal'),
+                            child: const Text('İptal',
+                              style: TextStyle(color: kitPrimaryColor),),
                           ),
                           TextButton(
                             onPressed: () { Navigator.pop(context, 'Onayla');
