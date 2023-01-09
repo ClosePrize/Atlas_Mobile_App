@@ -8,12 +8,50 @@ import 'package:v01/welcome.dart';
 class TaleplerimBody extends StatefulWidget{
   const TaleplerimBody({Key? key}) : super(key: key);
 
+  method() => createState()._addCardWidget();
+
   @override
   // ignore: library_private_types_in_public_api
   _TaleplerimBodyState createState() => _TaleplerimBodyState();
 }
 
 class _TaleplerimBodyState extends State<TaleplerimBody> {
+
+  List<Widget> _cardList = [];
+
+  void _addCardWidget() {
+    print("fonk çağrıldı");
+    /*setState(() {
+      _cardList.add(_card());
+      });*/
+    mykargosbutton(context, (){
+      /*Navigator.push(context,
+          MaterialPageRoute(builder: (context) => GoogleMap()));*/
+  });
+  }
+
+  Widget _card() {
+    return Container(
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.fromLTRB(40, 50, 40, 10),
+          child: Column(
+            children: <Widget>[
+              SizedBox(
+                height: 30,
+              ),
+              mykargosbutton(context,
+                      (){
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => GoogleMap()));
+                  }
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 
   Future<bool> _onWillPop() async {
     return (await showDialog(
@@ -63,7 +101,15 @@ class _TaleplerimBodyState extends State<TaleplerimBody> {
         ),
         elevation: 1,
       ),
-      body: Container(
+      body: Center(
+        child: ListView.builder(
+          itemCount: _cardList.length,
+            itemBuilder: (context, index){
+            return _cardList[index];
+            }
+        ),
+      ),
+      /*body: Container(
         child: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.fromLTRB(40, 50, 40, 10),
@@ -82,7 +128,7 @@ class _TaleplerimBodyState extends State<TaleplerimBody> {
             ),
           ),
         ),
-      ),
+      ),*/
     ),
     );
   }
