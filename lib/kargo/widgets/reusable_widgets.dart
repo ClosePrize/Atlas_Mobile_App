@@ -495,10 +495,22 @@ SizedBox kit_button1(BuildContext context, String text, String assetName) {
   );
 }
 
-SizedBox mykargosbutton(BuildContext context, Function onTab) {
+SizedBox mykargosbutton(BuildContext context, Function onTab,kit_adi,kit_durumu,siparis_tarihi,siparis_numarasi) {
+  var status_color;
+
+  if (kit_durumu == "İptal edildi"){
+    status_color = kitPrimaryColor;
+  }
+  else if(kit_durumu == "Teslim Edildi"){
+    status_color = kitgreenColor;
+  }
+  else{
+    status_color = Color.fromARGB(255, 239, 103, 0);
+  }
+
   return SizedBox(
-      height: 180,
-      width: 500,
+      height: MediaQuery.of(context).size.height/4.3,
+      width: MediaQuery.of(context).size.width/1.2,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(18),
         child: Material(
@@ -508,17 +520,64 @@ SizedBox mykargosbutton(BuildContext context, Function onTab) {
             },
             child: Ink(
               decoration: BoxDecoration(
-                color: Colors.grey,
+                border: Border.all(color: Colors.black),
+                borderRadius: BorderRadius.all(
+                    Radius.circular(18)
+                ),
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.5),
+                    spreadRadius: 5,
+                    blurRadius: 7,
+                    offset: Offset(0, 3), // changes position of shadow
+                  ),
+                ],
                   /*image: DecorationImage(
                     image: AssetImage(
                       assetName),
                     fit: BoxFit.fill,
                     )*/
-            )
+            ),
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(15, 50, 10, 10),
+                child:RichText(
+                  text: TextSpan(
+                    text: "",
+                    style: TextStyle(fontSize: 18,color: Colors.black),
+                    children: <TextSpan>[
+                      TextSpan(text: "Kit Adı: ",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,color: Colors.black),),
+                      TextSpan(text: kit_adi+"\n",style: TextStyle(fontSize: 18,color: Colors.black),),
+                      TextSpan(text: "Sipariş Tarihi: ",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,color: Colors.black),),
+                      TextSpan(text: siparis_tarihi+"\n",style: TextStyle(fontSize: 18,color: Colors.black),),
+                      TextSpan(text: "Sipariş Numarası: ",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,color: Colors.black),),
+                      TextSpan(text: siparis_numarasi+"\n",style: TextStyle(fontSize: 18,color: Colors.black),),
+                      TextSpan(text: "Kit Durumu: ",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,color: Colors.black),),
+                      TextSpan(text: kit_durumu+"\n",style: TextStyle(fontSize: 18,color: status_color,),),
+                    ]
+                  )
+              ),
+            ),
           ),
         ),
       ),
     )
+  );
+}
+
+Container taleplerimbutton(BuildContext context, Function onTab,kit_adi,kit_durumu,siparis_tarihi,siparis_numarasi) {
+  return Container(
+    child: Column(
+      children: [
+        SizedBox(
+          height: MediaQuery.of(context).size.height/22,
+        ),
+        mykargosbutton(context, onTab,kit_adi,kit_durumu,siparis_tarihi,siparis_numarasi),
+        SizedBox(
+          height: MediaQuery.of(context).size.height/50,
+        )
+      ],
+    ),
   );
 }
 

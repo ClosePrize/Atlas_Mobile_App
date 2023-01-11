@@ -3,7 +3,8 @@ import 'package:v01/kargo/constants.dart';
 import 'package:v01/kit/home/home.dart';
 import 'package:v01/kit/taleplerim/taleplerim.dart';
 import '../profile/profile.dart';
- 
+import 'package:v01/kit/taleplerim/remote.dart';
+
 class KitBottomNavBar extends StatefulWidget {
   const KitBottomNavBar({super.key});
 

@@ -6,6 +6,7 @@ import '../home/home.dart';
 import 'post.dart';
 import 'remote_service.dart';
 
+
 class KitProfileScreen extends StatefulWidget {
   const KitProfileScreen({Key? key}) : super(key: key);
 
@@ -72,6 +73,7 @@ class _KitProfileScreenState extends State<KitProfileScreen> {
        phone = posts![index].phone ?? "";
       setState(() {
         isLoaded = true;
+        //print()
       });
     }
     if (posts == null){
