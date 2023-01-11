@@ -1,13 +1,15 @@
+import 'dart:convert';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:v01/kargo/constants.dart';
-import 'package:v01/kargo/widgets/reusable_widgets.dart';
 import 'package:v01/kit/widgets/bottomnavigationbar.dart';
 import 'package:v01/kit/widgets/items.dart';
-import '../../sepetim/cart_page.dart';
+import 'besin_inf.dart';
 import 'cart_model_besin.dart';
 import 'package:v01/kit/sepetim/cart_page_klon.dart';
 import 'package:v01/kit/taleplerim/body.dart';
+import 'package:http/http.dart' as http;
 
 class BesinPage extends StatefulWidget {
   const BesinPage({super.key});
@@ -17,7 +19,10 @@ class BesinPage extends StatefulWidget {
 }
 
 class _BesinPageState extends State<BesinPage> {
-  final TaleplerimBody tal123 = new TaleplerimBody();
+  //final TaleplerimBody tal123 = new TaleplerimBody();
+
+  besinDemandinf besindemandinf = besinDemandinf();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -81,8 +86,8 @@ class _BesinPageState extends State<BesinPage> {
                              onPressed: () { Navigator.pop(context, 'Onayla');
                                  Provider.of<CartModel>(context, listen: false)
                                  .addItemToCart(index);
-                             tal123.method();
-                             //sendDemand();
+                             //tal123.method();
+                             sendDemand(value.shopItems[index][0]);
                              },
                              child: const Text('Onayla'),
                            ),
@@ -98,16 +103,15 @@ class _BesinPageState extends State<BesinPage> {
       ),
     );
   }
-
-  /*void sendDemand() async {
+  void sendDemand(String kitadi1) async {
     print("çalışıyor");
     final FirebaseAuth auth = FirebaseAuth.instance;
     final User? user = auth.currentUser;
     var uid = user?.uid.toString();
     var _uidTextController = uid.toString();
-    user1 = User1(name: _userNameTextController.text, phone: _phoneTextController.text, email: _emailTextController.text ,password: _passwordTextController.text, uid: _uidTextController);
-    var response = await http.post(Uri.parse("http://172.28.32.111:8000/api/register/"),
+    besindemandinf = besinDemandinf(kitname: kitadi1, uid: _uidTextController);
+    var response = await http.post(Uri.parse("http://185.77.96.79:8000/api/demands/"),
         headers: {"Content-type": "application/json"},
-        body: json.encode(user1.toJson()));
-    print(response.body);}*/
+        body: json.encode(besindemandinf.toJson()));
+    print(response.body);}
 }
