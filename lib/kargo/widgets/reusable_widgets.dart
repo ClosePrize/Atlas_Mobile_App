@@ -542,6 +542,7 @@ SizedBox mykargosbutton(BuildContext context, Function onTab,kit_adi,kit_durumu,
               child: Padding(
                 padding: EdgeInsets.fromLTRB(15, 50, 10, 10),
                 child:RichText(
+                  maxLines: 5,
                   text: TextSpan(
                     text: "",
                     style: TextStyle(fontSize: 18,color: Colors.black),

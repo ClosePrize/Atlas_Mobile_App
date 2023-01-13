@@ -7,6 +7,7 @@ import 'package:v01/kit/taleplerim/remote.dart';
 import 'package:v01/welcome.dart';
 import 'package:v01/kit/profile/remote_service.dart';
 
+import '../map/map.dart';
 import 'demands.dart';
 
 class TaleplerimBody extends StatefulWidget{
@@ -199,7 +200,7 @@ class _TaleplerimBodyState extends State<TaleplerimBody> {
                       itemBuilder: (context, index){
                       return taleplerimbutton(context, (){
                         Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => GoogleMap()));
+                            MaterialPageRoute(builder: (context) => GoogleMapForKit()));
                       },my_var(index),my_var3(index),my_var1(index),my_var2(index));
                           //http_class.kit[index]['title'],http_class.kit[index]['status'],http_class.kit[index]['created'],http_class.kit[index]['uid']);
                         //demands1![index].title ?? "",demands1![index].status ?? "", demands1![index].created!.replaceRange(10, 27, "") ?? "", demands1![index].uid ?? "");

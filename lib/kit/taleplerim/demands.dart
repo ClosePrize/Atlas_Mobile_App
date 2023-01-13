@@ -29,12 +29,16 @@ class Demands {
     required this.status,
     required this.created,
     required this.updated,
+    required this.lat,
+    required this.lon,
   });
   String? uid;
   String? title;
   String? status;
   String? created;
   String? updated;
+  String? lat;
+  String? lon;
 
   factory Demands.fromJson(Map<String, dynamic> json) => Demands(
     uid: json["uid"],
@@ -42,6 +46,8 @@ class Demands {
     status: json["status"],
     created: json["created"],
     updated: json["updated"],
+    lat: json["lat"],
+    lon: json["lon"],
   );
   Map<String, dynamic> toJson() => {
     "uid": uid,
@@ -49,5 +55,7 @@ class Demands {
     "status": status,
     "created": created,
     "updated": updated,
+    "lat": lat,
+    "lon":lon,
   };
 }
