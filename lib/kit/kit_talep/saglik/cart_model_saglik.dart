@@ -5,7 +5,7 @@ class CartModelSaglik extends ChangeNotifier {
   final List _shopItems = const [
     // [ itemName, itemPrice, imagePath, color ]
     [" Kalp Krizi Kiti ", "assets/saglık_kitleri/kalpkrizikiti.png" ],
-    [" Astım Kiti", "assets/saglık_kitleri/astimkiti.png"],
+    [" Astim Kiti", "assets/saglık_kitleri/astimkiti.png"],
     [" Pandemi Kiti",  "assets/saglık_kitleri/pandemikiti.png"],
     [" Hijyen Kiti",  "assets/saglık_kitleri/hijyenkiti.png"],
   ];

@@ -42,6 +42,7 @@ dependencies:
   google_maps_flutter: ^2.2.1
   http: ^0.13.5
   json_annotation: ^4.7.0
+  location: ^4.4.0
   provider: ^6.0.4
 
 dev_dependencies:
@@ -87,6 +88,7 @@ flutter:
     - assets/besin_kitleri/besinkitleri.png
     - assets/besin_kitleri/hazirgidakiti.png
     - assets/besin_kitleri/sokakhayvanimamakiti.png
+    - assets/drone.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see
