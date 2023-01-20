@@ -120,7 +120,7 @@ class _TaleplerimBodyState extends State<TaleplerimBody> {
       kit_durumu = demands1![index].status ?? "";
 
       if(kit_durumu == "00"){
-        kit_durumu = "Talepiniz Alındı";
+        kit_durumu = "Talebiniz Alındı";
       }
       else if(kit_durumu == "01"){
         kit_durumu = "Hazırlanıyor";
@@ -193,7 +193,7 @@ class _TaleplerimBodyState extends State<TaleplerimBody> {
         elevation: 1,
       ),
         body: Padding(
-              padding: EdgeInsets.fromLTRB(40, 0, 40, 10),
+              padding: EdgeInsets.fromLTRB(30, 10, 30, 10),
                 child:Center(
                   child: ListView.builder(
                     itemCount: siparis_sayisi,

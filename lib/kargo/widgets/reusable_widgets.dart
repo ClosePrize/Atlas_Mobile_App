@@ -504,13 +504,22 @@ SizedBox mykargosbutton(BuildContext context, Function onTab,kit_adi,kit_durumu,
   else if(kit_durumu == "Teslim Edildi"){
     status_color = kitgreenColor;
   }
-  else{
-    status_color = Color.fromARGB(255, 199, 125, 68);
+  else if(kit_durumu== "Hazırlanıyor"){
+    status_color =kargoorangeColor;
   }
-
+  else if(kit_durumu== "Talebiniz Alındı"){
+    status_color = kargoorangeColor;
+  }
+  else if(kit_durumu== "Dağıtımda"){
+    status_color =kargoorangeColor;
+  }
+    else {
+    status_color =kargoorangeColor;
+  }
+  
   return SizedBox(
-      height: MediaQuery.of(context).size.height/4.3,
-      width: MediaQuery.of(context).size.width/1.2,
+      height: MediaQuery.of(context).size.height/4.6,
+      width: MediaQuery.of(context).size.width*2,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(18),
         child: Material(
@@ -520,11 +529,11 @@ SizedBox mykargosbutton(BuildContext context, Function onTab,kit_adi,kit_durumu,
             },
             child: Ink(
               decoration: BoxDecoration(
-                border: Border.all(color: Color.fromARGB(255, 250, 250, 250)),
+                // border: Border.all(color: Color.fromARGB(255, 250, 250, 250)),
                 borderRadius: BorderRadius.all(
-                    Radius.circular(25)
+                    Radius.circular(20)
                 ),
-                color: Color.fromARGB(255, 255, 255, 255),
+                color:status_color,
                 // boxShadow: [
                 //   BoxShadow(
                 //     color: Color.fromARGB(255, 47, 155, 17).withOpacity(0.5),
@@ -540,21 +549,21 @@ SizedBox mykargosbutton(BuildContext context, Function onTab,kit_adi,kit_durumu,
                     )*/
             ),
               child: Padding(
-                padding: EdgeInsets.fromLTRB(15, 50, 10, 10),
+                padding: EdgeInsets.fromLTRB(15, 30, 15, 30),
                 child:RichText(
-                  maxLines: 5,
+                  // maxLines: 6,
                   text: TextSpan(
-                    text: "",
-                    style: TextStyle(fontSize: 18,color: Colors.black),
+                    // text: "",
+                    // style: TextStyle(fontSize: 20,color: Color.fromARGB(255, 255, 255, 255)),
                     children: <TextSpan>[
-                      TextSpan(text: "Kit Adı: ",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,color: Colors.black),),
-                      TextSpan(text: kit_adi+"\n",style: TextStyle(fontSize: 18,color: Colors.black),),
-                      TextSpan(text: "Sipariş Tarihi: ",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,color: Colors.black),),
-                      TextSpan(text: siparis_tarihi+"\n",style: TextStyle(fontSize: 18,color: Colors.black),),
-                      TextSpan(text: "Sipariş Numarası: ",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,color: Colors.black),),
-                      TextSpan(text: siparis_numarasi+"\n",style: TextStyle(fontSize: 18,color: Colors.black),),
-                      TextSpan(text: "Kit Durumu: ",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,color: Colors.black),),
-                      TextSpan(text: kit_durumu+"\n",style: TextStyle(fontSize: 18,color: status_color,),),
+                      TextSpan(text: "Kit Adı: ",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Color.fromARGB(255, 255, 255, 255)),),
+                      TextSpan(text: kit_adi+"\n",style: TextStyle(fontSize: 19,color: Color.fromARGB(255, 255, 255, 255)),),
+                      TextSpan(text: "Sipariş Tarihi: ",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Color.fromARGB(255, 255, 255, 255)),),
+                      TextSpan(text: siparis_tarihi+"\n",style: TextStyle(fontSize: 19,color: Color.fromARGB(255, 255, 255, 255)),),
+                      TextSpan(text: "Sipariş Numarası: ",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Color.fromARGB(255, 255, 255, 255)),),
+                      TextSpan(text: siparis_numarasi+"\n",style: TextStyle(fontSize: 19,color: Color.fromARGB(255, 255, 255, 255)),),
+                      TextSpan(text: "Kit Durumu: ",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Color.fromARGB(255, 255, 255, 255)),),
+                      TextSpan(text: kit_durumu+"\n",style: TextStyle(fontSize: 19,color: Color.fromARGB(255, 255, 255, 255)),),
                     ]
                   )
               ),
