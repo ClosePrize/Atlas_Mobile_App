@@ -32,19 +32,19 @@ class _YolYardimPageState extends State<YolYardimPage> {
         elevation: 1,
       ),
       bottomNavigationBar: KitBottomNavBar(),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: kitgreenColor,
-        onPressed: () => Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) {
-              return CartPage1();
-            },
-          ),
-        ),
-        child: const Icon(Icons.shopping_bag
-        ),
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   backgroundColor: kitgreenColor,
+      //   onPressed: () => Navigator.push(
+      //     context,
+      //     MaterialPageRoute(
+      //       builder: (context) {
+      //         return CartPage1();
+      //       },
+      //     ),
+      //   ),
+      //   child: const Icon(Icons.shopping_bag
+      //   ),
+      // ),
       body: Container(
         child: Padding(
           padding: EdgeInsets.fromLTRB(27,60, 27, 7),
