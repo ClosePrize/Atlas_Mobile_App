@@ -444,8 +444,8 @@ SizedBox kit_button(BuildContext context, String assetName, Function onTab) {
 
 SizedBox kit_button1(BuildContext context, String text, String assetName) {
   return SizedBox(
-      height: 145,
-      width: MediaQuery.of(context).size.width/1.2,
+      height: 150,
+      width: MediaQuery.of(context).size.width/1,
       child: ClipRRect(
         // borderRadius: BorderRadius.circular(18),
         child: Material(
@@ -499,27 +499,25 @@ SizedBox mykargosbutton(BuildContext context, Function onTab,kit_adi,kit_durumu,
   var status_color;
 
   if (kit_durumu == "İptal edildi"){
-    status_color = kitPrimaryColor;
+    status_color = Color.fromARGB(255, 252, 76, 76);
   }
   else if(kit_durumu == "Teslim Edildi"){
-    status_color = kitgreenColor;
+    status_color = Color.fromARGB(255, 164, 172, 180);
   }
   else if(kit_durumu== "Hazırlanıyor"){
-    status_color =kargoorangeColor;
+    status_color =Color.fromARGB(255, 252, 204, 61);
   }
   else if(kit_durumu== "Talebiniz Alındı"){
-    status_color = kargoorangeColor;
+    status_color = Color.fromARGB(255, 21, 200, 102);
+   
   }
   else if(kit_durumu== "Dağıtımda"){
-    status_color =kargoorangeColor;
-  }
-    else {
-    status_color =kargoorangeColor;
+    status_color =Color.fromARGB(255, 44, 141, 252);
   }
   
   return SizedBox(
       height: MediaQuery.of(context).size.height/4.6,
-      width: MediaQuery.of(context).size.width*2,
+      width: MediaQuery.of(context).size.width,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(18),
         child: Material(

@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:v01/kargo/widgets/reusable_widgets.dart';
-import 'package:v01/kargo/map/map.dart';
 import 'package:v01/kargo/constants.dart';
 import 'package:v01/kit/home/home.dart';
 import 'package:v01/kit/taleplerim/remote.dart';
 import 'package:v01/welcome.dart';
-import 'package:v01/kit/profile/remote_service.dart';
 
 import '../map/map.dart';
 import 'demands.dart';
