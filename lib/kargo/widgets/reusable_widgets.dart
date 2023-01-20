@@ -420,15 +420,15 @@ SizedBox firebaseUIButton_deneme(BuildContext context, String title, Function on
 
 SizedBox kit_button(BuildContext context, String assetName, Function onTab) {
   return SizedBox(
-      height: 180,
-      width: 500,
+      height: MediaQuery.of(context).size.height/5,
+      width: MediaQuery.of(context).size.width,
       child: GestureDetector( onTap: (){
                 onTab();
               },
         child: InkWell(
           child: Ink(
             decoration: BoxDecoration(
-                color: kbackgroundColor,
+                // color: kbackgroundColor,
                 image: DecorationImage(
                   image: AssetImage(
                       assetName),
@@ -505,7 +505,7 @@ SizedBox mykargosbutton(BuildContext context, Function onTab,kit_adi,kit_durumu,
     status_color = kitgreenColor;
   }
   else{
-    status_color = Color.fromARGB(255, 239, 103, 0);
+    status_color = Color.fromARGB(255, 199, 125, 68);
   }
 
   return SizedBox(
@@ -520,19 +520,19 @@ SizedBox mykargosbutton(BuildContext context, Function onTab,kit_adi,kit_durumu,
             },
             child: Ink(
               decoration: BoxDecoration(
-                border: Border.all(color: Colors.black),
+                border: Border.all(color: Color.fromARGB(255, 250, 250, 250)),
                 borderRadius: BorderRadius.all(
-                    Radius.circular(18)
+                    Radius.circular(25)
                 ),
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.5),
-                    spreadRadius: 5,
-                    blurRadius: 7,
-                    offset: Offset(0, 3), // changes position of shadow
-                  ),
-                ],
+                color: Color.fromARGB(255, 255, 255, 255),
+                // boxShadow: [
+                //   BoxShadow(
+                //     color: Color.fromARGB(255, 47, 155, 17).withOpacity(0.5),
+                //     spreadRadius: 25,
+                //     blurRadius: 15,
+                //     offset: Offset(3, 3), // changes position of shadow
+                //   ),
+                // ],
                   /*image: DecorationImage(
                     image: AssetImage(
                       assetName),
@@ -568,10 +568,12 @@ SizedBox mykargosbutton(BuildContext context, Function onTab,kit_adi,kit_durumu,
 
 Container taleplerimbutton(BuildContext context, Function onTab,kit_adi,kit_durumu,siparis_tarihi,siparis_numarasi) {
   return Container(
+    // color: Colors.red,
     child: Column(
       children: [
         SizedBox(
           height: MediaQuery.of(context).size.height/22,
+          
         ),
         mykargosbutton(context, onTab,kit_adi,kit_durumu,siparis_tarihi,siparis_numarasi),
         SizedBox(
