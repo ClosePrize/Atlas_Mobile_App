@@ -48,10 +48,10 @@ class _KitHomeScreenState extends State<KitHomeScreen>{
   Widget build(BuildContext context) {
     return Scaffold(
        appBar: AppBar(
-          backgroundColor:Color.fromARGB(255, 230, 77, 54),
+          backgroundColor:Color.fromARGB(255, 235, 46, 17),
           leading: IconButton(
             icon: Icon(
-              Icons.close_rounded, color:Color.fromARGB(255, 230, 77, 54).withOpacity(0), size: 30,),
+              Icons.close_rounded, color:Color.fromARGB(255, 235, 46, 17).withOpacity(0), size: 30,),
             onPressed: () {}
           ),
           elevation: 1,
