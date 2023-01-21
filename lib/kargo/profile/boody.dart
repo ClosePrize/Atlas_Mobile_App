@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../kargo/constants.dart';
 import '../../kargo/widgets/reusable_widgets.dart';
+import '../../kit/home/home.dart';
 import '../../welcome.dart';
 import 'post.dart';
 import 'remote_service.dart';
@@ -191,14 +192,25 @@ class _KargoProfileScreen1State extends State<KargoProfileScreen1> {
                   ),
                   reusableTextField_1(phone,Icons.drive_file_rename_outline,),
                   const SizedBox(
-                    height: 35,
+                    height: 20,
                   ),
+                  Stack(
+                    children: [
+                      Row(children: [
+                        ChangeButton(context, "ATLAS Kit"),
+                      ]),
+                      Row(children: [
+                        firebaseUIButton_1(context, kitblueColor)
+                      ],
+                        mainAxisAlignment: MainAxisAlignment.end,)
+                    ],
+                  )
                 ],
               ),
             ),
           ),
         ),
-        floatingActionButton: firebaseUIButton_1(context),
+        //floatingActionButton: firebaseUIButton_1(context),
       ),
     );
   }
