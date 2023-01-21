@@ -10,6 +10,7 @@ import '../../widgets/bottomnavigationbar.dart';
 import 'package:provider/provider.dart';
 import 'package:v01/kit/widgets/items.dart';
 import 'cart_model_saglik.dart';
+import 'package:location/location.dart';
 
 class SaglikPage extends StatefulWidget{
   const SaglikPage({super.key});
@@ -20,6 +21,38 @@ class SaglikPage extends StatefulWidget{
 
 class _SaglikPageState extends State<SaglikPage> {
   saglikDemandinf saglikdemandinf = saglikDemandinf();
+  LocationData? user_currentLocation;
+
+  getCurrentLocation(kitadi2) async {
+    Location location = Location();
+    // GoogleMapController googleMapController = await _controller.future;
+    location.getLocation().then(
+          (location) {
+        user_currentLocation = location;
+        String location_lat = user_currentLocation!.latitude!.toString();
+        String location_lon = user_currentLocation!.longitude!.toString();
+        Future.delayed(Duration(seconds: 1), (){
+          sendDemand1(kitadi2, location_lat, location_lon);
+        });
+      },
+    );
+
+    location.onLocationChanged.listen((newLoc) {
+      user_currentLocation = newLoc;
+      String location_lat = user_currentLocation!.latitude!.toString();
+      String location_lon = user_currentLocation!.longitude!.toString();
+
+      setState(() {});
+
+    }
+    );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -82,7 +115,8 @@ class _SaglikPageState extends State<SaglikPage> {
                             onPressed: () { Navigator.pop(context, 'Onayla');
                             Provider.of<CartModelSaglik>(context, listen: false)
                                 .addItemToCart(index);
-                            sendDemand1(value.shopItems[index][0]);
+                            getCurrentLocation(value.shopItems[index][0]);
+                            //sendDemand1(value.shopItems[index][0]);
                             Navigator.pushReplacement<void, void>(
                               context,
                               MaterialPageRoute<void>(
@@ -104,15 +138,17 @@ class _SaglikPageState extends State<SaglikPage> {
       ),
     );
   }
-  void sendDemand1(String kitadi2) async {
+  void sendDemand1(String kitadi2, latitude,longitude) async {
     print("çalışıyor");
+    print(longitude+latitude);
     final FirebaseAuth auth = FirebaseAuth.instance;
     final User? user = auth.currentUser;
     var uid = user?.uid.toString();
     var _uidTextController = uid.toString();
-    saglikdemandinf = saglikDemandinf(kitname: kitadi2, uid: _uidTextController);
+    saglikdemandinf = saglikDemandinf(type: "1", kitname: kitadi2, uid: _uidTextController, lat: latitude,lon:longitude);
     var response = await http.post(Uri.parse("http://185.77.96.79:8000/api/demands/"),
         headers: {"Content-type": "application/json"},
         body: json.encode(saglikdemandinf.toJson()));
-    print(response.body);}
+    print(response.body);
+  }
 }

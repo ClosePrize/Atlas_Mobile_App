@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
+import 'package:v01/kit/home/home.dart';
 import '../../welcome.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
@@ -138,7 +139,25 @@ class _KargoBodyState extends State<KargoBody> {
 
         ),
 
-        )
+        ),
+        floatingActionButton: FloatingActionButton(
+          child: ClipRRect(child:Image.asset('assets/kitlogo.png',
+            fit: BoxFit.fitHeight,height: 150,width:100 ,),borderRadius: BorderRadius.circular(40),),/*DecorationImage(
+              fit: BoxFit.fill,
+              image: AssetImage(
+                'assets/kargologo.png'
+              )
+            )*/
+          //borderRadius: BorderRadius.circular(90.0),
+          onPressed: () {
+            Navigator.pushReplacement<void, void>(
+            context,
+            MaterialPageRoute<void>(
+                builder: (BuildContext context) => KitHomePage(),
+          ),
+        );
+      }
+    ),
 
       ),
     );
