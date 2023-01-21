@@ -167,10 +167,111 @@ class MySearchDelegate extends SearchDelegate {
       );
   }
 }
-
-Container firebaseUIButton_1(BuildContext context) {
+Container ChangeButton(BuildContext context, String text){
   return Container(
-    width: MediaQuery.of(context).size.width/2,
+    width: MediaQuery.of(context).size.width/2.4,
+    height: 45,
+    margin: const EdgeInsets.fromLTRB(0, 10, 0, 20),
+    decoration: BoxDecoration(borderRadius: BorderRadius.circular(90)),
+    child: ElevatedButton(
+      onPressed: () => showDialog<String>(
+        context: context,
+        builder: (BuildContext context) => AlertDialog(
+          title: const Text('Çıkış Onay'),
+          content: Text('$text uygulamasına geçmek istediğinize emin misiniz?'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () => Navigator.pop(context, 'İptal'),
+              child: const Text('İptal',
+                style: TextStyle(color: kitPrimaryColor),),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context, 'Onayla');
+                Navigator.pushReplacement<void, void>(
+                  context,
+                  MaterialPageRoute<void>(
+                    builder: (BuildContext context) => const KitHomePage(),
+                  ),
+                );
+              },
+              child: const Text('Onayla'),
+            ),
+          ],
+        ),
+      ),
+      child: Text(
+        text,
+        style: const TextStyle(
+            color: Color.fromARGB(221, 255, 255, 255), fontWeight: FontWeight.bold, fontSize: 16),
+      ),
+      style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.resolveWith((states) {
+            if (states.contains(MaterialState.pressed)) {
+              return Color.fromARGB(66, 255, 255, 255);
+            }
+            return kargoredColor;
+          }),
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)))),
+    ),
+  );
+}
+
+Container ChangeButtonForKit(BuildContext context, String text){
+  return Container(
+    width: MediaQuery.of(context).size.width/2.4,
+    height: 45,
+    margin: const EdgeInsets.fromLTRB(0, 10, 0, 20),
+    decoration: BoxDecoration(borderRadius: BorderRadius.circular(90)),
+    child: ElevatedButton(
+      onPressed: () => showDialog<String>(
+        context: context,
+        builder: (BuildContext context) => AlertDialog(
+          title: const Text('Geçiş Onay'),
+          content: Text('$text uygulamasına geçmek istediğinize emin misiniz?'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () => Navigator.pop(context, 'İptal'),
+              child: const Text('İptal',
+                style: TextStyle(color: kitPrimaryColor),),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context, 'Onayla');
+                Navigator.pushReplacement<void, void>(
+                  context,
+                  MaterialPageRoute<void>(
+                    builder: (BuildContext context) => const KargoHomeScreen(),
+                  ),
+                );
+              },
+              child: const Text('Onayla'),
+            ),
+          ],
+        ),
+      ),
+      child: Text(
+        text,
+        style: const TextStyle(
+            color: Color.fromARGB(221, 255, 255, 255), fontWeight: FontWeight.bold, fontSize: 16),
+      ),
+      style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.resolveWith((states) {
+            if (states.contains(MaterialState.pressed)) {
+              return Color.fromARGB(66, 255, 255, 255);
+            }
+            return kitblueColor;
+          }),
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)))),
+    ),
+  );
+}
+
+Container firebaseUIButton_1(BuildContext context,Color? color) {
+  return Container(
+    width: MediaQuery.of(context).size.width/2.4,
     height: 45,
     margin: const EdgeInsets.fromLTRB(0, 10, 0, 20),
     decoration: BoxDecoration(borderRadius: BorderRadius.circular(90)),
@@ -211,13 +312,14 @@ Container firebaseUIButton_1(BuildContext context) {
             if (states.contains(MaterialState.pressed)) {
               return Color.fromARGB(66, 255, 255, 255);
             }
-            return kargoredColor;
+            return color;
           }),
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)))),
     ),
   );
 }
+
 Container firebaseUIButton(BuildContext context, String title, Function onTap) {
   return Container(
     width: MediaQuery.of(context).size.width/2,

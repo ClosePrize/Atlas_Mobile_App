@@ -23,7 +23,7 @@ class _TalepOnayScreenState extends State<TalepOnayScreen>{
             onPressed: () => Navigator.pop(context, false)
           ),
           elevation: 2,
-      ),
+        ),
       body: Container(
         /*decoration: BoxDecoration(
           color: kbackgroundColor,

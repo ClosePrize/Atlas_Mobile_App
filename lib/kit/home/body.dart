@@ -113,7 +113,7 @@ class _KitHomeScreenState extends State<KitHomeScreen>{
             ),
           ),
         ),
-        floatingActionButton: FloatingActionButton(
+        /*floatingActionButton: FloatingActionButton(
           child: ClipRRect(child:Image.asset('assets/kargologo.png',
           fit: BoxFit.fitHeight,height: 150,width:100 ,),borderRadius: BorderRadius.circular(40),),/*DecorationImage(
               fit: BoxFit.fill,
@@ -130,7 +130,7 @@ class _KitHomeScreenState extends State<KitHomeScreen>{
               ),
             );
           }
-        ),
+        ),*/
       ),
     );
   }

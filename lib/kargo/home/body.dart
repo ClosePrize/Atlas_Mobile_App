@@ -140,7 +140,7 @@ class _KargoBodyState extends State<KargoBody> {
         ),
 
         ),
-        floatingActionButton: FloatingActionButton(
+        /*floatingActionButton: FloatingActionButton(
           child: ClipRRect(child:Image.asset('assets/kitlogo.png',
             fit: BoxFit.fitHeight,height: 150,width:100 ,),borderRadius: BorderRadius.circular(40),),/*DecorationImage(
               fit: BoxFit.fill,
@@ -157,7 +157,7 @@ class _KargoBodyState extends State<KargoBody> {
           ),
         );
       }
-    ),
+    ),*/
 
       ),
     );
