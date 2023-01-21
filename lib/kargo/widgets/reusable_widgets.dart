@@ -499,20 +499,23 @@ SizedBox mykargosbutton(BuildContext context, Function onTab,kit_adi,kit_durumu,
   var status_color;
 
   if (kit_durumu == "İptal edildi"){
-    status_color = Color.fromARGB(255, 252, 76, 76);
+    status_color = Color.fromARGB(255, 250, 75, 75);
   }
   else if(kit_durumu == "Teslim Edildi"){
-    status_color = Color.fromARGB(255, 164, 172, 180);
+    status_color = Color.fromARGB(255, 164, 171, 182);
   }
   else if(kit_durumu== "Hazırlanıyor"){
-    status_color =Color.fromARGB(255, 252, 204, 61);
+    status_color =Color.fromARGB(255, 255, 210, 47);
   }
   else if(kit_durumu== "Talebiniz Alındı"){
-    status_color = Color.fromARGB(255, 21, 200, 102);
+    status_color = Color.fromARGB(255, 109, 239, 39);
    
   }
   else if(kit_durumu== "Dağıtımda"){
-    status_color =Color.fromARGB(255, 44, 141, 252);
+    status_color =Color.fromARGB(255, 45, 202, 255);
+  }
+  else{
+    status_color= Color.fromARGB(255, 255, 179, 2);
   }
   
   return SizedBox(
@@ -552,16 +555,16 @@ SizedBox mykargosbutton(BuildContext context, Function onTab,kit_adi,kit_durumu,
                   // maxLines: 6,
                   text: TextSpan(
                     // text: "",
-                    // style: TextStyle(fontSize: 20,color: Color.fromARGB(255, 255, 255, 255)),
+                    // style: TextStyle(fontSize: 20,color: Colors.black),
                     children: <TextSpan>[
-                      TextSpan(text: "Kit Adı: ",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Color.fromARGB(255, 255, 255, 255)),),
-                      TextSpan(text: kit_adi+"\n",style: TextStyle(fontSize: 19,color: Color.fromARGB(255, 255, 255, 255)),),
-                      TextSpan(text: "Sipariş Tarihi: ",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Color.fromARGB(255, 255, 255, 255)),),
-                      TextSpan(text: siparis_tarihi+"\n",style: TextStyle(fontSize: 19,color: Color.fromARGB(255, 255, 255, 255)),),
-                      TextSpan(text: "Sipariş Numarası: ",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Color.fromARGB(255, 255, 255, 255)),),
-                      TextSpan(text: siparis_numarasi+"\n",style: TextStyle(fontSize: 19,color: Color.fromARGB(255, 255, 255, 255)),),
-                      TextSpan(text: "Kit Durumu: ",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Color.fromARGB(255, 255, 255, 255)),),
-                      TextSpan(text: kit_durumu+"\n",style: TextStyle(fontSize: 19,color: Color.fromARGB(255, 255, 255, 255)),),
+                      TextSpan(text: "Kit Adı: ",style: TextStyle(fontFamily: "Caveat" ,fontSize: 20,fontWeight: FontWeight.bold,color: Colors.white)),
+                      TextSpan(text: kit_adi+"\n",style: TextStyle(fontFamily: "Caveat",fontSize: 19,color: Colors.white),),
+                      TextSpan(text: "Sipariş Tarihi: ",style: TextStyle(fontFamily: "Caveat",fontSize: 20,fontWeight: FontWeight.bold,color: Colors.white),),
+                      TextSpan(text: siparis_tarihi+"\n",style: TextStyle(fontFamily: "Caveat",fontSize: 19,color: Colors.white),),
+                      TextSpan(text: "Sipariş Numarası: ",style: TextStyle(fontFamily: "Caveat",fontSize: 20,fontWeight: FontWeight.bold,color: Colors.white),),
+                      TextSpan(text: siparis_numarasi+"\n",style: TextStyle(fontFamily: "Caveat",fontSize: 19,color: Colors.white),),
+                      TextSpan(text: "Kit Durumu: ",style: TextStyle(fontFamily: "Caveat",fontSize: 20,fontWeight: FontWeight.bold,color: Colors.white),),
+                      TextSpan(text: kit_durumu+"\n",style: TextStyle(fontFamily: "Caveat",fontSize: 19,color:Colors.white),),
                     ]
                   )
               ),
