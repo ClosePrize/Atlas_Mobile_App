@@ -420,15 +420,15 @@ SizedBox firebaseUIButton_deneme(BuildContext context, String title, Function on
 
 SizedBox kit_button(BuildContext context, String assetName, Function onTab) {
   return SizedBox(
-      height: 180,
-      width: 500,
+      height: MediaQuery.of(context).size.height/5,
+      width: MediaQuery.of(context).size.width,
       child: GestureDetector( onTap: (){
                 onTab();
               },
         child: InkWell(
           child: Ink(
             decoration: BoxDecoration(
-                color: kbackgroundColor,
+                // color: kbackgroundColor,
                 image: DecorationImage(
                   image: AssetImage(
                       assetName),
@@ -444,8 +444,8 @@ SizedBox kit_button(BuildContext context, String assetName, Function onTab) {
 
 SizedBox kit_button1(BuildContext context, String text, String assetName) {
   return SizedBox(
-      height: 145,
-      width: MediaQuery.of(context).size.width/1.2,
+      height: 150,
+      width: MediaQuery.of(context).size.width/1,
       child: ClipRRect(
         // borderRadius: BorderRadius.circular(18),
         child: Material(
@@ -499,18 +499,25 @@ SizedBox mykargosbutton(BuildContext context, Function onTab,kit_adi,kit_durumu,
   var status_color;
 
   if (kit_durumu == "İptal edildi"){
-    status_color = kitPrimaryColor;
+    status_color = Color.fromARGB(255, 252, 76, 76);
   }
   else if(kit_durumu == "Teslim Edildi"){
-    status_color = kitgreenColor;
+    status_color = Color.fromARGB(255, 164, 172, 180);
   }
-  else{
-    status_color = Color.fromARGB(255, 239, 103, 0);
+  else if(kit_durumu== "Hazırlanıyor"){
+    status_color =Color.fromARGB(255, 252, 204, 61);
   }
-
+  else if(kit_durumu== "Talebiniz Alındı"){
+    status_color = Color.fromARGB(255, 21, 200, 102);
+   
+  }
+  else if(kit_durumu== "Dağıtımda"){
+    status_color =Color.fromARGB(255, 44, 141, 252);
+  }
+  
   return SizedBox(
-      height: MediaQuery.of(context).size.height/4.3,
-      width: MediaQuery.of(context).size.width/1.2,
+      height: MediaQuery.of(context).size.height/4.6,
+      width: MediaQuery.of(context).size.width,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(18),
         child: Material(
@@ -520,19 +527,19 @@ SizedBox mykargosbutton(BuildContext context, Function onTab,kit_adi,kit_durumu,
             },
             child: Ink(
               decoration: BoxDecoration(
-                border: Border.all(color: Colors.black),
+                // border: Border.all(color: Color.fromARGB(255, 250, 250, 250)),
                 borderRadius: BorderRadius.all(
-                    Radius.circular(18)
+                    Radius.circular(20)
                 ),
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.5),
-                    spreadRadius: 5,
-                    blurRadius: 7,
-                    offset: Offset(0, 3), // changes position of shadow
-                  ),
-                ],
+                color:status_color,
+                // boxShadow: [
+                //   BoxShadow(
+                //     color: Color.fromARGB(255, 47, 155, 17).withOpacity(0.5),
+                //     spreadRadius: 25,
+                //     blurRadius: 15,
+                //     offset: Offset(3, 3), // changes position of shadow
+                //   ),
+                // ],
                   /*image: DecorationImage(
                     image: AssetImage(
                       assetName),
@@ -540,21 +547,21 @@ SizedBox mykargosbutton(BuildContext context, Function onTab,kit_adi,kit_durumu,
                     )*/
             ),
               child: Padding(
-                padding: EdgeInsets.fromLTRB(15, 50, 10, 10),
+                padding: EdgeInsets.fromLTRB(15, 30, 15, 30),
                 child:RichText(
-                  maxLines: 5,
+                  // maxLines: 6,
                   text: TextSpan(
-                    text: "",
-                    style: TextStyle(fontSize: 18,color: Colors.black),
+                    // text: "",
+                    // style: TextStyle(fontSize: 20,color: Color.fromARGB(255, 255, 255, 255)),
                     children: <TextSpan>[
-                      TextSpan(text: "Kit Adı: ",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,color: Colors.black),),
-                      TextSpan(text: kit_adi+"\n",style: TextStyle(fontSize: 18,color: Colors.black),),
-                      TextSpan(text: "Sipariş Tarihi: ",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,color: Colors.black),),
-                      TextSpan(text: siparis_tarihi+"\n",style: TextStyle(fontSize: 18,color: Colors.black),),
-                      TextSpan(text: "Sipariş Numarası: ",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,color: Colors.black),),
-                      TextSpan(text: siparis_numarasi+"\n",style: TextStyle(fontSize: 18,color: Colors.black),),
-                      TextSpan(text: "Kit Durumu: ",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,color: Colors.black),),
-                      TextSpan(text: kit_durumu+"\n",style: TextStyle(fontSize: 18,color: status_color,),),
+                      TextSpan(text: "Kit Adı: ",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Color.fromARGB(255, 255, 255, 255)),),
+                      TextSpan(text: kit_adi+"\n",style: TextStyle(fontSize: 19,color: Color.fromARGB(255, 255, 255, 255)),),
+                      TextSpan(text: "Sipariş Tarihi: ",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Color.fromARGB(255, 255, 255, 255)),),
+                      TextSpan(text: siparis_tarihi+"\n",style: TextStyle(fontSize: 19,color: Color.fromARGB(255, 255, 255, 255)),),
+                      TextSpan(text: "Sipariş Numarası: ",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Color.fromARGB(255, 255, 255, 255)),),
+                      TextSpan(text: siparis_numarasi+"\n",style: TextStyle(fontSize: 19,color: Color.fromARGB(255, 255, 255, 255)),),
+                      TextSpan(text: "Kit Durumu: ",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Color.fromARGB(255, 255, 255, 255)),),
+                      TextSpan(text: kit_durumu+"\n",style: TextStyle(fontSize: 19,color: Color.fromARGB(255, 255, 255, 255)),),
                     ]
                   )
               ),
@@ -568,10 +575,12 @@ SizedBox mykargosbutton(BuildContext context, Function onTab,kit_adi,kit_durumu,
 
 Container taleplerimbutton(BuildContext context, Function onTab,kit_adi,kit_durumu,siparis_tarihi,siparis_numarasi) {
   return Container(
+    // color: Colors.red,
     child: Column(
       children: [
         SizedBox(
           height: MediaQuery.of(context).size.height/22,
+          
         ),
         mykargosbutton(context, onTab,kit_adi,kit_durumu,siparis_tarihi,siparis_numarasi),
         SizedBox(
