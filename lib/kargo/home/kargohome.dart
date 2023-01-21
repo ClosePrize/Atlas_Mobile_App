@@ -13,7 +13,7 @@ class KargoHomeScreen extends StatelessWidget {
     return Scaffold(
    
       backgroundColor: kbackgroundColor,
-      bottomNavigationBar: BottomNavBar(),
+      bottomNavigationBar: BottomNavBarForHome(),
       body:KargoBody() ,
       floatingActionButton: SizedBox(
           height: 70,

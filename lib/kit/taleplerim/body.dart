@@ -192,7 +192,9 @@ class _TaleplerimBodyState extends State<TaleplerimBody> {
         ),
         elevation: 1,
       ),
-        body: Padding(
+        body: siparis_sayisi == 0
+          ? const Center(child: Text("Verilmiş Siparişiniz Bulunmamaktadır."))
+            : Padding(
               padding: EdgeInsets.fromLTRB(40, 0, 40, 10),
                 child:Center(
                   child: ListView.builder(

@@ -14,6 +14,19 @@ class KitTalepOnayScreen extends StatefulWidget{
 class _KitTalepOnayScreenState extends State<KitTalepOnayScreen>{
 
   @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration(seconds: 1, milliseconds: 500), (){
+      Navigator.pushReplacement<void, void>(
+        context,
+        MaterialPageRoute<void>(
+          builder: (BuildContext context) => const KitHomePage(),
+        ),
+      );
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
