@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:v01/kit/map/remote.dart';
+import 'package:v01/kit/taleplerim/taleplerim.dart';
 import 'dart:async';
 import 'dart:convert';
 import '../../kargo/constants.dart';
@@ -101,15 +102,16 @@ class _MapScreenForKitState extends State<MapScreenForKit>{
         leading: IconButton(
             icon: Icon(
               Icons.close_rounded, color: Colors.white, size: 30,),
-            onPressed: () { /*Navigator.pop(context, false);
-              Navigator.push(context, MaterialPageRoute(builder: (context) => TaleplerimScreen()));*/
-              Navigator.pop(context, false);
-              /*Navigator.pushReplacement<void, void>(
+            onPressed: () { //Navigator.pop(context, false);
+              //Navigator.push(context, MaterialPageRoute(builder: (context) => TaleplerimScreen()));
+              //Navigator.pop(context, false);
+              //Navigator.(context, MaterialPageRoute(builder: (context) => TaleplerimScreen()))
+              Navigator.pushReplacement(
                 context,
-                MaterialPageRoute<void>(
+                MaterialPageRoute(
                   builder: (BuildContext context) => TaleplerimScreen(),
                 ),
-              );*/
+              );
             }
         ),
         elevation: 1,

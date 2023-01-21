@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:v01/kit/kit_talep/yol/yol_inf.dart';
 import '../../../kargo/constants.dart';
+import '../../taleplerim/talep_onay.dart';
 import '../../widgets/bottomnavigationbar.dart';
 import 'package:v01/kit/sepetim/cart_page_klon.dart';
 import 'package:provider/provider.dart';
@@ -81,7 +82,14 @@ class _YolYardimPageState extends State<YolYardimPage> {
                             onPressed: () { Navigator.pop(context, 'Onayla');
                             Provider.of<CartModelYol>(context, listen: false)
                                 .addItemToCart(index);
-                            sendDemand2(value.shopItems[index][0]);},
+                            sendDemand2(value.shopItems[index][0]);
+                            Navigator.pushReplacement<void, void>(
+                              context,
+                              MaterialPageRoute<void>(
+                                builder: (BuildContext context) => const KitTalepOnayPage(),
+                              ),
+                            );
+                            },
                             child: const Text('Onayla'),
                           ),
                         ],

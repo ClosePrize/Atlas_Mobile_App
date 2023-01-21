@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:v01/kargo/constants.dart';
+import 'package:v01/kit/taleplerim/talep_onay.dart';
 import 'package:v01/kit/widgets/bottomnavigationbar.dart';
 import 'package:v01/kit/widgets/items.dart';
 import 'besin_inf.dart';
@@ -88,6 +89,12 @@ class _BesinPageState extends State<BesinPage> {
                                  .addItemToCart(index);
                              //tal123.method();
                              sendDemand(value.shopItems[index][0]);
+                             Navigator.pushReplacement<void, void>(
+                               context,
+                               MaterialPageRoute<void>(
+                                 builder: (BuildContext context) => const KitTalepOnayPage(),
+                               ),
+                             );
                              },
                              child: const Text('Onayla'),
                            ),

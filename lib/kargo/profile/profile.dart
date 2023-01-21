@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:v01/kargo/constants.dart';
 import 'package:v01/kargo/profile/body.dart';
+import 'package:v01/kargo/profile/boody.dart';
 import 'package:v01/kargo/widgets/bottomnavigationbar.dart';
 
 class KargoProfileScreen extends StatelessWidget{
@@ -9,8 +10,8 @@ class KargoProfileScreen extends StatelessWidget{
   Widget build(BuildContext context) {
     return const Scaffold(
       backgroundColor: kbackgroundColor,
-      bottomNavigationBar: BottomNavBar(),
-      body: ProfileScreen(),
+      bottomNavigationBar: BottomNavBarForProfile(),
+      body: KargoProfileScreen1(),
     );
   }
 }

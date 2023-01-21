@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:v01/kit/kit_talep/saglik/saglik_inf.dart';
 import 'package:v01/kit/sepetim/cart_page_klon.dart';
 import '../../../kargo/constants.dart';
+import '../../taleplerim/talep_onay.dart';
 import '../../widgets/bottomnavigationbar.dart';
 import 'package:provider/provider.dart';
 import 'package:v01/kit/widgets/items.dart';
@@ -81,7 +82,14 @@ class _SaglikPageState extends State<SaglikPage> {
                             onPressed: () { Navigator.pop(context, 'Onayla');
                             Provider.of<CartModelSaglik>(context, listen: false)
                                 .addItemToCart(index);
-                            sendDemand1(value.shopItems[index][0]);},
+                            sendDemand1(value.shopItems[index][0]);
+                            Navigator.pushReplacement<void, void>(
+                              context,
+                              MaterialPageRoute<void>(
+                                builder: (BuildContext context) => const KitTalepOnayPage(),
+                                ),
+                              );
+                            },
                             child: const Text('Onayla'),
                           ),
                         ],

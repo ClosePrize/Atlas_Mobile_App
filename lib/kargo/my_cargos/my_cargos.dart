@@ -10,7 +10,7 @@ class MyCargosScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kbackgroundColor,
-      bottomNavigationBar: BottomNavBar(),
+      bottomNavigationBar: BottomNavBarForKargolarim(),
       body:MyKargosBody() ,
     );
   }
