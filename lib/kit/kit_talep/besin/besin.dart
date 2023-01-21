@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:location/location.dart';
 import 'package:provider/provider.dart';
 import 'package:v01/kargo/constants.dart';
 import 'package:v01/kit/taleplerim/talep_onay.dart';
@@ -21,8 +22,32 @@ class BesinPage extends StatefulWidget {
 
 class _BesinPageState extends State<BesinPage> {
   //final TaleplerimBody tal123 = new TaleplerimBody();
-
   besinDemandinf besindemandinf = besinDemandinf();
+  LocationData? user_currentLocation;
+
+  getCurrentLocation(kitadi1) async {
+    Location location = Location();
+    // GoogleMapController googleMapController = await _controller.future;
+    location.getLocation().then(
+          (location) {
+        user_currentLocation = location;
+        String location_lat = user_currentLocation!.latitude!.toString();
+        String location_lon = user_currentLocation!.longitude!.toString();
+        Future.delayed(Duration(seconds: 1), (){
+          sendDemand(kitadi1, location_lat, location_lon);
+        });
+      },
+    );
+
+    location.onLocationChanged.listen((newLoc) {
+      user_currentLocation = newLoc;
+      String location_lat = user_currentLocation!.latitude!.toString();
+      String location_lon = user_currentLocation!.longitude!.toString();
+
+      setState(() {});
+    }
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -88,7 +113,9 @@ class _BesinPageState extends State<BesinPage> {
                                  Provider.of<CartModel>(context, listen: false)
                                  .addItemToCart(index);
                              //tal123.method();
-                             sendDemand(value.shopItems[index][0]);
+                             //sendDemand(value.shopItems[index][0]);
+                             getCurrentLocation(value.shopItems[index][0]);
+
                              Navigator.pushReplacement<void, void>(
                                context,
                                MaterialPageRoute<void>(
@@ -110,13 +137,13 @@ class _BesinPageState extends State<BesinPage> {
       ),
     );
   }
-  void sendDemand(String kitadi1) async {
+  void sendDemand(String kitadi1,latitude, longitude) async {
     print("çalışıyor");
     final FirebaseAuth auth = FirebaseAuth.instance;
     final User? user = auth.currentUser;
     var uid = user?.uid.toString();
     var _uidTextController = uid.toString();
-    besindemandinf = besinDemandinf(kitname: kitadi1, uid: _uidTextController);
+    besindemandinf = besinDemandinf(type: "1", kitname: kitadi1, uid: _uidTextController, lat: latitude, lon: longitude);
     var response = await http.post(Uri.parse("http://185.77.96.79:8000/api/demands/"),
         headers: {"Content-type": "application/json"},
         body: json.encode(besindemandinf.toJson()));

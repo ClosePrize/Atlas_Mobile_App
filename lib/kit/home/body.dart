@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:v01/kargo/home/kargohome.dart';
 import 'package:v01/kargo/widgets/reusable_widgets.dart';
 import 'package:v01/welcome.dart';
 import '../../kargo/constants.dart';
@@ -46,7 +47,9 @@ class _KitHomeScreenState extends State<KitHomeScreen>{
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return WillPopScope(
+      onWillPop: _onWillPop,
+      child: Scaffold(
        appBar: AppBar(
           backgroundColor:Color.fromARGB(255, 235, 46, 17),
           leading: IconButton(
@@ -69,14 +72,14 @@ class _KitHomeScreenState extends State<KitHomeScreen>{
       //   child: const Icon(Icons.shopping_bag
       //   ),
       // ),
-      
-      
+
+
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.fromLTRB(25, 10, 25, 10),
           child: Column(
             children: <Widget>[
-         
+
               SizedBox(
                 height: 40,
               ),
@@ -106,8 +109,27 @@ class _KitHomeScreenState extends State<KitHomeScreen>{
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => KargoKitTalepScreen()));
               })*/
-            ],
+              ],
+            ),
           ),
+        ),
+        floatingActionButton: FloatingActionButton(
+          child: ClipRRect(child:Image.asset('assets/kargologo.png',
+          fit: BoxFit.fitHeight,height: 150,width:100 ,),borderRadius: BorderRadius.circular(40),),/*DecorationImage(
+              fit: BoxFit.fill,
+              image: AssetImage(
+                'assets/kargologo.png'
+              )
+            )*/
+            //borderRadius: BorderRadius.circular(90.0),
+          onPressed: () {
+            Navigator.pushReplacement<void, void>(
+              context,
+              MaterialPageRoute<void>(
+                builder: (BuildContext context) => KargoHomeScreen(),
+              ),
+            );
+          }
         ),
       ),
     );

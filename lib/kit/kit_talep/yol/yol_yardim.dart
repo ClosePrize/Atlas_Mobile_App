@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:location/location.dart';
 import 'package:v01/kit/kit_talep/yol/yol_inf.dart';
 import '../../../kargo/constants.dart';
 import '../../taleplerim/talep_onay.dart';
@@ -20,6 +21,33 @@ class YolYardimPage extends StatefulWidget{
 
 class _YolYardimPageState extends State<YolYardimPage> {
   yolDemandinf yoldemandinf = yolDemandinf();
+  LocationData? user_currentLocation;
+
+  getCurrentLocation(kitadi2) async {
+    Location location = Location();
+    // GoogleMapController googleMapController = await _controller.future;
+    location.getLocation().then(
+          (location) {
+        user_currentLocation = location;
+        String location_lat = user_currentLocation!.latitude!.toString();
+        String location_lon = user_currentLocation!.longitude!.toString();
+        Future.delayed(Duration(seconds: 1), (){
+          sendDemand2(kitadi2, location_lat, location_lon);
+        });
+      },
+    );
+
+    location.onLocationChanged.listen((newLoc) {
+      user_currentLocation = newLoc;
+      String location_lat = user_currentLocation!.latitude!.toString();
+      String location_lon = user_currentLocation!.longitude!.toString();
+
+      setState(() {});
+
+    }
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -82,7 +110,8 @@ class _YolYardimPageState extends State<YolYardimPage> {
                             onPressed: () { Navigator.pop(context, 'Onayla');
                             Provider.of<CartModelYol>(context, listen: false)
                                 .addItemToCart(index);
-                            sendDemand2(value.shopItems[index][0]);
+                            //sendDemand2(value.shopItems[index][0]);
+                            getCurrentLocation(value.shopItems[index][0]);
                             Navigator.pushReplacement<void, void>(
                               context,
                               MaterialPageRoute<void>(
@@ -104,15 +133,16 @@ class _YolYardimPageState extends State<YolYardimPage> {
       ),
     );
   }
-  void sendDemand2(String kitadi3) async {
+  void sendDemand2(String kitadi3, latitude, longitude) async {
     print("çalışıyor");
     final FirebaseAuth auth = FirebaseAuth.instance;
     final User? user = auth.currentUser;
     var uid = user?.uid.toString();
     var _uidTextController = uid.toString();
-    yoldemandinf = yolDemandinf(kitname: kitadi3, uid: _uidTextController);
+    yoldemandinf = yolDemandinf(type: "1", kitname: kitadi3, uid: _uidTextController, lat: latitude, lon: longitude);
     var response = await http.post(Uri.parse("http://185.77.96.79:8000/api/demands/"),
         headers: {"Content-type": "application/json"},
         body: json.encode(yoldemandinf.toJson()));
-    print(response.body);}
+    print(response.body);
+  }
 }
