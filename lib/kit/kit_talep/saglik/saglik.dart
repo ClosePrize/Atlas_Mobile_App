@@ -81,7 +81,7 @@ class _SaglikPageState extends State<SaglikPage> {
       // ),
       body: Container(
         child: Padding(
-          padding: EdgeInsets.fromLTRB(27,60, 27, 7),
+          padding: EdgeInsets.fromLTRB(27,30, 27, 30),
           child: Consumer<CartModelSaglik>(
             builder: (context, value, child) {
               return GridView.builder(

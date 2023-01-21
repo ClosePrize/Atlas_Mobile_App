@@ -24,7 +24,7 @@ class CardItems extends StatelessWidget {
       onTap: onPressed,
       child: Ink(
         decoration: BoxDecoration(
-            color: Colors.white,
+            // color: Colors.white,
             image: DecorationImage(
               image: AssetImage(
                  imagePath),
