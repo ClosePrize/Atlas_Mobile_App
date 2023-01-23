@@ -1,6 +1,11 @@
+import 'dart:convert';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:location/location.dart';
 import 'package:v01/kargo/widgets/reusable_widgets.dart';
 import 'package:v01/kargo/widgets/talep_onay.dart';
+import 'package:http/http.dart' as http;
+import 'kargo_inf.dart';
 class KargoOptions extends StatefulWidget {
   const KargoOptions({super.key});
 
@@ -10,6 +15,32 @@ class KargoOptions extends StatefulWidget {
 
 class _KargoOptionsState extends State<KargoOptions> {
       TextEditingController _siparisTextController = TextEditingController();
+      Demandinf demandinf = Demandinf();
+      LocationData? user_currentLocation;
+
+    getCurrentLocation(kitadi1) async {
+      Location location = Location();
+      // GoogleMapController googleMapController = await _controller.future;
+      location.getLocation().then(
+            (location) {
+          user_currentLocation = location;
+          String location_lat = user_currentLocation!.latitude!.toString();
+          String location_lon = user_currentLocation!.longitude!.toString();
+          Future.delayed(Duration(seconds: 1), (){
+            sendDemand(kitadi1, location_lat, location_lon);
+          });
+        },
+      );
+
+      location.onLocationChanged.listen((newLoc) {
+        user_currentLocation = newLoc;
+        String location_lat = user_currentLocation!.latitude!.toString();
+        String location_lon = user_currentLocation!.longitude!.toString();
+
+        setState(() {});
+      }
+      );
+    }
 
   final items = ["Trendyol Grup", "n11","Amazon Türkiye", "Ptt AVM"];
   String? value;
@@ -54,10 +85,10 @@ class _KargoOptionsState extends State<KargoOptions> {
                   onChanged: (value)=>setState(() => 
                     this.value= value,
                   ),
-                  ),
+                ),
               ),
             ),
-            const SizedBox(
+            SizedBox(
               height: 50,),
               SizedBox(
                 width: double.infinity,
@@ -77,13 +108,35 @@ class _KargoOptionsState extends State<KargoOptions> {
               height: 15,),
        reusableTextField(
             "Sipariş Numarası", Icons.shopping_bag,false, _siparisTextController), 
-                 const SizedBox(
+                  SizedBox(
               height: 60,),
-              firebaseUIButton(context, "Kargomu Getir", (){Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => const TalepOnayScreen()))
-              .then((value) {
+              firebaseUIButton(context, "Kargomu Getir", (){
+              if(value != null && _siparisTextController.text != null){
+                getCurrentLocation(value);
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const TalepOnayScreen()))
+                    .then((value) {
 
-              });
+                });
+              }
+              else{
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog(
+                      content: Text('Lütfen sipariş no ve kargonun alınacağı şirketin adını giriniz.'),
+                      actions: <Widget>[
+                        TextButton(
+                          onPressed: () {
+                            Navigator.pop(context, 'Onayla');
+                          },
+                          child: const Text('Tamam'),
+                        ),
+                      ],
+                    );
+                  },
+                );
+              }
             })
           ],
         ),
@@ -95,5 +148,17 @@ class _KargoOptionsState extends State<KargoOptions> {
   child: Text(
     item, style: const TextStyle(
       fontWeight: FontWeight.normal, fontSize: 17),),);
+
+      void sendDemand(String value,latitude, longitude) async {
+        print("çalışıyor");
+        final FirebaseAuth auth = FirebaseAuth.instance;
+        final User? user = auth.currentUser;
+        var uid = user?.uid.toString();
+        var _uidTextController = uid.toString();
+        demandinf = Demandinf(type: "0", title: value, siparis_numarasi: _siparisTextController.text, uid: _uidTextController, lat: latitude, lon: longitude);
+        var response = await http.post(Uri.parse("http://185.77.96.79:8000/api/demands/"),
+            headers: {"Content-type": "application/json"},
+            body: json.encode(demandinf.toJson()));
+        print(response.body);}
   
 }

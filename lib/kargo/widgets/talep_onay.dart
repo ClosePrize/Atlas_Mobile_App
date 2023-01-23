@@ -13,6 +13,19 @@ class TalepOnayScreen extends StatefulWidget{
 class _TalepOnayScreenState extends State<TalepOnayScreen>{
 
   @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration(seconds: 1, milliseconds: 500), (){
+      Navigator.pushReplacement<void, void>(
+        context,
+        MaterialPageRoute<void>(
+          builder: (BuildContext context) =>  KargoHomeScreen(),
+        ),
+      );
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
