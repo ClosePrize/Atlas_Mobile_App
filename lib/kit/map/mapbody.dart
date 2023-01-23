@@ -48,7 +48,11 @@ class _MapScreenForKitState extends State<MapScreenForKit>{
       String location_lat = user_currentLocation!.latitude!.toString();
       String location_lon = user_currentLocation!.longitude!.toString();
 
-      setState(() {});
+      if (this.mounted) {
+        setState(() {
+          // Your state change code goes here
+        });
+      }
 
     }
     );
@@ -66,30 +70,32 @@ class _MapScreenForKitState extends State<MapScreenForKit>{
     demands2 = await RemoteService2().getPosts2();
     print("burada demands2");
     print(demands2);
-    Future.delayed(Duration(seconds: 1), (){
-      getData1();
-    });
-
     if (demands2 != null) {
 
-      setState(() {
-
-      });
+      if (this.mounted) {
+        setState(() {
+          // Your state change code goes here
+        });
+      }
     }
     if (demands2 == null){
       demands2 = [{'lat':0,'lon':0}];
-
     }
+    Future.delayed(Duration(seconds: 1), (){
+      getData1();
+    });
   }
 
   @override
   void initState() {
-    setCustomMarkerIcon();
-    getCurrentLocation();
-    getData1();
-    //getPeriodicStream();
-    // getPolyPoints();
-    super.initState();
+    if(mounted){
+      setCustomMarkerIcon();
+      getCurrentLocation();
+      getData1();
+      //getPeriodicStream();
+      // getPolyPoints();
+      super.initState();
+    }
   }
 
 
@@ -116,7 +122,7 @@ class _MapScreenForKitState extends State<MapScreenForKit>{
         ),
         elevation: 1,
       ),
-        body: user_currentLocation == null
+        body: user_currentLocation == null || demands2 == null
             ? const Center(child: Text("Yükleniyor..."))
             : GoogleMap(
           initialCameraPosition: CameraPosition(
@@ -134,11 +140,11 @@ class _MapScreenForKitState extends State<MapScreenForKit>{
             Marker(
               markerId: const MarkerId("user_current"),
               //
-              position: LatLng(/*user_currentLocation!.latitude!, user_currentLocation!.longitude!*/40.989241, 28.725452),
+              position: LatLng(user_currentLocation!.latitude!, user_currentLocation!.longitude!/*40.989241, 28.725452*/),
             ),
             Marker(
               markerId: const MarkerId("drone"),
-              position: LatLng(demands2[0].lat, demands2[0].lon),
+              position: LatLng(demands2[0].lat, demands2[0].lon/*40.989239, 28.725451*/),
               icon: droneLocationIcon,
             ),
           },

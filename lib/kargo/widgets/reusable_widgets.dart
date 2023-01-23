@@ -678,6 +678,108 @@ SizedBox mykargosbutton(BuildContext context, Function onTab,kit_adi,kit_durumu,
   );
 }
 
+SizedBox MyKargosButton(BuildContext context, Function onTab,kit_durumu,siparis_tarihi) {
+  var status_color;
+
+  if (kit_durumu == "İptal edildi"){
+    status_color = Color.fromARGB(255, 250, 75, 75);
+  }
+  else if(kit_durumu == "Teslim Edildi"){
+    status_color = Color.fromARGB(255, 164, 171, 182);
+  }
+  else if(kit_durumu== "Hazırlanıyor"){
+    status_color =Color.fromARGB(255, 255, 210, 47);
+  }
+  else if(kit_durumu== "Talebiniz Alındı"){
+    status_color = Color.fromARGB(255, 109, 239, 39);
+
+  }
+  else if(kit_durumu== "Dağıtımda"){
+    status_color =Color.fromARGB(255, 45, 202, 255);
+  }
+  else{
+    status_color= Color.fromARGB(255, 255, 179, 2);
+  }
+
+  return SizedBox(
+      height: MediaQuery.of(context).size.height/4.6,
+      width: MediaQuery.of(context).size.width,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(18),
+        child: Material(
+          child: InkWell(
+            onTap: (){
+              onTab();
+            },
+            child: Ink(
+              decoration: BoxDecoration(
+                // border: Border.all(color: Color.fromARGB(255, 250, 250, 250)),
+                borderRadius: BorderRadius.all(
+                    Radius.circular(20)
+                ),
+                color:status_color,
+                // boxShadow: [
+                //   BoxShadow(
+                //     color: Color.fromARGB(255, 47, 155, 17).withOpacity(0.5),
+                //     spreadRadius: 25,
+                //     blurRadius: 15,
+                //     offset: Offset(3, 3), // changes position of shadow
+                //   ),
+                // ],
+                /*image: DecorationImage(
+                    image: AssetImage(
+                      assetName),
+                    fit: BoxFit.fill,
+                    )*/
+              ),
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(15, 30, 15, 30),
+                child:Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    RichText(
+                      // maxLines: 6,
+                      //textAlign: TextAlign.,
+                        text: TextSpan(
+                          // text: "",
+                          // style: TextStyle(fontSize: 20,color: Colors.black),
+                            children: <TextSpan>[
+                              TextSpan(text: "Sipariş Tarihi: ",style: TextStyle(fontFamily: "Caveat",fontSize: 19,fontWeight: FontWeight.bold,color: Colors.white),),
+                              TextSpan(text: siparis_tarihi+"\n",style: TextStyle(fontFamily: "Caveat",fontSize: 18,color: Colors.white),),
+                              TextSpan(text: "Kargo Durumu: ",style: TextStyle(fontFamily: "Caveat",fontSize: 19,fontWeight: FontWeight.bold,color: Colors.white),),
+                              TextSpan(text: kit_durumu+"\n",style: TextStyle(fontFamily: "Caveat",fontSize: 18,color:Colors.white),),
+                            ]
+                        )
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+      )
+  );
+}
+
+Container MyKargosButtonForMyKargos(BuildContext context, Function onTab, siparis_tarihi,kit_durumu) {
+  return Container(
+    // color: Colors.red,
+    child: Column(
+      children: [
+        SizedBox(
+          height: MediaQuery.of(context).size.height/22,
+
+        ),
+        MyKargosButton(context, onTab, siparis_tarihi,kit_durumu),
+        SizedBox(
+          height: MediaQuery.of(context).size.height/50,
+        )
+      ],
+    ),
+  );
+}
+
 Container taleplerimbutton(BuildContext context, Function onTab,kit_adi,kit_durumu,siparis_tarihi,siparis_numarasi) {
   return Container(
     // color: Colors.red,
