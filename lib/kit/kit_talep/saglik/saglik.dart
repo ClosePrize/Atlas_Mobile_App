@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:v01/kit/kit_talep/saglik/saglik_inf.dart';
 import 'package:v01/kit/sepetim/cart_page_klon.dart';
 import '../../../kargo/constants.dart';
+import '../../../kargo/home/kargohome.dart';
 import '../../taleplerim/talep_onay.dart';
 import '../../widgets/bottomnavigationbar.dart';
 import 'package:provider/provider.dart';
@@ -65,7 +66,19 @@ class _SaglikPageState extends State<SaglikPage> {
         ),
         elevation: 1,
       ),
-      bottomNavigationBar: KitHomeNavBar(),
+      bottomNavigationBar: KitInsideBar(),
+       floatingActionButton: FloatingActionButton(
+          onPressed: () {  Navigator.pushReplacement<void, void>(
+              context,
+              MaterialPageRoute<void>(
+                builder: (BuildContext context) =>  KargoHomeScreen(),
+              ),
+            );  },
+          child: ClipRRect(child:Image.asset('assets/kargologo.png',
+         
+            fit: BoxFit.fitHeight,height: 120,),borderRadius: BorderRadius.circular(40),),
+),
+floatingActionButtonLocation: FloatingActionButtonLocation.endDocked, 
       // floatingActionButton: FloatingActionButton(
       //   backgroundColor: kitgreenColor,
       //   onPressed: () => Navigator.push(

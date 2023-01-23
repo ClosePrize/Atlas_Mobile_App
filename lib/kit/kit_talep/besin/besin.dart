@@ -7,6 +7,7 @@ import 'package:v01/kargo/constants.dart';
 import 'package:v01/kit/taleplerim/talep_onay.dart';
 import 'package:v01/kit/widgets/bottomnavigationbar.dart';
 import 'package:v01/kit/widgets/items.dart';
+import '../../../kargo/home/kargohome.dart';
 import 'besin_inf.dart';
 import 'cart_model_besin.dart';
 import 'package:v01/kit/sepetim/cart_page_klon.dart';
@@ -61,7 +62,19 @@ class _BesinPageState extends State<BesinPage> {
           ),
           elevation: 1,
          ),
-          bottomNavigationBar: KitHomeNavBar(),
+          bottomNavigationBar: KitInsideBar(),
+           floatingActionButton: FloatingActionButton(
+          onPressed: () {  Navigator.pushReplacement<void, void>(
+              context,
+              MaterialPageRoute<void>(
+                builder: (BuildContext context) =>  KargoHomeScreen(),
+              ),
+            );  },
+          child: ClipRRect(child:Image.asset('assets/kargologo.png',
+         
+            fit: BoxFit.fitHeight,height: 120,),borderRadius: BorderRadius.circular(40),),
+),
+floatingActionButtonLocation: FloatingActionButtonLocation.endDocked, 
       // floatingActionButton: FloatingActionButton(
       //   backgroundColor: kitgreenColor,
       //   onPressed: () => Navigator.push(
