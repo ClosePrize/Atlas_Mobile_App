@@ -4,6 +4,10 @@ import 'package:v01/kit/home/home.dart';
 import '../../welcome.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
+import '../cargo_add/cargo_add.dart';
+import '../constants.dart';
+import '../widgets/reusable_widgets.dart';
+
 class KargoBody extends StatefulWidget {
   const KargoBody({super.key});
 
@@ -44,16 +48,9 @@ class _KargoBodyState extends State<KargoBody> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: _onWillPop,
-      child: Scaffold(
-        body: Center(
-
-          child: Column(
-            textDirection: TextDirection.rtl,
-            crossAxisAlignment: CrossAxisAlignment.start,
-
-            children: [
-
+      onWillPop: _onWillPop, child: Column(
+        children: [
+          
               Flexible(
                 child: Container(
                   height: MediaQuery.of(context).size.height*0.3,
@@ -70,11 +67,8 @@ class _KargoBodyState extends State<KargoBody> {
                 ,
 
           ),
-          SizedBox(
-            height:70,
-          ),
-          Stack(
-            children:[ Padding(
+          SizedBox(height: 50,),
+          Padding(
               padding: const EdgeInsets.only(right: 20, left: 20),
               child: Container(
                 alignment:Alignment.center,
@@ -89,19 +83,37 @@ class _KargoBodyState extends State<KargoBody> {
               )
               ]
                   ),
-            child: Flexible(
-              child: const Padding(
-                padding: EdgeInsets.only(right:10.0, left: 20, bottom: 30),
-                child: Center(
-            child: Text.rich(TextSpan(
-              text: ' \n\nNasıl Kargo Eklenir?  \n\n',
+            child: const Padding(
+              padding: EdgeInsets.only(right:10.0, left: 20, bottom: 30),
+              child: Text.rich(TextSpan(
+              text: ' \n\n Nasıl Kargo Eklenir?  \n\n',
               style: TextStyle(
-                fontSize: 25,fontWeight: FontWeight.bold,
+                fontSize: 25,fontWeight: FontWeight.bold, fontFamily: "Caveat",
                 decoration: TextDecoration.underline),
                 children: <TextSpan>[
                 TextSpan(
-                      text: '•Kargo ekle tuşuna basınız.\n\n•Kargonuzun ait olduğu firma adını seçiniz.\n\n•Sipariş numaranızı giriniz.\n\n•Kargomu getir tuşuna \nbasıp kaydınızı oluşturunuz.\n',
-                      style: TextStyle(fontSize: 20,fontWeight: FontWeight.normal,
+                  
+                      text: "• Kargo ekle tuşuna basınız.",
+                      style: TextStyle(fontSize: 20,fontWeight: FontWeight.normal,fontFamily: "Caveat",
+                decoration: TextDecoration.none,
+                      ),
+                      ),
+                      TextSpan(
+                      text: '\n• Kargonuzun ait olduğu firma adını seçiniz.',
+                      style: TextStyle(fontSize: 20,fontWeight: FontWeight.normal,fontFamily: "Caveat",
+                decoration: TextDecoration.none
+                      ),
+                      ),
+                      TextSpan(
+                      text: '\n• Sipariş numaranızı giriniz.',
+                      style: TextStyle(fontSize: 20,fontWeight: FontWeight.normal, fontFamily: "Caveat",
+                decoration: TextDecoration.none
+                      ),
+                      ),
+                      
+                      TextSpan(
+                      text: '\n• Kargomu getir tuşuna basıp kaydınızı oluşturunuz.',
+                      style: TextStyle(fontSize: 20,fontWeight: FontWeight.normal,fontFamily: "Caveat",
                 decoration: TextDecoration.none
                       ),
                       ),
@@ -112,54 +124,65 @@ class _KargoBodyState extends State<KargoBody> {
 
                 ),
 
-                ),
+            ),
 
+            ),
+
+
+
+                )),
+                SizedBox(height: 30,),
+                Padding(
+                  padding: const EdgeInsets.only(right:20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      SizedBox(
+          height: 70,
+          width: MediaQuery.of(context).size.width/2,
+          child:
+                      ClipRRect(
+            borderRadius: BorderRadius.circular(15),
+            child: Material(
+              child: InkWell(
+                      onTap: (){
+                        
+                        Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => KargoAddScreen()));
+                      },
+                      child: Ink(
+                          // ignore: sort_child_properties_last
+                          child: const Center(
+                            child: Text(
+                              'Kargo Ekle',
+                              style: TextStyle(
+                                fontSize: 20,color: Colors.white, fontWeight: FontWeight.bold, fontFamily: "Caveat"
+                              ),
+                            ),
+                          ),
+                          decoration: const BoxDecoration(
+                            color: kargoPrimaryColor,
+                            /*image: DecorationImage(
+                                image: AssetImage(
+                                    assetName),
+                                fit: BoxFit.fill,
+                              )*/
+                          )
+                      ),
               ),
-
-            ),
-
-            ),
-
-
-
+            ),),),
+                    ],
+                  ),
                 )
-
-
-              ),
-
-                // Positioned(left: 275,
-                // bottom:0,child: addButton(),)
-
-            ],
-
-            ),
-
-
-            ],
-
-        ),
-
-        ),
-        /*floatingActionButton: FloatingActionButton(
-          child: ClipRRect(child:Image.asset('assets/kitlogo.png',
-            fit: BoxFit.fitHeight,height: 150,width:100 ,),borderRadius: BorderRadius.circular(40),),/*DecorationImage(
-              fit: BoxFit.fill,
-              image: AssetImage(
-                'assets/kargologo.png'
-              )
-            )*/
-          //borderRadius: BorderRadius.circular(90.0),
-          onPressed: () {
-            Navigator.pushReplacement<void, void>(
-            context,
-            MaterialPageRoute<void>(
-                builder: (BuildContext context) => KitHomePage(),
-          ),
-        );
-      }
-    ),*/
-
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.end,
+                //   children: [
+                //     firebaseUIButton(context, "Kargo Ekle", (){}),
+                //   ],
+                // )
+        ],
       ),
+     
     );
   }
 }
