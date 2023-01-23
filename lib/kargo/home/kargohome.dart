@@ -15,7 +15,7 @@ class KargoHomeScreen extends StatelessWidget {
    
       backgroundColor: kbackgroundColor,
       bottomNavigationBar: KargoHomeNavBar(),
-      // body:KargoBody() ,
+      body:KargoBody() ,
          floatingActionButton: FloatingActionButton(
           onPressed: () {  Navigator.pushReplacement<void, void>(
               context,
