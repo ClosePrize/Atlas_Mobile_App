@@ -196,9 +196,9 @@ class _KargoProfileScreen1State extends State<KargoProfileScreen1> {
                   ),
                   Stack(
                     children: [
-                      Row(children: [
-                        ChangeButton(context, "ATLAS Kit"),
-                      ]),
+                      // Row(children: [
+                      //   ChangeButton(context, "ATLAS Kit"),
+                      // ]),
                       Row(children: [
                         firebaseUIButton_1(context, kitblueColor)
                       ],

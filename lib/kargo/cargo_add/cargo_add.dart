@@ -22,7 +22,7 @@ class KargoAddScreen extends StatelessWidget {
           elevation: 2,
       ),
       backgroundColor: kbackgroundColor,
-      bottomNavigationBar: const BottomNavBar(),
+      bottomNavigationBar: CargoAddNavBar(),
       body:
      
           Column(
