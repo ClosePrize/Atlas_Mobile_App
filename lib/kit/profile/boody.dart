@@ -101,7 +101,7 @@ class _KitProfileScreenState extends State<KitProfileScreen> {
               onPressed: () => Navigator.pushReplacement<void, void>(
                 context,
                 MaterialPageRoute<void>(
-                  builder: (BuildContext context) => const KitHomePage(),
+                  builder: (BuildContext context) =>  KitHomePage(),
                 ),
               )
           ),
@@ -202,9 +202,9 @@ class _KitProfileScreenState extends State<KitProfileScreen> {
                       ),
                       Stack(
                         children: [
-                          Row(children: [
-                            ChangeButtonForKit(context, "ATLAS Kargo"),
-                          ]),
+                          // Row(children: [
+                          //   ChangeButtonForKit(context, "ATLAS Kargo"),
+                          // ]),
                           Row(children: [
                             firebaseUIButton_1(context, kargoredColor)
                           ],

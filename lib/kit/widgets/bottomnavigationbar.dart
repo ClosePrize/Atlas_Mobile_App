@@ -1,267 +1,152 @@
+import 'package:bubble_bottom_bar/bubble_bottom_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:v01/kargo/constants.dart';
 import 'package:v01/kit/home/home.dart';
 import 'package:v01/kit/taleplerim/taleplerim.dart';
 import '../profile/profile.dart';
 import 'package:v01/kit/taleplerim/remote.dart';
 
-class KitBottomNavBar extends StatefulWidget {
-  const KitBottomNavBar({super.key});
+class KitHomeNavBar extends StatefulWidget {
+ 
+  @override
+  _KitHomeNavBarState createState() => _KitHomeNavBarState();
+  
+}
+
+class _KitHomeNavBarState extends State<KitHomeNavBar> {
+  late int currentIndex;
+  
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    currentIndex = 0;
+  }
+
+  void changePage(int? index) {
+    setState(() {
+      currentIndex = index!;   
+    }
+    
+    );}
 
   @override
-  State<KitBottomNavBar> createState() => _KitBottomNavBarState();
-}
-class _KitBottomNavBarState extends State<KitBottomNavBar> {
-  int _selectedIndex = 0;
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-  @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        boxShadow: [
-          BoxShadow(color: Colors.grey.withOpacity(0.5),
-        spreadRadius: 5,
-        blurRadius: 7,
-        offset: const Offset(0, 3),)
-        ]
-      ),
-      height: MediaQuery.of(context).size.height/11,
-      child: BottomNavigationBar(
+    return  BubbleBottomBar(
       
-      onTap: (value) {
+        hasNotch: true,
+        fabLocation: BubbleBottomBarFabLocation.end,
+        opacity: .2,
+        
+        currentIndex:1,
+         onTap: (value) {
           if (value == 0) {
             Navigator.pushReplacement<void, void>(
               context,
               MaterialPageRoute<void>(
-                builder: (BuildContext context) => const TaleplerimScreen(),
+                builder: (BuildContext context) =>  TaleplerimScreen(),
               ),
             );
           }
           if (value == 1) {
-            Navigator.pushReplacement<void, void>(
-              context,
-              MaterialPageRoute<void>(
-                builder: (BuildContext context) => const KitHomePage(),
-              ),
-            );
+           
           }
           if (value == 2) {
             Navigator.pushReplacement<void, void>(
               context,
               MaterialPageRoute<void>(
-                builder: (BuildContext context) => const KitProfilePage(),
-              ),
-            );//Navigator.popAndPushNamed(context, 'KitProfilePage');
-          };
-        },
-
-        backgroundColor: Colors.white,
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.card_giftcard),
-              label: 'Taleplerim',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Ana Sayfa',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.manage_accounts),
-              label: 'Profilim',
-            ),
-          ],
-          currentIndex: _selectedIndex,
-          selectedItemColor: Color.fromARGB(255, 70, 70, 70),
-          unselectedItemColor: Color.fromARGB(255, 70, 70, 70),
-      ),
-    );
-  }
-}
-
-class KitBottomNavBarForHome extends StatefulWidget {
-  const KitBottomNavBarForHome({super.key});
-
-  @override
-  State<KitBottomNavBarForHome> createState() => _KitBottomNavBarForHomeState();
-}
-class _KitBottomNavBarForHomeState extends State<KitBottomNavBarForHome> {
-  int _selectedIndex = 0;
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-          boxShadow: [
-            BoxShadow(color: Colors.grey.withOpacity(0.5),
-              spreadRadius: 5,
-              blurRadius: 7,
-              offset: const Offset(0, 3),)
-          ]
-      ),
-      height: MediaQuery.of(context).size.height/11,
-      child: BottomNavigationBar(
-
-        onTap: (value) {
-          if (value == 0) {
-            Navigator.pushReplacement<void, void>(
-              context,
-              MaterialPageRoute<void>(
-                builder: (BuildContext context) => const TaleplerimScreen(),
-              ),
-            );
-          }
-          if (value == 1) {
-            //Navigator.pop(context, false);
-          }
-          if (value == 2) {
-            Navigator.pushReplacement<void, void>(
-              context,
-              MaterialPageRoute<void>(
-                builder: (BuildContext context) => const KitProfilePage(),
+                builder: (BuildContext context) =>  KitProfilePage(),
               ),
             );
           }
         },
 
-
-        backgroundColor: Colors.white,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.card_giftcard),
-            label: 'Taleplerim',
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(16),
+        ), //border radius doesn't work when the notch is enabled.
+        elevation:10 ,
+        tilesPadding: EdgeInsets.symmetric(
+          vertical: 8.0,
+        ),
+        items: <BubbleBottomBarItem>[
+          BubbleBottomBarItem(
+            backgroundColor: Colors.red,
+            icon: Icon(
+              Icons.card_giftcard,
+              color: Colors.black,
+            ),
+            activeIcon: Icon(
+              Icons.card_giftcard,
+              color: Colors.red,
+            ),
+            title: Text("Taleplerim"),
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home, color: kitPrimaryColor),
-            label: 'Ana Sayfa',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.manage_accounts),
-            label: 'Profilim',
-          ),
+          BubbleBottomBarItem(
+              backgroundColor: Colors.red,
+            icon: Icon(
+              Icons.home,
+              color: Colors.black,
+            ),
+            activeIcon: Icon(
+              Icons.home,
+              color: Colors.red,
+            ),
+              title: Text("Ana Sayfa")),
+        BubbleBottomBarItem(
+           backgroundColor: Colors.red,
+            icon: Icon(
+              Icons.manage_accounts,
+              color: Colors.black,
+            ),
+            activeIcon: Icon(
+              Icons.manage_accounts,
+              color: Colors.red,
+            ),
+              title: Text("Profilim")),
+         
         ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Color.fromARGB(255, 70, 70, 70),
-        unselectedItemColor: Color.fromARGB(255, 70, 70, 70),
-      ),
-    );
+      );
+      
   }
+  
 }
 
-class KitBottomNavBarForTaleplerim extends StatefulWidget {
-  const KitBottomNavBarForTaleplerim({super.key});
-
+class KitProfileNavBar extends StatefulWidget {
+ 
   @override
-  State<KitBottomNavBarForTaleplerim> createState() => _KitBottomNavBarForTaleplerimState();
+  _KitProfileNavBarState createState() => _KitProfileNavBarState();
+  
 }
-class _KitBottomNavBarForTaleplerimState extends State<KitBottomNavBarForTaleplerim> {
-  int _selectedIndex = 0;
-  void _onItemTapped(int index) {
+
+class _KitProfileNavBarState extends State<KitProfileNavBar> {
+  late int currentIndex;
+  
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    currentIndex = 0;
+  }
+
+  void changePage(int? index) {
     setState(() {
-      _selectedIndex = index;
-    });
-  }
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-          boxShadow: [
-            BoxShadow(color: Colors.grey.withOpacity(0.5),
-              spreadRadius: 5,
-              blurRadius: 7,
-              offset: const Offset(0, 3),)
-          ]
-      ),
-      height: MediaQuery.of(context).size.height/11,
-      child: BottomNavigationBar(
-
-        onTap: (value) {
-          if (value == 0) {
-            //Navigator.pop(context, false);
-          }
-          if (value == 1) {
-            Navigator.pushReplacement<void, void>(
-              context,
-              MaterialPageRoute<void>(
-                builder: (BuildContext context) => const KitHomePage(),
-              ),
-            );
-          }
-          if (value == 2) {
-            Navigator.pushReplacement<void, void>(
-              context,
-              MaterialPageRoute<void>(
-                builder: (BuildContext context) => const KitProfilePage(),
-              ),
-            );
-          }
-        },
-
-
-        backgroundColor: Colors.white,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.card_giftcard,color: kitPrimaryColor),
-            label: 'Taleplerim',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Ana Sayfa',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.manage_accounts),
-            label: 'Profilim',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Color.fromARGB(255, 70, 70, 70),
-        unselectedItemColor: Color.fromARGB(255, 70, 70, 70),
-      ),
-    );
-  }
-}
-
-class KitBottomNavBarForProfile extends StatefulWidget {
-  const KitBottomNavBarForProfile({super.key});
-
-  @override
-  State<KitBottomNavBarForProfile> createState() => _KitBottomNavBarForProfileState();
-}
-class _KitBottomNavBarForProfileState extends State<KitBottomNavBarForProfile> {
-  int _selectedIndex = 0;
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
+      currentIndex = index!;   
+    }
+    
+    );}
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-          boxShadow: [
-            BoxShadow(color: Colors.grey.withOpacity(0.5),
-              spreadRadius: 5,
-              blurRadius: 7,
-              offset: const Offset(0, 3),)
-          ]
-      ),
-      height: MediaQuery.of(context).size.height/11,
-      child: BottomNavigationBar(
-
-        onTap: (value) {
+    return  BubbleBottomBar(
+        hasNotch: true,
+        fabLocation: BubbleBottomBarFabLocation.end,
+        opacity: .2,
+        currentIndex:2,
+         onTap: (value) {
           if (value == 0) {
             Navigator.pushReplacement<void, void>(
               context,
               MaterialPageRoute<void>(
-                builder: (BuildContext context) => const TaleplerimScreen(),
+                builder: (BuildContext context) =>  TaleplerimScreen(),
               ),
             );
           }
@@ -269,38 +154,156 @@ class _KitBottomNavBarForProfileState extends State<KitBottomNavBarForProfile> {
             Navigator.pushReplacement<void, void>(
               context,
               MaterialPageRoute<void>(
-                builder: (BuildContext context) => const KitHomePage(),
+                builder: (BuildContext context) =>  KitHomePage(),
               ),
             );
           }
           if (value == 2) {
-            //Navigator.pop(context, false);
+            // Navigator.pushReplacement<void, void>(
+            //   context,
+            //   MaterialPageRoute<void>(
+            //     builder: (BuildContext context) =>  KitProfilePage(),
+            //   ),
+            // );
           }
         },
 
-
-        backgroundColor: Colors.white,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.card_giftcard),
-            label: 'Taleplerim',
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(16),
+        ), //border radius doesn't work when the notch is enabled.
+       elevation:10 ,
+        tilesPadding: EdgeInsets.symmetric(
+          vertical: 8.0,
+        ),
+        items: <BubbleBottomBarItem>[
+           BubbleBottomBarItem(
+            backgroundColor: Colors.red,
+            icon: Icon(
+              Icons.card_giftcard,
+              color: Colors.black,
+            ),
+            activeIcon: Icon(
+              Icons.card_giftcard,
+              color: Colors.red,
+            ),
+            title: Text("Taleplerim"),
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Ana Sayfa',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.manage_accounts, color: kitPrimaryColor),
-            label: 'Profilim',
-          ),
+          BubbleBottomBarItem(
+             backgroundColor: Colors.red,
+            icon: Icon(
+              Icons.home,
+              color: Colors.black,
+            ),
+            activeIcon: Icon(
+              Icons.home,
+              color: Colors.red,
+            ),
+              title: Text("Ana Sayfa")),
+          BubbleBottomBarItem(
+           backgroundColor: Colors.red,
+            icon: Icon(
+              Icons.manage_accounts,
+              color: Colors.black,
+            ),
+            activeIcon: Icon(
+              Icons.manage_accounts,
+              color: Colors.red,
+            ),
+              title: Text("Profilim")),
+         
         ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Color.fromARGB(255, 70, 70, 70),
-        unselectedItemColor: Color.fromARGB(255, 70, 70, 70),
-      ),
-    );
+      );
+      
   }
+  
 }
 
+class KitTaleplerimBar extends StatefulWidget {
+ 
+  @override
+  _KitTaleplerimBarState createState() => _KitTaleplerimBarState();
+  
+}
+
+class _KitTaleplerimBarState extends State<KitTaleplerimBar> {
 
 
+  @override
+  Widget build(BuildContext context) {
+    return  BubbleBottomBar(
+        hasNotch: true,
+        fabLocation: BubbleBottomBarFabLocation.end,
+        opacity: .2,
+        currentIndex:0,
+         onTap: (value) {
+          if (value == 0) {
+            //Navigator.pop(context, false);
+          }
+          if (value == 1) {
+            Navigator.pushReplacement<void, void>(
+              context,
+              MaterialPageRoute<void>(
+                builder: (BuildContext context) =>  KitHomePage(),
+              ),
+            );
+          }
+          if (value == 2) {
+            Navigator.pushReplacement<void, void>(
+              context,
+              MaterialPageRoute<void>(
+                builder: (BuildContext context) =>  KitProfilePage(),
+              ),
+            );
+          }
+        },
+
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(16),
+        ), //border radius doesn't work when the notch is enabled.
+       elevation:10 ,
+        tilesPadding: EdgeInsets.symmetric(
+          vertical: 8.0,
+        ),
+        items: <BubbleBottomBarItem>[
+           BubbleBottomBarItem(
+            backgroundColor: Colors.red,
+            icon: Icon(
+              Icons.card_giftcard,
+              color: Colors.black,
+            ),
+            activeIcon: Icon(
+              Icons.card_giftcard,
+              color: Colors.red,
+            ),
+            title: Text("Taleplerim"),
+          ),
+          BubbleBottomBarItem(
+             backgroundColor: Colors.red,
+            icon: Icon(
+              Icons.home,
+              color: Colors.black,
+            ),
+            activeIcon: Icon(
+              Icons.home,
+              color: Colors.red,
+            ),
+              title: Text("Ana Sayfa")),
+               BubbleBottomBarItem(
+           backgroundColor: Colors.red,
+            icon: Icon(
+              Icons.manage_accounts,
+              color: Colors.black,
+            ),
+            activeIcon: Icon(
+              Icons.manage_accounts,
+              color: Colors.red,
+            ),
+              title: Text("Profilim")),
+      
+          
+        ],
+      );
+      
+  }
+  
+}

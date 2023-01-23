@@ -13,7 +13,7 @@ import 'package:v01/kit/widgets/items.dart';
 import 'cart_model_yol.dart';
 
 class YolYardimPage extends StatefulWidget{
-  const YolYardimPage({super.key});
+  YolYardimPage({super.key});
 
   @override
   State<YolYardimPage> createState() => _YolYardimPageState();
@@ -60,7 +60,7 @@ class _YolYardimPageState extends State<YolYardimPage> {
         ),
         elevation: 1,
       ),
-      bottomNavigationBar: KitBottomNavBar(),
+      bottomNavigationBar: KitHomeNavBar(),
       // floatingActionButton: FloatingActionButton(
       //   backgroundColor: kitgreenColor,
       //   onPressed: () => Navigator.push(
@@ -115,7 +115,7 @@ class _YolYardimPageState extends State<YolYardimPage> {
                             Navigator.pushReplacement<void, void>(
                               context,
                               MaterialPageRoute<void>(
-                                builder: (BuildContext context) => const KitTalepOnayPage(),
+                                builder: (BuildContext context) =>  KitTalepOnayPage(),
                               ),
                             );
                             },

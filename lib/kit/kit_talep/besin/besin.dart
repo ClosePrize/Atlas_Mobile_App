@@ -61,7 +61,7 @@ class _BesinPageState extends State<BesinPage> {
           ),
           elevation: 1,
          ),
-          bottomNavigationBar: KitBottomNavBar(),
+          bottomNavigationBar: KitHomeNavBar(),
       // floatingActionButton: FloatingActionButton(
       //   backgroundColor: kitgreenColor,
       //   onPressed: () => Navigator.push(
@@ -119,7 +119,7 @@ class _BesinPageState extends State<BesinPage> {
                              Navigator.pushReplacement<void, void>(
                                context,
                                MaterialPageRoute<void>(
-                                 builder: (BuildContext context) => const KitTalepOnayPage(),
+                                 builder: (BuildContext context) => KitTalepOnayPage(),
                                ),
                              );
                              },
