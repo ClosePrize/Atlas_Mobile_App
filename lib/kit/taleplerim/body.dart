@@ -186,7 +186,7 @@ class _TaleplerimBodyState extends State<TaleplerimBody> {
             onPressed: () => Navigator.pushReplacement<void, void>(
               context,
               MaterialPageRoute<void>(
-                builder: (BuildContext context) => const KitHomePage(),
+                builder: (BuildContext context) => KitHomePage(),
               ),
             )
         ),

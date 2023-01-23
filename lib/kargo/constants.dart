@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 // Colors that we use in our app
 const kargoPrimaryColor = Color.fromARGB(255, 57, 147, 213);
-const kbackgroundColor = Color.fromARGB(255, 249, 249, 249);
+const kbackgroundColor = Color(0xFFF9F9F9);
 const kargogreenColor = Color.fromARGB(255, 69, 197, 37);
 const kargoredColor = Color.fromARGB(255, 220, 12, 21);
 const kargoorangeColor = Color.fromARGB(255, 255, 168, 0);

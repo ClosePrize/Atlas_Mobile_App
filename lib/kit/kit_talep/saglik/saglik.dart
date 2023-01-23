@@ -13,7 +13,7 @@ import 'cart_model_saglik.dart';
 import 'package:location/location.dart';
 
 class SaglikPage extends StatefulWidget{
-  const SaglikPage({super.key});
+   SaglikPage({super.key});
 
   @override
   State<SaglikPage> createState() => _SaglikPageState();
@@ -65,7 +65,7 @@ class _SaglikPageState extends State<SaglikPage> {
         ),
         elevation: 1,
       ),
-      bottomNavigationBar: KitBottomNavBar(),
+      bottomNavigationBar: KitHomeNavBar(),
       // floatingActionButton: FloatingActionButton(
       //   backgroundColor: kitgreenColor,
       //   onPressed: () => Navigator.push(
@@ -120,7 +120,7 @@ class _SaglikPageState extends State<SaglikPage> {
                             Navigator.pushReplacement<void, void>(
                               context,
                               MaterialPageRoute<void>(
-                                builder: (BuildContext context) => const KitTalepOnayPage(),
+                                builder: (BuildContext context) => KitTalepOnayPage(),
                                 ),
                               );
                             },

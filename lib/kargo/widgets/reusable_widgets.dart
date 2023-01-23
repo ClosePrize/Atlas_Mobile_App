@@ -191,7 +191,7 @@ Container ChangeButton(BuildContext context, String text){
                 Navigator.pushReplacement<void, void>(
                   context,
                   MaterialPageRoute<void>(
-                    builder: (BuildContext context) => const KitHomePage(),
+                    builder: (BuildContext context) => KitHomePage(),
                   ),
                 );
               },
@@ -659,14 +659,14 @@ SizedBox mykargosbutton(BuildContext context, Function onTab,kit_adi,kit_durumu,
                     // text: "",
                     // style: TextStyle(fontSize: 20,color: Colors.black),
                     children: <TextSpan>[
-                      TextSpan(text: "Kit Adı: ",style: TextStyle(fontFamily: "Caveat" ,fontSize: 20,fontWeight: FontWeight.bold,color: Colors.white)),
-                      TextSpan(text: kit_adi+"\n",style: TextStyle(fontFamily: "Caveat",fontSize: 19,color: Colors.white),),
-                      TextSpan(text: "Sipariş Tarihi: ",style: TextStyle(fontFamily: "Caveat",fontSize: 20,fontWeight: FontWeight.bold,color: Colors.white),),
-                      TextSpan(text: siparis_tarihi+"\n",style: TextStyle(fontFamily: "Caveat",fontSize: 19,color: Colors.white),),
-                      TextSpan(text: "Sipariş Numarası: ",style: TextStyle(fontFamily: "Caveat",fontSize: 20,fontWeight: FontWeight.bold,color: Colors.white),),
-                      TextSpan(text: siparis_numarasi+"\n",style: TextStyle(fontFamily: "Caveat",fontSize: 19,color: Colors.white),),
-                      TextSpan(text: "Kit Durumu: ",style: TextStyle(fontFamily: "Caveat",fontSize: 20,fontWeight: FontWeight.bold,color: Colors.white),),
-                      TextSpan(text: kit_durumu+"\n",style: TextStyle(fontFamily: "Caveat",fontSize: 19,color:Colors.white),),
+                      TextSpan(text: "Kit Adı: ",style: TextStyle(fontFamily: "Caveat" ,fontSize: 19,fontWeight: FontWeight.bold,color: Colors.white)),
+                      TextSpan(text: kit_adi+"\n",style: TextStyle(fontFamily: "Caveat",fontSize: 18,color: Colors.white),),
+                      TextSpan(text: "Sipariş Tarihi: ",style: TextStyle(fontFamily: "Caveat",fontSize: 19,fontWeight: FontWeight.bold,color: Colors.white),),
+                      TextSpan(text: siparis_tarihi+"\n",style: TextStyle(fontFamily: "Caveat",fontSize: 18,color: Colors.white),),
+                      TextSpan(text: "Sipariş Numarası: ",style: TextStyle(fontFamily: "Caveat",fontSize: 19,fontWeight: FontWeight.bold,color: Colors.white),),
+                      TextSpan(text: siparis_numarasi+"\n",style: TextStyle(fontFamily: "Caveat",fontSize: 18,color: Colors.white),),
+                      TextSpan(text: "Kit Durumu: ",style: TextStyle(fontFamily: "Caveat",fontSize: 19,fontWeight: FontWeight.bold,color: Colors.white),),
+                      TextSpan(text: kit_durumu+"\n",style: TextStyle(fontFamily: "Caveat",fontSize: 18,color:Colors.white),),
                     ]
                   )
               ),
