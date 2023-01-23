@@ -88,32 +88,32 @@ class _KargoBodyState extends State<KargoBody> {
               child: Text.rich(TextSpan(
               text: ' \n\n Nasıl Kargo Eklenir?  \n\n',
               style: TextStyle(
-                fontSize: 25,fontWeight: FontWeight.bold, fontFamily: "Caveat",
+                fontSize: 25,fontWeight: FontWeight.bold,
                 decoration: TextDecoration.underline),
                 children: <TextSpan>[
                 TextSpan(
                   
                       text: "• Kargo ekle tuşuna basınız.",
-                      style: TextStyle(fontSize: 20,fontWeight: FontWeight.normal,fontFamily: "Caveat",
+                      style: TextStyle(fontSize: 20,fontWeight: FontWeight.normal,
                 decoration: TextDecoration.none,
                       ),
                       ),
                       TextSpan(
-                      text: '\n• Kargonuzun ait olduğu firma adını seçiniz.',
-                      style: TextStyle(fontSize: 20,fontWeight: FontWeight.normal,fontFamily: "Caveat",
+                      text: '\n\n• Kargonuzun ait olduğu firma adını seçiniz.',
+                      style: TextStyle(fontSize: 20,fontWeight: FontWeight.normal,
                 decoration: TextDecoration.none
                       ),
                       ),
                       TextSpan(
-                      text: '\n• Sipariş numaranızı giriniz.',
-                      style: TextStyle(fontSize: 20,fontWeight: FontWeight.normal, fontFamily: "Caveat",
+                      text: '\n\n• Sipariş numaranızı giriniz.',
+                      style: TextStyle(fontSize: 20,fontWeight: FontWeight.normal,
                 decoration: TextDecoration.none
                       ),
                       ),
                       
                       TextSpan(
-                      text: '\n• Kargomu getir tuşuna basıp kaydınızı oluşturunuz.',
-                      style: TextStyle(fontSize: 20,fontWeight: FontWeight.normal,fontFamily: "Caveat",
+                      text: '\n\n• Kargomu getir tuşuna basıp kaydınızı oluşturunuz.',
+                      style: TextStyle(fontSize: 20,fontWeight: FontWeight.normal,
                 decoration: TextDecoration.none
                       ),
                       ),
@@ -131,9 +131,9 @@ class _KargoBodyState extends State<KargoBody> {
 
 
                 )),
-                SizedBox(height: 30,),
+                SizedBox(height: 20,),
                 Padding(
-                  padding: const EdgeInsets.only(right:20),
+                  padding: const EdgeInsets.only(right:20, ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
@@ -156,7 +156,7 @@ class _KargoBodyState extends State<KargoBody> {
                             child: Text(
                               'Kargo Ekle',
                               style: TextStyle(
-                                fontSize: 20,color: Colors.white, fontWeight: FontWeight.bold, fontFamily: "Caveat"
+                                fontSize: 20,color: Colors.white, fontWeight: FontWeight.bold,
                               ),
                             ),
                           ),

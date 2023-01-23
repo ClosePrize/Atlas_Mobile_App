@@ -4,6 +4,8 @@ import 'package:v01/kargo/constants.dart';
 import 'package:v01/kargo/widgets/bottomnavigationbar.dart';
 import 'package:v01/kargo/widgets/reusable_widgets.dart';
 
+import '../../kit/home/home.dart';
+
 class KargoAddScreen extends StatelessWidget {
     TextEditingController _siparisTextController = TextEditingController();
 
@@ -23,6 +25,18 @@ class KargoAddScreen extends StatelessWidget {
       ),
       backgroundColor: kbackgroundColor,
       bottomNavigationBar: CargoAddNavBar(),
+       floatingActionButton: FloatingActionButton(
+          onPressed: () {  Navigator.pushReplacement<void, void>(
+              context,
+              MaterialPageRoute<void>(
+                builder: (BuildContext context) =>  KitHomePage(),
+              ),
+            );  },
+          child: ClipRRect(child:Image.asset('assets/kitlogo1.jpg',
+         
+            fit: BoxFit.fitHeight,height: 120,),borderRadius: BorderRadius.circular(40),),
+),
+floatingActionButtonLocation: FloatingActionButtonLocation.endDocked, 
       body:
      
           Column(
