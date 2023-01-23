@@ -56,7 +56,7 @@ class KargoTalepOnayScreen extends StatelessWidget{
   Widget build(BuildContext context) {
     return const Scaffold(
       backgroundColor: kbackgroundColor,
-      bottomNavigationBar: BottomNavBar(),
+      // bottomNavigationBar: BottomNavBar(),
       body: TalepOnayScreen(),
     );
   }
