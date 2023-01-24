@@ -1,19 +1,57 @@
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:location/location.dart';
+import 'package:v01/kargo/home/kargohome.dart';
+import 'package:v01/kit/kit_talep/yol/yol_inf.dart';
 import '../../../kargo/constants.dart';
+<<<<<<< HEAD
 import '../../sepetim/cart_page_klon.dart';
+=======
+import '../../taleplerim/talep_onay.dart';
+>>>>>>> Mustafa_vol3_m
 import '../../widgets/bottomnavigationbar.dart';
 import 'package:provider/provider.dart';
 import 'package:v01/kit/widgets/items.dart';
 import 'cart_model_yol.dart';
 
 class YolYardimPage extends StatefulWidget{
-  const YolYardimPage({super.key});
+  YolYardimPage({super.key});
 
   @override
   State<YolYardimPage> createState() => _YolYardimPageState();
 }
 
 class _YolYardimPageState extends State<YolYardimPage> {
+  yolDemandinf yoldemandinf = yolDemandinf();
+  LocationData? user_currentLocation;
+
+  getCurrentLocation(kitadi2) async {
+    Location location = Location();
+    // GoogleMapController googleMapController = await _controller.future;
+    location.getLocation().then(
+          (location) {
+        user_currentLocation = location;
+        String location_lat = user_currentLocation!.latitude!.toString();
+        String location_lon = user_currentLocation!.longitude!.toString();
+        Future.delayed(Duration(seconds: 1), (){
+          sendDemand2(kitadi2, location_lat, location_lon);
+        });
+      },
+    );
+
+    location.onLocationChanged.listen((newLoc) {
+      user_currentLocation = newLoc;
+      String location_lat = user_currentLocation!.latitude!.toString();
+      String location_lon = user_currentLocation!.longitude!.toString();
+
+      setState(() {});
+
+    }
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,20 +65,32 @@ class _YolYardimPageState extends State<YolYardimPage> {
         ),
         elevation: 1,
       ),
-      bottomNavigationBar: KitBottomNavBar(),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: kitgreenColor,
-        onPressed: () => Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) {
-              return CartPage1();
-            },
-          ),
-        ),
-        child: const Icon(Icons.shopping_bag
-        ),
-      ),
+      bottomNavigationBar: KitInsideBar(),
+       floatingActionButton: FloatingActionButton(
+          onPressed: () {  Navigator.pushReplacement<void, void>(
+              context,
+              MaterialPageRoute<void>(
+                builder: (BuildContext context) =>  KargoHomeScreen(),
+              ),
+            );  },
+          child: ClipRRect(child:Image.asset('assets/kargologo.png',
+         
+            fit: BoxFit.fitHeight,height: 120,),borderRadius: BorderRadius.circular(40),),
+),
+floatingActionButtonLocation: FloatingActionButtonLocation.endDocked, 
+      // floatingActionButton: FloatingActionButton(
+      //   backgroundColor: kitgreenColor,
+      //   onPressed: () => Navigator.push(
+      //     context,
+      //     MaterialPageRoute(
+      //       builder: (context) {
+      //         return CartPage1();
+      //       },
+      //     ),
+      //   ),
+      //   child: const Icon(Icons.shopping_bag
+      //   ),
+      // ),
       body: Container(
         child: Padding(
           padding: EdgeInsets.fromLTRB(27,60, 27, 7),
@@ -76,7 +126,16 @@ class _YolYardimPageState extends State<YolYardimPage> {
                           TextButton(
                             onPressed: () { Navigator.pop(context, 'Onayla');
                             Provider.of<CartModelYol>(context, listen: false)
-                                .addItemToCart(index);},
+                                .addItemToCart(index);
+                            //sendDemand2(value.shopItems[index][0]);
+                            getCurrentLocation(value.shopItems[index][0]);
+                            Navigator.pushReplacement<void, void>(
+                              context,
+                              MaterialPageRoute<void>(
+                                builder: (BuildContext context) =>  KitTalepOnayPage(),
+                              ),
+                            );
+                            },
                             child: const Text('Onayla'),
                           ),
                         ],
@@ -90,5 +149,17 @@ class _YolYardimPageState extends State<YolYardimPage> {
         ),
       ),
     );
+  }
+  void sendDemand2(String kitadi3, latitude, longitude) async {
+    print("çalışıyor");
+    final FirebaseAuth auth = FirebaseAuth.instance;
+    final User? user = auth.currentUser;
+    var uid = user?.uid.toString();
+    var _uidTextController = uid.toString();
+    yoldemandinf = yolDemandinf(type: "1", kitname: kitadi3, uid: _uidTextController, lat: latitude, lon: longitude);
+    var response = await http.post(Uri.parse("http://185.77.96.79:8000/api/demands/"),
+        headers: {"Content-type": "application/json"},
+        body: json.encode(yoldemandinf.toJson()));
+    print(response.body);
   }
 }

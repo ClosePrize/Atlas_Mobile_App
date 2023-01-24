@@ -1,6 +1,6 @@
-import 'package:flutter/cupertino.dart';
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class CardItems extends StatelessWidget {
   final String kitName;
@@ -24,7 +24,7 @@ class CardItems extends StatelessWidget {
       onTap: onPressed,
       child: Ink(
         decoration: BoxDecoration(
-            color: Colors.white,
+            // color: Colors.white,
             image: DecorationImage(
               image: AssetImage(
                  imagePath),

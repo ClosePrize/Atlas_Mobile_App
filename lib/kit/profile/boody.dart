@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:v01/kargo/home/kargohome.dart';
 import '../../kargo/constants.dart';
 import '../../kargo/widgets/reusable_widgets.dart';
 import '../../welcome.dart';
 import '../home/home.dart';
 import 'post.dart';
 import 'remote_service.dart';
+
 
 class KitProfileScreen extends StatefulWidget {
   const KitProfileScreen({Key? key}) : super(key: key);
@@ -72,6 +74,7 @@ class _KitProfileScreenState extends State<KitProfileScreen> {
        phone = posts![index].phone ?? "";
       setState(() {
         isLoaded = true;
+        //print()
       });
     }
     if (posts == null){
@@ -98,7 +101,7 @@ class _KitProfileScreenState extends State<KitProfileScreen> {
               onPressed: () => Navigator.pushReplacement<void, void>(
                 context,
                 MaterialPageRoute<void>(
-                  builder: (BuildContext context) => const KitHomePage(),
+                  builder: (BuildContext context) =>  KitHomePage(),
                 ),
               )
           ),
@@ -195,14 +198,25 @@ class _KitProfileScreenState extends State<KitProfileScreen> {
                       ),
                       reusableTextField_1(phone,Icons.drive_file_rename_outline,),
                       const SizedBox(
-                        height: 35,
+                        height: 20,
                       ),
+                      Stack(
+                        children: [
+                          // Row(children: [
+                          //   ChangeButtonForKit(context, "ATLAS Kargo"),
+                          // ]),
+                          Row(children: [
+                            firebaseUIButton_1(context, kargoredColor)
+                          ],
+                          mainAxisAlignment: MainAxisAlignment.end,)
+                        ],
+                      )
                     ],
                   ),
                 ),
               ),
         ),
-        floatingActionButton: firebaseUIButton_1(context),
+        //floatingActionButton: firebaseUIButton_1(context),
       ),
     );
   }

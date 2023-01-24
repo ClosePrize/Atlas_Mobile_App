@@ -40,7 +40,7 @@ class CartPage1 extends StatelessWidget {
                                   Navigator.pushReplacement<void, void>(
                                     context,
                                     MaterialPageRoute<void>(
-                                      builder: (BuildContext context) => const KitTalepOnayPage(),
+                                      builder: (BuildContext context) =>  KitTalepOnayPage(),
                                     ),
                                   );
                                   Provider.of<CartModelSaglik>(context, listen: false)
