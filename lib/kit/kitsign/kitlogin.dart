@@ -57,7 +57,7 @@ class _KitSignInScreenState extends State<KitSignInScreen> {
                           password: _passwordTextController.text)
                       .then((value) {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => const KitHomePage()));
+                        MaterialPageRoute(builder: (context) =>  KitHomePage()));
                   }).onError((error, stackTrace) {
                     print("Error ${error.toString()}");
                   });

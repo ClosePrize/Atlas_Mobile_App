@@ -5,7 +5,7 @@ import 'package:v01/kit/home/home.dart';
 import '../widgets/bottomnavigationbar.dart';
 
 class KitTalepOnayScreen extends StatefulWidget{
-  const KitTalepOnayScreen({Key? key}) : super(key: key);
+   KitTalepOnayScreen({Key? key}) : super(key: key);
 
   @override
   _KitTalepOnayScreenState createState() => _KitTalepOnayScreenState();
@@ -14,18 +14,31 @@ class KitTalepOnayScreen extends StatefulWidget{
 class _KitTalepOnayScreenState extends State<KitTalepOnayScreen>{
 
   @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration(seconds: 1, milliseconds: 500), (){
+      Navigator.pushReplacement<void, void>(
+        context,
+        MaterialPageRoute<void>(
+          builder: (BuildContext context) =>  KitHomePage(),
+        ),
+      );
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor:kitPrimaryColor,
         leading: IconButton(
-            icon: const Icon(
+            icon:  Icon(
               Icons.close_rounded, color: Colors.white, size: 30,),
             onPressed: () {
               Navigator.pushReplacement<void, void>(
                 context,
                 MaterialPageRoute<void>(
-                  builder: (BuildContext context) => const KitHomePage(),
+                  builder: (BuildContext context) =>  KitHomePage(),
                 ),
               );
             }
@@ -59,10 +72,10 @@ class _KitTalepOnayScreenState extends State<KitTalepOnayScreen>{
 }
 
 class KitTalepOnayPage extends StatelessWidget{
-  const KitTalepOnayPage({super.key});
+   KitTalepOnayPage({super.key});
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return  Scaffold(
       backgroundColor: kbackgroundColor,
       //bottomNavigationBar: KitBottomNavBar(),
       body: KitTalepOnayScreen(),

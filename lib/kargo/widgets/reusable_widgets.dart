@@ -167,10 +167,111 @@ class MySearchDelegate extends SearchDelegate {
       );
   }
 }
-
-Container firebaseUIButton_1(BuildContext context) {
+Container ChangeButton(BuildContext context, String text){
   return Container(
-    width: MediaQuery.of(context).size.width/2,
+    width: MediaQuery.of(context).size.width/2.4,
+    height: 45,
+    margin: const EdgeInsets.fromLTRB(0, 10, 0, 20),
+    decoration: BoxDecoration(borderRadius: BorderRadius.circular(90)),
+    child: ElevatedButton(
+      onPressed: () => showDialog<String>(
+        context: context,
+        builder: (BuildContext context) => AlertDialog(
+          title: const Text('Çıkış Onay'),
+          content: Text('$text uygulamasına geçmek istediğinize emin misiniz?'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () => Navigator.pop(context, 'İptal'),
+              child: const Text('İptal',
+                style: TextStyle(color: kitPrimaryColor),),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context, 'Onayla');
+                Navigator.pushReplacement<void, void>(
+                  context,
+                  MaterialPageRoute<void>(
+                    builder: (BuildContext context) => KitHomePage(),
+                  ),
+                );
+              },
+              child: const Text('Onayla'),
+            ),
+          ],
+        ),
+      ),
+      child: Text(
+        text,
+        style: const TextStyle(
+            color: Color.fromARGB(221, 255, 255, 255), fontWeight: FontWeight.bold, fontSize: 16),
+      ),
+      style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.resolveWith((states) {
+            if (states.contains(MaterialState.pressed)) {
+              return Color.fromARGB(66, 255, 255, 255);
+            }
+            return kargoredColor;
+          }),
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)))),
+    ),
+  );
+}
+
+Container ChangeButtonForKit(BuildContext context, String text){
+  return Container(
+    width: MediaQuery.of(context).size.width/2.4,
+    height: 45,
+    margin: const EdgeInsets.fromLTRB(0, 10, 0, 20),
+    decoration: BoxDecoration(borderRadius: BorderRadius.circular(90)),
+    child: ElevatedButton(
+      onPressed: () => showDialog<String>(
+        context: context,
+        builder: (BuildContext context) => AlertDialog(
+          title: const Text('Geçiş Onay'),
+          content: Text('$text uygulamasına geçmek istediğinize emin misiniz?'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () => Navigator.pop(context, 'İptal'),
+              child: const Text('İptal',
+                style: TextStyle(color: kitPrimaryColor),),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context, 'Onayla');
+                Navigator.pushReplacement<void, void>(
+                  context,
+                  MaterialPageRoute<void>(
+                    builder: (BuildContext context) => const KargoHomeScreen(),
+                  ),
+                );
+              },
+              child: const Text('Onayla'),
+            ),
+          ],
+        ),
+      ),
+      child: Text(
+        text,
+        style: const TextStyle(
+            color: Color.fromARGB(221, 255, 255, 255), fontWeight: FontWeight.bold, fontSize: 16),
+      ),
+      style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.resolveWith((states) {
+            if (states.contains(MaterialState.pressed)) {
+              return Color.fromARGB(66, 255, 255, 255);
+            }
+            return kitblueColor;
+          }),
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)))),
+    ),
+  );
+}
+
+Container firebaseUIButton_1(BuildContext context,Color? color) {
+  return Container(
+    width: MediaQuery.of(context).size.width/2.4,
     height: 45,
     margin: const EdgeInsets.fromLTRB(0, 10, 0, 20),
     decoration: BoxDecoration(borderRadius: BorderRadius.circular(90)),
@@ -211,13 +312,14 @@ Container firebaseUIButton_1(BuildContext context) {
             if (states.contains(MaterialState.pressed)) {
               return Color.fromARGB(66, 255, 255, 255);
             }
-            return kargoredColor;
+            return color;
           }),
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)))),
     ),
   );
 }
+
 Container firebaseUIButton(BuildContext context, String title, Function onTap) {
   return Container(
     width: MediaQuery.of(context).size.width/2,
@@ -420,15 +522,15 @@ SizedBox firebaseUIButton_deneme(BuildContext context, String title, Function on
 
 SizedBox kit_button(BuildContext context, String assetName, Function onTab) {
   return SizedBox(
-      height: 180,
-      width: 500,
+      height: MediaQuery.of(context).size.height/5,
+      width: MediaQuery.of(context).size.width,
       child: GestureDetector( onTap: (){
                 onTab();
               },
         child: InkWell(
           child: Ink(
             decoration: BoxDecoration(
-                color: kbackgroundColor,
+                // color: kbackgroundColor,
                 image: DecorationImage(
                   image: AssetImage(
                       assetName),
@@ -444,8 +546,8 @@ SizedBox kit_button(BuildContext context, String assetName, Function onTab) {
 
 SizedBox kit_button1(BuildContext context, String text, String assetName) {
   return SizedBox(
-      height: 145,
-      width: MediaQuery.of(context).size.width/1.2,
+      height: 150,
+      width: MediaQuery.of(context).size.width/1,
       child: ClipRRect(
         // borderRadius: BorderRadius.circular(18),
         child: Material(
@@ -495,10 +597,32 @@ SizedBox kit_button1(BuildContext context, String text, String assetName) {
   );
 }
 
-SizedBox mykargosbutton(BuildContext context, Function onTab) {
+SizedBox mykargosbutton(BuildContext context, Function onTab,kit_adi,kit_durumu,siparis_tarihi,siparis_numarasi) {
+  var status_color;
+
+  if (kit_durumu == "İptal edildi"){
+    status_color = Color.fromARGB(255, 250, 75, 75);
+  }
+  else if(kit_durumu == "Teslim Edildi"){
+    status_color = Color.fromARGB(255, 164, 171, 182);
+  }
+  else if(kit_durumu== "Hazırlanıyor"){
+    status_color =Color.fromARGB(255, 255, 210, 47);
+  }
+  else if(kit_durumu== "Talebiniz Alındı"){
+    status_color = Color.fromARGB(255, 109, 239, 39);
+   
+  }
+  else if(kit_durumu== "Dağıtımda"){
+    status_color =Color.fromARGB(255, 45, 202, 255);
+  }
+  else{
+    status_color= Color.fromARGB(255, 255, 179, 2);
+  }
+  
   return SizedBox(
-      height: 180,
-      width: 500,
+      height: MediaQuery.of(context).size.height/4.6,
+      width: MediaQuery.of(context).size.width,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(18),
         child: Material(
@@ -508,17 +632,169 @@ SizedBox mykargosbutton(BuildContext context, Function onTab) {
             },
             child: Ink(
               decoration: BoxDecoration(
-                color: Colors.grey,
+                // border: Border.all(color: Color.fromARGB(255, 250, 250, 250)),
+                borderRadius: BorderRadius.all(
+                    Radius.circular(20)
+                ),
+                color:status_color,
+                // boxShadow: [
+                //   BoxShadow(
+                //     color: Color.fromARGB(255, 47, 155, 17).withOpacity(0.5),
+                //     spreadRadius: 25,
+                //     blurRadius: 15,
+                //     offset: Offset(3, 3), // changes position of shadow
+                //   ),
+                // ],
                   /*image: DecorationImage(
                     image: AssetImage(
                       assetName),
                     fit: BoxFit.fill,
                     )*/
-            )
+            ),
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(15, 30, 15, 30),
+                child:RichText(
+                  // maxLines: 6,
+                  text: TextSpan(
+                    // text: "",
+                    // style: TextStyle(fontSize: 20,color: Colors.black),
+                    children: <TextSpan>[
+                      TextSpan(text: "Kit Adı: ",style: TextStyle(fontFamily: "Caveat" ,fontSize: 19,fontWeight: FontWeight.bold,color: Colors.white)),
+                      TextSpan(text: kit_adi+"\n",style: TextStyle(fontFamily: "Caveat",fontSize: 18,color: Colors.white),),
+                      TextSpan(text: "Sipariş Tarihi: ",style: TextStyle(fontFamily: "Caveat",fontSize: 19,fontWeight: FontWeight.bold,color: Colors.white),),
+                      TextSpan(text: siparis_tarihi+"\n",style: TextStyle(fontFamily: "Caveat",fontSize: 18,color: Colors.white),),
+                      TextSpan(text: "Sipariş Numarası: ",style: TextStyle(fontFamily: "Caveat",fontSize: 19,fontWeight: FontWeight.bold,color: Colors.white),),
+                      TextSpan(text: siparis_numarasi+"\n",style: TextStyle(fontFamily: "Caveat",fontSize: 18,color: Colors.white),),
+                      TextSpan(text: "Kit Durumu: ",style: TextStyle(fontFamily: "Caveat",fontSize: 19,fontWeight: FontWeight.bold,color: Colors.white),),
+                      TextSpan(text: kit_durumu+"\n",style: TextStyle(fontFamily: "Caveat",fontSize: 18,color:Colors.white),),
+                    ]
+                  )
+              ),
+            ),
           ),
         ),
       ),
     )
+  );
+}
+
+SizedBox MyKargosButton(BuildContext context, Function onTab,kit_durumu,siparis_tarihi) {
+  var status_color;
+
+  if (kit_durumu == "İptal edildi"){
+    status_color = Color.fromARGB(255, 250, 75, 75);
+  }
+  else if(kit_durumu == "Teslim Edildi"){
+    status_color = Color.fromARGB(255, 164, 171, 182);
+  }
+  else if(kit_durumu== "Hazırlanıyor"){
+    status_color =Color.fromARGB(255, 255, 210, 47);
+  }
+  else if(kit_durumu== "Talebiniz Alındı"){
+    status_color = Color.fromARGB(255, 109, 239, 39);
+
+  }
+  else if(kit_durumu== "Dağıtımda"){
+    status_color =Color.fromARGB(255, 45, 202, 255);
+  }
+  else{
+    status_color= Color.fromARGB(255, 255, 179, 2);
+  }
+
+  return SizedBox(
+      height: MediaQuery.of(context).size.height/4.6,
+      width: MediaQuery.of(context).size.width,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(18),
+        child: Material(
+          child: InkWell(
+            onTap: (){
+              onTab();
+            },
+            child: Ink(
+              decoration: BoxDecoration(
+                // border: Border.all(color: Color.fromARGB(255, 250, 250, 250)),
+                borderRadius: BorderRadius.all(
+                    Radius.circular(20)
+                ),
+                color:status_color,
+                // boxShadow: [
+                //   BoxShadow(
+                //     color: Color.fromARGB(255, 47, 155, 17).withOpacity(0.5),
+                //     spreadRadius: 25,
+                //     blurRadius: 15,
+                //     offset: Offset(3, 3), // changes position of shadow
+                //   ),
+                // ],
+                /*image: DecorationImage(
+                    image: AssetImage(
+                      assetName),
+                    fit: BoxFit.fill,
+                    )*/
+              ),
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(15, 30, 15, 30),
+                child:Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    RichText(
+                      // maxLines: 6,
+                      //textAlign: TextAlign.,
+                        text: TextSpan(
+                          // text: "",
+                          // style: TextStyle(fontSize: 20,color: Colors.black),
+                            children: <TextSpan>[
+                              TextSpan(text: "Sipariş Tarihi: ",style: TextStyle(fontFamily: "Caveat",fontSize: 19,fontWeight: FontWeight.bold,color: Colors.white),),
+                              TextSpan(text: siparis_tarihi+"\n",style: TextStyle(fontFamily: "Caveat",fontSize: 18,color: Colors.white),),
+                              TextSpan(text: "Kargo Durumu: ",style: TextStyle(fontFamily: "Caveat",fontSize: 19,fontWeight: FontWeight.bold,color: Colors.white),),
+                              TextSpan(text: kit_durumu+"\n",style: TextStyle(fontFamily: "Caveat",fontSize: 18,color:Colors.white),),
+                            ]
+                        )
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+      )
+  );
+}
+
+Container MyKargosButtonForMyKargos(BuildContext context, Function onTab, siparis_tarihi,kit_durumu) {
+  return Container(
+    // color: Colors.red,
+    child: Column(
+      children: [
+        SizedBox(
+          height: MediaQuery.of(context).size.height/22,
+
+        ),
+        MyKargosButton(context, onTab, siparis_tarihi,kit_durumu),
+        SizedBox(
+          height: MediaQuery.of(context).size.height/50,
+        )
+      ],
+    ),
+  );
+}
+
+Container taleplerimbutton(BuildContext context, Function onTab,kit_adi,kit_durumu,siparis_tarihi,siparis_numarasi) {
+  return Container(
+    // color: Colors.red,
+    child: Column(
+      children: [
+        SizedBox(
+          height: MediaQuery.of(context).size.height/22,
+          
+        ),
+        mykargosbutton(context, onTab,kit_adi,kit_durumu,siparis_tarihi,siparis_numarasi),
+        SizedBox(
+          height: MediaQuery.of(context).size.height/50,
+        )
+      ],
+    ),
   );
 }
 
@@ -620,5 +896,71 @@ InkWell WarningForKits (BuildContext context) {
       ),
     ),
     child: const Text('Show Dialog'),
+  );
+}
+
+Widget _card() {
+  return Container(
+    height: 80,
+    margin: EdgeInsets.only(top: 5,left: 8,right: 8),
+    decoration: new BoxDecoration(
+      borderRadius: BorderRadius.circular(16),
+      color:Colors.orangeAccent[100],
+    ),
+    child: Center(
+      child: ListTile(
+        leading: CircleAvatar(
+          radius : 28 ,
+          backgroundColor:  Colors.white ,
+          child: CircleAvatar(
+            radius:  26,
+            backgroundImage:  NetworkImage(
+                "https://i.pinimg.com/originals/71/83/70/7183704aac01413c86805c19c1586e2b.jpg"),
+          ),
+        ),
+        title: Text(
+          "Freedom Fighter",
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700,color: Colors.deepPurple),
+        ),
+        subtitle: Text(
+          'Freedom Fighter',
+          style: TextStyle(
+              fontWeight: FontWeight.w600,
+              fontSize: 16,
+              color: Colors.white),
+        ),
+        trailing: Card(
+          elevation: 1,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15.0),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(5.0),
+            child: Container(
+              width: 50,
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('5',
+                      style: TextStyle(
+                          fontSize: 20, color: Colors.grey)),
+                  SizedBox(
+                    width: 1,
+                  ),
+                  Icon(
+                    Icons.access_alarms_outlined,
+                    textDirection: TextDirection.rtl,
+                    size: 20,
+                    color: Colors.grey,
+                  )
+                ],
+              ),
+            ),
+          ),
+        ),
+
+      ),
+    ),
   );
 }

@@ -13,6 +13,19 @@ class TalepOnayScreen extends StatefulWidget{
 class _TalepOnayScreenState extends State<TalepOnayScreen>{
 
   @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration(seconds: 1, milliseconds: 500), (){
+      Navigator.pushReplacement<void, void>(
+        context,
+        MaterialPageRoute<void>(
+          builder: (BuildContext context) =>  KargoHomeScreen(),
+        ),
+      );
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
@@ -23,7 +36,7 @@ class _TalepOnayScreenState extends State<TalepOnayScreen>{
             onPressed: () => Navigator.pop(context, false)
           ),
           elevation: 2,
-      ),
+        ),
       body: Container(
         /*decoration: BoxDecoration(
           color: kbackgroundColor,
@@ -56,7 +69,7 @@ class KargoTalepOnayScreen extends StatelessWidget{
   Widget build(BuildContext context) {
     return const Scaffold(
       backgroundColor: kbackgroundColor,
-      bottomNavigationBar: BottomNavBar(),
+      // bottomNavigationBar: BottomNavBar(),
       body: TalepOnayScreen(),
     );
   }

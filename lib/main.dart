@@ -45,6 +45,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider<CartModelYol>(
           create: (_) => CartModelYol())
+        /*ChangeNotifierProvider<CartModelTaleplerim>(
+          create: (_) => CartModelSaglik(),
+        ),*/
       ],
       child:  MaterialApp(
         debugShowCheckedModeBanner: false,

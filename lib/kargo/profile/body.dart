@@ -1,18 +1,18 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
 import 'package:v01/kargo/constants.dart';
 import 'package:v01/kargo/home/kargohome.dart';
 import 'package:v01/kargo/widgets/reusable_widgets.dart';
 import 'package:v01/kargo/signup.dart';
 
-class ProfileScreen extends StatefulWidget{
-  const ProfileScreen({Key? key}) : super(key: key);
+class ProfileScreen1 extends StatefulWidget{
+  const ProfileScreen1({Key? key}) : super(key: key);
 
   @override
   // ignore: library_private_types_in_public_api
-  _ProfileScreenState createState() => _ProfileScreenState();
+  _ProfileScreen1State createState() => _ProfileScreen1State();
 }
 
-class _ProfileScreenState extends State<ProfileScreen>{
+class _ProfileScreen1State extends State<ProfileScreen1>{
 
   @override
   Widget build(BuildContext context) {
@@ -139,4 +139,4 @@ class _ProfileScreenState extends State<ProfileScreen>{
       floatingActionButton: firebaseUIButton_1(context),
     );
 }
-}
+}*/

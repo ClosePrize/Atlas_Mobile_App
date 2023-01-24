@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
 import '../widgets/reusable_widgets.dart';
 import 'package:v01/kargo/map/map.dart';
 import 'package:v01/kargo/home/kargohome.dart';
@@ -22,7 +22,7 @@ class MyKargosBody extends StatelessWidget {
       body: Container(
         child: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.fromLTRB(40, 50, 40, 10),
+            padding: EdgeInsets.fromLTRB(25, 0, 25, 10),
             child: Column(
               children: <Widget>[
                 SizedBox(
@@ -32,7 +32,7 @@ class MyKargosBody extends StatelessWidget {
                     (){
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => GoogleMap()));
-                  }
+                  },"hayvan maması", "yolda","",""
                 )
               ],
             ),
@@ -41,4 +41,4 @@ class MyKargosBody extends StatelessWidget {
       ),
     );
   }
-}
+}*/
