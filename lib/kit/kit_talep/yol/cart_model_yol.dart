@@ -4,15 +4,9 @@ class CartModelYol extends ChangeNotifier {
   // list of items on sale
   final List _shopItems = const [
     // [ itemName, itemPrice, imagePath, color ]
-<<<<<<< HEAD
-    [" Yakıt Kiti ", "assets/yol_yardim_kitleri/yakitkiti.png" , "2w232wq"],
-    [" Lastik Tamir Kiti ", "assets/yol_yardim_kitleri/lastiktamirkiti.png","2w232wq"],
-    [" Motor Bakım Kiti ", "assets/yol_yardim_kitleri/motorbakimkiti.png", "2w232wq"],
-=======
     [" Yakit Kiti ", "assets/yol_yardim_kitleri/yakitkiti.png" ],
     [" Lastik Tamir Kiti ", "assets/yol_yardim_kitleri/lastiktamirkiti.png"],
     [" Motor Bakim Kiti ", "assets/yol_yardim_kitleri/motorbakimkiti.png"],
->>>>>>> Mustafa_vol3_m
   ];
 
   // list of cart items
