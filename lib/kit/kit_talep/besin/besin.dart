@@ -4,12 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:location/location.dart';
 import 'package:provider/provider.dart';
 import 'package:v01/kargo/constants.dart';
-<<<<<<< HEAD
-import 'package:v01/kit/widgets/bottomnavigationbar.dart';
-import 'package:v01/kit/widgets/items.dart';
-import '../../sepetim/cart_page_klon.dart';
-import 'cart_model_besin.dart';
-=======
 import 'package:v01/kit/taleplerim/talep_onay.dart';
 import 'package:v01/kit/widgets/bottomnavigationbar.dart';
 import 'package:v01/kit/widgets/items.dart';
@@ -19,7 +13,6 @@ import 'cart_model_besin.dart';
 import 'package:v01/kit/sepetim/cart_page_klon.dart';
 import 'package:v01/kit/taleplerim/body.dart';
 import 'package:http/http.dart' as http;
->>>>>>> Mustafa_vol3_m
 
 class BesinPage extends StatefulWidget {
   const BesinPage({super.key});

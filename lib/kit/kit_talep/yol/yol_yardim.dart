@@ -6,11 +6,7 @@ import 'package:location/location.dart';
 import 'package:v01/kargo/home/kargohome.dart';
 import 'package:v01/kit/kit_talep/yol/yol_inf.dart';
 import '../../../kargo/constants.dart';
-<<<<<<< HEAD
-import '../../sepetim/cart_page_klon.dart';
-=======
 import '../../taleplerim/talep_onay.dart';
->>>>>>> Mustafa_vol3_m
 import '../../widgets/bottomnavigationbar.dart';
 import 'package:provider/provider.dart';
 import 'package:v01/kit/widgets/items.dart';

@@ -2,13 +2,6 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-import 'package:provider/provider.dart';
-import '../../../kargo/constants.dart';
-import '../../sepetim/cart_page_klon.dart';
-import '../../widgets/bottomnavigationbar.dart';
-import '../../widgets/items.dart';
-=======
 import 'package:v01/kit/kit_talep/saglik/saglik_inf.dart';
 import 'package:v01/kit/sepetim/cart_page_klon.dart';
 import '../../../kargo/constants.dart';
@@ -17,7 +10,6 @@ import '../../taleplerim/talep_onay.dart';
 import '../../widgets/bottomnavigationbar.dart';
 import 'package:provider/provider.dart';
 import 'package:v01/kit/widgets/items.dart';
->>>>>>> Mustafa_vol3_m
 import 'cart_model_saglik.dart';
 import 'package:location/location.dart';
 
