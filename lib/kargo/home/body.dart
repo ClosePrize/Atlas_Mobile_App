@@ -50,7 +50,7 @@ class _KargoBodyState extends State<KargoBody> {
     return WillPopScope(
       onWillPop: _onWillPop, child: Column(
         children: [
-          
+
               Flexible(
                 child: Container(
                   height: MediaQuery.of(context).size.height*0.3,
@@ -69,7 +69,7 @@ class _KargoBodyState extends State<KargoBody> {
           ),
           SizedBox(height: 50,),
           Padding(
-              padding: const EdgeInsets.only(right: 20, left: 20),
+              padding: const EdgeInsets.only(right: 20, left: 10),
               child: Container(
                 alignment:Alignment.center,
                 child: DecoratedBox(
@@ -92,7 +92,7 @@ class _KargoBodyState extends State<KargoBody> {
                 decoration: TextDecoration.underline),
                 children: <TextSpan>[
                 TextSpan(
-                  
+
                       text: "• Kargo ekle tuşuna basınız.",
                       style: TextStyle(fontSize: 20,fontWeight: FontWeight.normal,
                 decoration: TextDecoration.none,
@@ -110,7 +110,7 @@ class _KargoBodyState extends State<KargoBody> {
                 decoration: TextDecoration.none
                       ),
                       ),
-                      
+
                       TextSpan(
                       text: '\n\n• Kargomu getir tuşuna basıp kaydınızı oluşturunuz.',
                       style: TextStyle(fontSize: 20,fontWeight: FontWeight.normal,
@@ -146,7 +146,7 @@ class _KargoBodyState extends State<KargoBody> {
             child: Material(
               child: InkWell(
                       onTap: (){
-                        
+
                         Navigator.push(context,
                               MaterialPageRoute(builder: (context) => KargoAddScreen()));
                       },
@@ -182,7 +182,7 @@ class _KargoBodyState extends State<KargoBody> {
                 // )
         ],
       ),
-     
+
     );
   }
 }

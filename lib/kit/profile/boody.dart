@@ -136,7 +136,7 @@ class _KitProfileScreenState extends State<KitProfileScreen> {
                       const SizedBox(
                         height: 10,
                       ),
-                      reusableTextField_1(username,Icons.drive_file_rename_outline,),
+                      TextBox(username,Icons.drive_file_rename_outline,),
                       const SizedBox(
                         height: 20,
                       ),
@@ -156,7 +156,7 @@ class _KitProfileScreenState extends State<KitProfileScreen> {
                       const SizedBox(
                         height: 10,
                       ),
-                      reusableTextField_1(email,Icons.drive_file_rename_outline,),
+                      TextBox(email,Icons.drive_file_rename_outline,),
                       const SizedBox(
                         height: 20,
                       ),
@@ -176,7 +176,7 @@ class _KitProfileScreenState extends State<KitProfileScreen> {
                       const SizedBox(
                         height: 10,
                       ),
-                      reusableTextField_1(password, Icons.drive_file_rename_outline,),
+                      TextBox(password, Icons.drive_file_rename_outline,),
                       const SizedBox(
                         height: 20,
                       ),
@@ -196,7 +196,7 @@ class _KitProfileScreenState extends State<KitProfileScreen> {
                       const SizedBox(
                         height: 10,
                       ),
-                      reusableTextField_1(phone,Icons.drive_file_rename_outline,),
+                      TextBox(phone,Icons.drive_file_rename_outline,),
                       const SizedBox(
                         height: 20,
                       ),

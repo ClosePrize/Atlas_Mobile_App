@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:v01/kit/home/home.dart';
@@ -14,6 +16,7 @@ class KitSignInScreen extends StatefulWidget {
 class _KitSignInScreenState extends State<KitSignInScreen> {
   TextEditingController _passwordTextController = TextEditingController();
   TextEditingController _emailTextController = TextEditingController();
+  var alert = 1;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,7 +62,32 @@ class _KitSignInScreenState extends State<KitSignInScreen> {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) =>  KitHomePage()));
                   }).onError((error, stackTrace) {
-                    print("Error ${error.toString()}");
+                    showDialog<String>(
+                      barrierColor: Colors.transparent,
+                      useSafeArea: false,
+                      context: context,
+                      builder: (BuildContext context) => Container(
+                        child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Container(
+                            width: MediaQuery.of(context).size.width,
+                            height: MediaQuery.of(context).size.height/10,
+                            decoration: BoxDecoration(
+                              //color: Color.fromARGB(255, 189, 23, 34).withOpacity(0.9),
+                              color: Colors.grey,
+                              //borderRadius: BorderRadius.only(topLeft: Radius.circular(30), topRight: Radius.circular(30)),
+                              ),
+                              child: Container(
+                                //padding: EdgeInsets.fromLTRB(30, 20, 30, 20),
+                                child: Text("E-posta veya Sifreniz yanlıS",style: TextStyle(fontSize: 15,color: Colors.black),),
+                              )
+                            )
+                          ],
+                        ),
+                      )
+                    );
                   });
                 }),
                 const SizedBox(
