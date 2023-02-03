@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:v01/kit/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:v01/kargo/cargo_add/kargooptions.dart';
@@ -72,7 +73,33 @@ SizedBox reusableTextField_1(String text, IconData icon,/* bool isPasswordType,
     keyboardType: isPasswordType
         ? TextInputType.visiblePassword
         : TextInputType.emailAddress,*/
-  ),
+    ),
+  );
+}
+
+Container TextBox(String text, IconData icon){
+  return Container(
+    height: 50,
+    width: 1000,
+    decoration: BoxDecoration(
+      color: Color.fromARGB(255, 230, 230, 230),
+      borderRadius: BorderRadius.circular(30.0),
+    ),
+    child: Stack(
+      children: [
+        Row(
+          children: [
+            Center(child: Container(child: Text(text, style: TextStyle(color: Color.fromARGB(255, 100, 89, 89).withOpacity(0.9), fontSize: 17),), padding: EdgeInsets.fromLTRB(15, 0, 0, 0),))
+          ],
+        ),
+        /*Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Center(child: Container(child: Icon(icon,size: 20, color: Color.fromARGB(255, 100, 89, 89).withOpacity(0.9)), padding: EdgeInsets.fromLTRB(0, 0, 15, 0),))
+          ],
+        )*/
+      ],
+    ),
   );
 }
 
@@ -296,6 +323,7 @@ Container firebaseUIButton_1(BuildContext context,Color? color) {
                     builder: (BuildContext context) => const LogosPage(),
                   ),
                 );
+                FirebaseAuth.instance.signOut();
               },
               child: const Text('Onayla'),
             ),

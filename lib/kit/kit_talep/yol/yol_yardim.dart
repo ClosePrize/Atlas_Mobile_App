@@ -89,7 +89,7 @@ floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
       // ),
       body: Container(
         child: Padding(
-          padding: EdgeInsets.fromLTRB(27,60, 27, 7),
+          padding: EdgeInsets.fromLTRB(27,40, 27, 7),
           child: Consumer<CartModelYol>(
             builder: (context, value, child) {
               return GridView.builder(
@@ -98,8 +98,8 @@ floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
                 itemCount: value.shopItems.length,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 1,
-                    mainAxisSpacing: 25,
-                    mainAxisExtent: 160
+                    mainAxisSpacing: 10,
+                    mainAxisExtent: 180
                   // childAspectRatio: 1 / 1.2,
                 ),
                 itemBuilder: (context, index) {
