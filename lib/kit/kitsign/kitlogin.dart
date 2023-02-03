@@ -77,11 +77,11 @@ class _KitSignInScreenState extends State<KitSignInScreen> {
                             decoration: BoxDecoration(
                               //color: Color.fromARGB(255, 189, 23, 34).withOpacity(0.9),
                               color: Colors.grey,
-                              //borderRadius: BorderRadius.only(topLeft: Radius.circular(30), topRight: Radius.circular(30)),
+                              borderRadius: BorderRadius.only(topLeft: Radius.circular(30), topRight: Radius.circular(30)),
                               ),
                               child: Container(
-                                //padding: EdgeInsets.fromLTRB(30, 20, 30, 20),
-                                child: Text("E-posta veya Sifreniz yanlıS",style: TextStyle(fontSize: 15,color: Colors.black),),
+                                padding: EdgeInsets.fromLTRB(30, 20, 30, 20),
+                                child: Material(child: Text("E-posta veya Sifreniz yanlıS",style: TextStyle(fontSize: 15,color: Colors.black),)),
                               )
                             )
                           ],

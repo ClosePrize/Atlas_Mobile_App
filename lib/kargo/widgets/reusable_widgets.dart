@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:v01/kit/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:v01/kargo/cargo_add/kargooptions.dart';
@@ -322,6 +323,7 @@ Container firebaseUIButton_1(BuildContext context,Color? color) {
                     builder: (BuildContext context) => const LogosPage(),
                   ),
                 );
+                FirebaseAuth.instance.signOut();
               },
               child: const Text('Onayla'),
             ),

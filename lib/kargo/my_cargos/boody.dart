@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:v01/kargo/widgets/reusable_widgets.dart';
 import 'package:v01/kargo/map/map.dart';
@@ -142,6 +143,7 @@ class _MyKargosBodyState extends State<MyKargosBody> {
                   builder: (BuildContext context) => LogosPage(),
                 ),
               );
+              FirebaseAuth.instance.signOut();
             },
             child: const Text('Onayla'),
           ),

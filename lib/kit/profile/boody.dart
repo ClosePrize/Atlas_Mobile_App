@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:v01/kargo/home/kargohome.dart';
 import '../../kargo/constants.dart';
@@ -41,6 +42,7 @@ class _KitProfileScreenState extends State<KitProfileScreen> {
                   builder: (BuildContext context) => LogosPage(),
                 ),
               );
+              FirebaseAuth.instance.signOut();
             },
             child: const Text('Onayla'),
           ),
