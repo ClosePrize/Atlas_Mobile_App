@@ -1,4 +1,5 @@
 // ignore_for_file: prefer_const_constructors
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:v01/kit/home/home.dart';
 import '../../welcome.dart';
@@ -37,6 +38,7 @@ class _KargoBodyState extends State<KargoBody> {
                   builder: (BuildContext context) => LogosPage(),
                 ),
               );
+              FirebaseAuth.instance.signOut();
             },
             child: const Text('Onayla'),
           ),
@@ -50,7 +52,7 @@ class _KargoBodyState extends State<KargoBody> {
     return WillPopScope(
       onWillPop: _onWillPop, child: Column(
         children: [
-          
+
               Flexible(
                 child: Container(
                   height: MediaQuery.of(context).size.height*0.3,
@@ -69,71 +71,71 @@ class _KargoBodyState extends State<KargoBody> {
           ),
           SizedBox(height: 50,),
           Padding(
-              padding: const EdgeInsets.only(right: 20, left: 20),
+            padding: const EdgeInsets.only(right: 20, left: 20),
+            child: Container(
+              padding: EdgeInsets.only(top: 3, left: 10, right: 10),
               child: Container(
-                alignment:Alignment.center,
-                child: DecoratedBox(
+                padding: EdgeInsets.all(10),
+                child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.white,
-                    boxShadow: [
-                BoxShadow(color: Colors.grey.withOpacity(0.5),
-              spreadRadius: 5,
-              blurRadius: 7,
-              offset: const Offset(3, 3),
-              )
-              ]
-                  ),
-            child: const Padding(
-              padding: EdgeInsets.only(right:10.0, left: 20, bottom: 30),
-              child: Text.rich(TextSpan(
-              text: ' \n\n Nasıl Kargo Eklenir?  \n\n',
-              style: TextStyle(
-                fontSize: 25,fontWeight: FontWeight.bold,
-                decoration: TextDecoration.underline),
-                children: <TextSpan>[
-                TextSpan(
-                  
-                      text: "• Kargo ekle tuşuna basınız.",
-                      style: TextStyle(fontSize: 20,fontWeight: FontWeight.normal,
-                decoration: TextDecoration.none,
+                      color: Colors.grey,
+                      borderRadius: BorderRadius.all(Radius.circular(12))),
+                  padding: EdgeInsets.all(10),
+                  child: Container(
+                    padding: EdgeInsets.fromLTRB(10, 20, 10, 20),
+                    decoration: BoxDecoration(
+                        //color: Colors.grey.withOpacity(0.2),
+                        borderRadius: BorderRadius.all(Radius.circular(8)),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.white,
+                              blurRadius: 10,
+                              spreadRadius:14)
+                        ]),
+                    width: double.infinity,
+                    height: 272,
+                    child: Text.rich(TextSpan(
+                      text: '  Nasıl Kargo Eklenir?  \n\n',
+                      style: TextStyle(
+                          fontSize: 25,fontWeight: FontWeight.bold,
+                          //decoration: TextDecoration.underline
                       ),
-                      ),
-                      TextSpan(
-                      text: '\n\n• Kargonuzun ait olduğu firma adını seçiniz.',
-                      style: TextStyle(fontSize: 20,fontWeight: FontWeight.normal,
-                decoration: TextDecoration.none
-                      ),
-                      ),
-                      TextSpan(
-                      text: '\n\n• Sipariş numaranızı giriniz.',
-                      style: TextStyle(fontSize: 20,fontWeight: FontWeight.normal,
-                decoration: TextDecoration.none
-                      ),
-                      ),
-                      
-                      TextSpan(
-                      text: '\n\n• Kargomu getir tuşuna basıp kaydınızı oluşturunuz.',
-                      style: TextStyle(fontSize: 20,fontWeight: FontWeight.normal,
-                decoration: TextDecoration.none
-                      ),
-                      ),
-                // can add more TextSpans here...
-              ],
-                ),
+                      children: <TextSpan>[
+                        TextSpan(
+
+                          text: "• Kargo ekle tuşuna basınız.",
+                          style: TextStyle(fontSize: 20,fontWeight: FontWeight.normal,
+                            decoration: TextDecoration.none,
+                          ),
+                        ),
+                        TextSpan(
+                          text: '\n\n• Kargonuzun ait olduğu firma adını seçiniz.',
+                          style: TextStyle(fontSize: 20,fontWeight: FontWeight.normal,
+                              decoration: TextDecoration.none
+                          ),
+                        ),
+                        TextSpan(
+                          text: '\n\n• Sipariş numaranızı giriniz.',
+                          style: TextStyle(fontSize: 20,fontWeight: FontWeight.normal,
+                              decoration: TextDecoration.none
+                          ),
+                        ),
+
+                        TextSpan(
+                          text: '\n\n• Kargomu getir tuşuna basıp kaydınızı oluşturunuz.',
+                          style: TextStyle(fontSize: 20,fontWeight: FontWeight.normal,
+                              decoration: TextDecoration.none
+                          ),
+                        ),
+                        // can add more TextSpans here...
+                      ],
+                    ),
 
 
-                ),
-
-            ),
-
-            ),
-
-
-
-                )),
-                SizedBox(height: 20,),
+                    ),),),),),),
+                SizedBox(height: 10,),
                 Padding(
-                  padding: const EdgeInsets.only(right:20, ),
+                  padding: const EdgeInsets.only(right:35 ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
@@ -146,7 +148,7 @@ class _KargoBodyState extends State<KargoBody> {
             child: Material(
               child: InkWell(
                       onTap: (){
-                        
+
                         Navigator.push(context,
                               MaterialPageRoute(builder: (context) => KargoAddScreen()));
                       },
@@ -160,6 +162,7 @@ class _KargoBodyState extends State<KargoBody> {
                               ),
                             ),
                           ),
+                          
                           decoration: const BoxDecoration(
                             color: kargoPrimaryColor,
                             /*image: DecorationImage(
@@ -167,10 +170,16 @@ class _KargoBodyState extends State<KargoBody> {
                                     assetName),
                                 fit: BoxFit.fill,
                               )*/
-                          )
+                          ),
+                          
                       ),
+                      
               ),
-            ),),),
+              
+            ),
+            
+            ),
+            ),
                     ],
                   ),
                 )
@@ -182,8 +191,9 @@ class _KargoBodyState extends State<KargoBody> {
                 // )
         ],
       ),
-     
+
     );
   }
 }
+
 
