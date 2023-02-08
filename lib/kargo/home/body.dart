@@ -133,9 +133,9 @@ class _KargoBodyState extends State<KargoBody> {
 
 
                     ),),),),),),
-                SizedBox(height: 20,),
+                SizedBox(height: 10,),
                 Padding(
-                  padding: const EdgeInsets.only(right:20, ),
+                  padding: const EdgeInsets.only(right:35 ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
@@ -162,6 +162,7 @@ class _KargoBodyState extends State<KargoBody> {
                               ),
                             ),
                           ),
+                          
                           decoration: const BoxDecoration(
                             color: kargoPrimaryColor,
                             /*image: DecorationImage(
@@ -169,10 +170,16 @@ class _KargoBodyState extends State<KargoBody> {
                                     assetName),
                                 fit: BoxFit.fill,
                               )*/
-                          )
+                          ),
+                          
                       ),
+                      
               ),
-            ),),),
+              
+            ),
+            
+            ),
+            ),
                     ],
                   ),
                 )
