@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/services.dart';
 import 'package:v01/kit/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:v01/kargo/cargo_add/kargooptions.dart';
@@ -35,6 +36,39 @@ TextField reusableTextField(String text, IconData icon, bool isPasswordType,
     keyboardType: isPasswordType
         ? TextInputType.visiblePassword
         : TextInputType.emailAddress,
+  );
+}
+
+TextField reusableNumberField(String text, IconData icon, bool isPasswordType,
+    TextEditingController controller) {
+  return TextField(
+    //maxLengthEnforcement: MaxLengthEnforcement.none,
+    maxLength: 10,
+    controller: controller,
+    obscureText: isPasswordType,
+    enableSuggestions: !isPasswordType,
+    autocorrect: !isPasswordType,
+    cursorColor: Colors.white,
+    style: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+    decoration: InputDecoration(
+      counterText: "",
+      prefixIcon: Icon(
+        icon,
+        color: Color.fromARGB(255, 114, 112, 112),
+      ),
+      labelText: text,
+      labelStyle: TextStyle(color: Color.fromARGB(255, 100, 89, 89).withOpacity(0.9)),
+      filled: true,
+      floatingLabelBehavior: FloatingLabelBehavior.never,
+      fillColor: Color.fromARGB(255, 255, 255, 255),
+      border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(30.0),
+          borderSide: const BorderSide(width: 0, style: BorderStyle.none)),
+    ),
+    keyboardType: TextInputType.number,
+    inputFormatters: <TextInputFormatter>[
+      FilteringTextInputFormatter.digitsOnly
+    ],
   );
 }
 

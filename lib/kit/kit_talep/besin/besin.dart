@@ -32,14 +32,22 @@ class _BesinPageState extends State<BesinPage> {
     location.getLocation().then(
           (location) {
         user_currentLocation = location;
+        print(user_currentLocation);
         String location_lat = user_currentLocation!.latitude!.toString();
         String location_lon = user_currentLocation!.longitude!.toString();
-        Future.delayed(Duration(seconds: 1), (){
-          sendDemand(kitadi1, location_lat, location_lon);
+        Future.delayed(Duration(milliseconds: 300), (){
+          if(user_currentLocation != null){
+            sendDemand(kitadi1, location_lat, location_lon);
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => KitTalepOnayPage()));
+          }
+          else{
+          }
         });
       },
     );
-
     location.onLocationChanged.listen((newLoc) {
       user_currentLocation = newLoc;
       String location_lat = user_currentLocation!.latitude!.toString();
@@ -48,6 +56,52 @@ class _BesinPageState extends State<BesinPage> {
       setState(() {});
     }
     );
+    if(user_currentLocation == null){
+      //print("çalışıyor");
+      Future.delayed(Duration(milliseconds: 1500), (){
+        showDialog<String>(
+            barrierColor: Colors.transparent,
+            useSafeArea: false,
+            context: context,
+            builder: (BuildContext context) => Container(
+              //color: Colors.transparent,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Container(
+                    color: Colors.transparent,
+                    padding: const EdgeInsets.fromLTRB(20,0,20,60),
+                    child: Material(
+                      color: Colors.transparent,
+                      child: Container(
+                        width: MediaQuery.of(context).size.width,
+                        //height: MediaQuery.of(context).size.height/10,
+                        decoration: BoxDecoration(
+                          //color: Color.fromARGB(255, 189, 23, 34).withOpacity(0.9),
+                          //color: Colors.red.withOpacity(0.1),
+                          color:Color.fromARGB(255, 246, 220, 220),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Container(
+                          padding: EdgeInsets.fromLTRB(30, 5, 30, 5),
+                          child: Text(
+                            "Konumunuza ulaşamadık. Lütfen,telefonunuzun konum özelliğini açınız ve uygulamanın konumunuza ulaşmasına izin veriniz.",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontSize: 15,color: Colors.black),),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 20,)
+                ],
+              ),
+            )
+        );
+      }
+      );
+    }
   }
 
   @override
@@ -128,13 +182,6 @@ floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
                              //tal123.method();
                              //sendDemand(value.shopItems[index][0]);
                              getCurrentLocation(value.shopItems[index][0]);
-
-                             Navigator.pushReplacement<void, void>(
-                               context,
-                               MaterialPageRoute<void>(
-                                 builder: (BuildContext context) => KitTalepOnayPage(),
-                               ),
-                             );
                              },
                              child: const Text('Onayla'),
                            ),
@@ -151,7 +198,6 @@ floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
     );
   }
   void sendDemand(String kitadi1,latitude, longitude) async {
-    print("çalışıyor");
     final FirebaseAuth auth = FirebaseAuth.instance;
     final User? user = auth.currentUser;
     var uid = user?.uid.toString();

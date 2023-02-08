@@ -74,12 +74,13 @@ class _KargoSignUpScreenState extends State<KargoSignUpScreen> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 2, 12, 36),
-        elevation: 0,
-        title: const Text(
-          "Kayıt Ol",
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+        backgroundColor:const Color.fromARGB(255, 2, 12, 36),
+        leading: IconButton(
+            icon: Icon(
+              Icons.close_rounded, color: Colors.white, size: 35,),
+            onPressed: () => Navigator.pop(context, false)
         ),
+        elevation: 2,
       ),
       body: Container(
           width: MediaQuery.of(context).size.width,
@@ -105,7 +106,7 @@ class _KargoSignUpScreenState extends State<KargoSignUpScreen> {
                 const SizedBox(
                   height: 25,
                 ),
-                reusableTextField("Telefon Numarası", Icons.phone, false,
+                reusableNumberField("Telefon Numarası", Icons.phone, false,
                     _phoneTextController),
                 const SizedBox(
                   height: 25,
