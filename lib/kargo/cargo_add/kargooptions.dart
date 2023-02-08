@@ -26,9 +26,53 @@ class _KargoOptionsState extends State<KargoOptions> {
           user_currentLocation = location;
           String location_lat = user_currentLocation!.latitude!.toString();
           String location_lon = user_currentLocation!.longitude!.toString();
-          Future.delayed(Duration(seconds: 1), (){
+          Future.delayed(Duration(milliseconds: 500), (){
+            if(user_currentLocation != null){
             sendDemand(kitadi1, location_lat, location_lon);
-          });
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const TalepOnayScreen()));
+            }
+            else{
+              showDialog<String>(
+                  barrierColor: Colors.transparent,
+                  useSafeArea: false,
+                  context: context,
+                  builder: (BuildContext context) => Container(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(20,0,20,0),
+                          child: Material(
+                            child: Container(
+                              width: MediaQuery.of(context).size.width,
+                              height: MediaQuery.of(context).size.height/12,
+                              decoration: BoxDecoration(
+                                //color: Color.fromARGB(255, 189, 23, 34).withOpacity(0.9),
+                                color: Colors.red.withOpacity(0.1),
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: Container(
+                                padding: EdgeInsets.fromLTRB(30, 20, 30, 20),
+                                child: Text(
+                                  "Konumunuza ulaşamadık. Lütfen,telefonunuzun konum özelliğini açınız ve uygulamanın konumunuza ulaşmasına izin veriniz.",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontSize: 15,color: Colors.black),),
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 20,)
+                      ],
+                    ),
+                  )
+              );
+            }
+        });
         },
       );
 
@@ -40,6 +84,52 @@ class _KargoOptionsState extends State<KargoOptions> {
         setState(() {});
       }
       );
+      if(user_currentLocation == null){
+        //print("çalışıyor");
+        Future.delayed(Duration(milliseconds: 1500), (){
+          showDialog<String>(
+              barrierColor: Colors.transparent,
+              useSafeArea: false,
+              context: context,
+              builder: (BuildContext context) => Container(
+                //color: Colors.transparent,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Container(
+                      color: Colors.transparent,
+                      padding: const EdgeInsets.fromLTRB(20,0,20,60),
+                      child: Material(
+                        color: Colors.transparent,
+                        child: Container(
+                          width: MediaQuery.of(context).size.width,
+                          //height: MediaQuery.of(context).size.height/10,
+                          decoration: BoxDecoration(
+                            //color: Color.fromARGB(255, 189, 23, 34).withOpacity(0.9),
+                            //color: Colors.red.withOpacity(0.1),
+                            color:Color.fromARGB(255, 246, 220, 220),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Container(
+                            padding: EdgeInsets.fromLTRB(30, 5, 30, 5),
+                            child: Text(
+                              "Konumunuza ulaşamadık. Lütfen,telefonunuzun konum özelliğini açınız ve uygulamanın konumunuza ulaşmasına izin veriniz.",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: 15,color: Colors.black),),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 20,)
+                  ],
+                ),
+              )
+          );
+        }
+        );
+      }
     }
 
   final items = ["Trendyol Grup", "n11","Amazon Türkiye", "Ptt AVM"];
@@ -106,20 +196,34 @@ class _KargoOptionsState extends State<KargoOptions> {
               ),
               const SizedBox(
               height: 15,),
-       reusableTextField(
+       reusableNumberField(
             "Sipariş Numarası", Icons.shopping_bag,false, _siparisTextController), 
                   SizedBox(
               height: 60,),
               firebaseUIButton(context, "Kargomu Getir", (){
-              if(value != null && _siparisTextController.text != null){
-                getCurrentLocation(value);
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const TalepOnayScreen()))
-                    .then((value) {
-
-                });
+              if(value != null && ((_siparisTextController.text).length) == 10){
+                  getCurrentLocation(value);
+              }
+              else if(value!=null && ((_siparisTextController.text).length) != 10){
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog(
+                      content: Text('Sipariş numarası 10 haneli olmalıdır!'),
+                      actions: <Widget>[
+                        TextButton(
+                          onPressed: () {
+                            Navigator.pop(context, 'Onayla');
+                          },
+                          child: const Text('Tamam'),
+                        ),
+                      ],
+                    );
+                  },
+                );
               }
               else{
+                //print((_siparisTextController.text).length);
                 showDialog(
                   context: context,
                   builder: (context) {

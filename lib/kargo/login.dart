@@ -63,8 +63,96 @@ class _SignInScreenState extends State<SignInScreen> {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => KargoHomeScreen()));
                   }).onError((error, stackTrace) {
-                    print("Error ${error.toString()}");
-                  });
+                    if(_emailTextController.text == "" ||_passwordTextController.text == ""){
+                      showDialog<String>(
+                          barrierColor: Colors.transparent,
+                          useSafeArea: false,
+                          context: context,
+                          builder: (BuildContext context) => Container(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.fromLTRB(20,0,20,0),
+                                  child: Material(
+                                    child: Container(
+                                      width: MediaQuery.of(context).size.width,
+                                      height: MediaQuery.of(context).size.height/12,
+                                      decoration: BoxDecoration(
+                                        //color: Color.fromARGB(255, 189, 23, 34).withOpacity(0.9),
+                                        color: Colors.red.withOpacity(0.1),
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
+                                      child: Container(
+                                        padding: EdgeInsets.fromLTRB(30, 20, 30, 20),
+                                        child: Text(
+                                          "E-posta ve şifre alanı boş bırakılamaz!",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+
+                                              fontSize: 15,color: Colors.black),),
+                                      ),
+
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(height: 20,)
+                              ],
+                            ),
+                          )
+                      );
+                    }
+                    else{showDialog<String>(
+                            barrierColor: Colors.transparent,
+                            useSafeArea: false,
+                            context: context,
+                            builder: (BuildContext context) => Container(
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            20, 0, 20, 0),
+                                        child: Material(
+                                          child: Container(
+                                            width: MediaQuery.of(context)
+                                                .size
+                                                .width,
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .height /
+                                                12,
+                                            decoration: BoxDecoration(
+                                              //color: Color.fromARGB(255, 189, 23, 34).withOpacity(0.9),
+                                              color:
+                                                  Colors.red.withOpacity(0.1),
+                                              borderRadius:
+                                                  BorderRadius.circular(20),
+                                            ),
+                                            child: Container(
+                                              padding: EdgeInsets.fromLTRB(
+                                                  30, 20, 30, 20),
+                                              child: Text(
+                                                "E-posta veya şifreniz yanlış",
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                    fontSize: 15,
+                                                    color: Colors.black),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 20,
+                                      )
+                                    ],
+                                  ),
+                                ));
+                      }
+                    });
                 }),
                 const SizedBox(
                   height: 30,

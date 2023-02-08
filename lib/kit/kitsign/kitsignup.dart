@@ -33,12 +33,13 @@ class _KitSignUpScreenState extends State<KitSignUpScreen> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        backgroundColor: kitPrimaryColor,
-        elevation: 0,
-        title: const Text(
-          "Kayıt Ol",
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+        backgroundColor:kitPrimaryColor,
+        leading: IconButton(
+            icon: Icon(
+              Icons.close_rounded, color: Colors.white, size: 30,),
+            onPressed: () => Navigator.pop(context, false)
         ),
+        elevation: 1,
       ),
       body: Container(
           width: MediaQuery
@@ -71,7 +72,7 @@ class _KitSignUpScreenState extends State<KitSignUpScreen> {
                     const SizedBox(
                       height: 25,
                     ),
-                    reusableTextField("Telefon Numarası", Icons.phone, false,
+                    reusableNumberField("Telefon Numarası", Icons.phone, false,
                         _phoneTextController),
                     const SizedBox(
                       height: 25,
