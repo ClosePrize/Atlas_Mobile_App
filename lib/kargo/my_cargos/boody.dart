@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:v01/animations.dart';
 import 'package:v01/kargo/widgets/reusable_widgets.dart';
 import 'package:v01/kargo/map/map.dart';
 import 'package:v01/kargo/constants.dart';
@@ -139,9 +140,10 @@ class _MyKargosBodyState extends State<MyKargosBody> {
               Navigator.pop(context, 'Onayla');
               Navigator.pushReplacement<void, void>(
                 context,
-                MaterialPageRoute<void>(
-                  builder: (BuildContext context) => LogosPage(),
-                ),
+                SlideLeftRoute(page: LogosPage())
+                // MaterialPageRoute<void>(
+                //   builder: (BuildContext context) => LogosPage(),
+                // ),
               );
               FirebaseAuth.instance.signOut();
             },
