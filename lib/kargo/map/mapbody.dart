@@ -23,9 +23,10 @@ class _MapScreenState extends State<MapScreen>{
           leading: IconButton(
             icon: const Icon(
               Icons.arrow_left, color: Colors.white, size: 30,),
-            onPressed: () => Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const KargoHomeScreen())),
+            onPressed: () => Navigator.pop(context,false),
+          //       Navigator.push(
+          //       context,
+          //       MaterialPageRoute(builder: (context) => const KargoHomeScreen())),
           ),
           elevation: 0,
           title: const Text(

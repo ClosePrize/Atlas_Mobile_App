@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:v01/animations.dart';
+import 'package:v01/kargo/map/mapbody.dart';
 import 'package:v01/kargo/widgets/reusable_widgets.dart';
 import 'package:v01/kargo/map/map.dart';
 import 'package:v01/kargo/constants.dart';
@@ -178,7 +179,7 @@ class _MyKargosBodyState extends State<MyKargosBody> {
                 itemBuilder: (context, index){
                   return MyKargosButtonForMyKargos(context, (){
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => GoogleMapForKit()));
+                        MaterialPageRoute(builder: (context) => MapScreen()));
                   },my_var3(index),my_var1(index),);
                   //http_class.kit[index]['title'],http_class.kit[index]['status'],http_class.kit[index]['created'],http_class.kit[index]['uid']);
                   //demands1![index].title ?? "",demands1![index].status ?? "", demands1![index].created!.replaceRange(10, 27, "") ?? "", demands1![index].uid ?? "");
