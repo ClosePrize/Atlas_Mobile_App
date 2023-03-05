@@ -4,6 +4,7 @@ import 'package:v01/kit/home/home.dart';
 import 'package:v01/kit/taleplerim/taleplerim.dart';
 import '../profile/profile.dart';
 import 'package:v01/kit/taleplerim/remote.dart';
+import 'package:v01/animations.dart';
 
 class KitHomeNavBar extends StatefulWidget {
  
@@ -42,9 +43,10 @@ class _KitHomeNavBarState extends State<KitHomeNavBar> {
           if (value == 0) {
             Navigator.pushReplacement<void, void>(
               context,
-              MaterialPageRoute<void>(
-                builder: (BuildContext context) =>  TaleplerimScreen(),
-              ),
+              // MaterialPageRoute<void>(
+              //   builder: (BuildContext context) =>  TaleplerimScreen(),
+              // ),
+              SlideLeftRoute(page: TaleplerimScreen())
             );
           }
           if (value == 1) {
@@ -53,9 +55,10 @@ class _KitHomeNavBarState extends State<KitHomeNavBar> {
           if (value == 2) {
             Navigator.pushReplacement<void, void>(
               context,
-              MaterialPageRoute<void>(
-                builder: (BuildContext context) =>  KitProfilePage(),
-              ),
+              // MaterialPageRoute<void>(
+              //   builder: (BuildContext context) =>  KitProfilePage(),
+              // ),
+                SlideRightRoute(page: KitProfilePage())
             );
           }
         },
@@ -145,17 +148,19 @@ class _KitProfileNavBarState extends State<KitProfileNavBar> {
           if (value == 0) {
             Navigator.pushReplacement<void, void>(
               context,
-              MaterialPageRoute<void>(
-                builder: (BuildContext context) =>  TaleplerimScreen(),
-              ),
+              SlideLeftRoute(page: TaleplerimScreen())
+              // MaterialPageRoute<void>(
+              //   builder: (BuildContext context) =>  TaleplerimScreen(),
+              // ),
             );
           }
           if (value == 1) {
             Navigator.pushReplacement<void, void>(
               context,
-              MaterialPageRoute<void>(
-                builder: (BuildContext context) =>  KitHomePage(),
-              ),
+                SlideLeftRoute(page: KitHomePage())
+              // MaterialPageRoute<void>(
+              //   builder: (BuildContext context) =>  KitHomePage(),
+              // ),
             );
           }
           if (value == 2) {
@@ -242,17 +247,19 @@ class _KitTaleplerimBarState extends State<KitTaleplerimBar> {
           if (value == 1) {
             Navigator.pushReplacement<void, void>(
               context,
-              MaterialPageRoute<void>(
-                builder: (BuildContext context) =>  KitHomePage(),
-              ),
+                SlideRightRoute(page: KitHomePage())
+              // MaterialPageRoute<void>(
+              //   builder: (BuildContext context) =>  KitHomePage(),
+              // ),
             );
           }
           if (value == 2) {
             Navigator.pushReplacement<void, void>(
               context,
-              MaterialPageRoute<void>(
-                builder: (BuildContext context) =>  KitProfilePage(),
-              ),
+                SlideRightRoute(page: KitProfilePage())
+              // MaterialPageRoute<void>(
+              //   builder: (BuildContext context) =>  KitProfilePage(),
+              // ),
             );
           }
         },
@@ -329,25 +336,28 @@ class _KitInsideBarState extends State<KitInsideBar> {
            if (value == 0) {
             Navigator.pushReplacement<void, void>(
               context,
-              MaterialPageRoute<void>(
-                builder: (BuildContext context) =>  TaleplerimScreen(),
-              ),
+              SlideLeftRoute(page: TaleplerimScreen())
+              // MaterialPageRoute<void>(
+              //   builder: (BuildContext context) =>  TaleplerimScreen(),
+              // ),
             );
           }
           if (value == 1) {
-            Navigator.pushReplacement<void, void>(
-              context,
-              MaterialPageRoute<void>(
-                builder: (BuildContext context) =>  KitHomePage(),
-              ),
-            );
+            Navigator.pop(context, false);
+            // Navigator.pushReplacement<void, void>(
+            //   context,
+            //   // MaterialPageRoute<void>(
+            //   //   builder: (BuildContext context) =>  KitHomePage(),
+            //   // ),
+            // );
           }
           if (value == 2) {
             Navigator.pushReplacement<void, void>(
               context,
-              MaterialPageRoute<void>(
-                builder: (BuildContext context) =>  KitProfilePage(),
-              ),
+              SlideRightRoute(page: KitProfilePage())
+              // MaterialPageRoute<void>(
+              //   builder: (BuildContext context) =>  KitProfilePage(),
+              // ),
             );
           }
         },

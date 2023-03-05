@@ -16,12 +16,14 @@ class _TalepOnayScreenState extends State<TalepOnayScreen>{
   void initState() {
     super.initState();
     Future.delayed(Duration(seconds: 1, milliseconds: 500), (){
-      Navigator.pushReplacement<void, void>(
-        context,
-        MaterialPageRoute<void>(
-          builder: (BuildContext context) =>  KargoHomeScreen(),
-        ),
-      );
+      Navigator.pop(context, false);
+      Navigator.pop(context, false);
+      // Navigator.pushReplacement<void, void>(
+      //   context,
+      //   MaterialPageRoute<void>(
+      //     builder: (BuildContext context) =>  KargoHomeScreen(),
+      //   ),
+      // );
     });
   }
 
