@@ -31,7 +31,7 @@ class _MapScreenForKitState extends State<MapScreenForKit>{
   BitmapDescriptor droneIcon = BitmapDescriptor.defaultMarker;
   BitmapDescriptor droneLocationIcon = BitmapDescriptor.defaultMarker;
 
-  void getCurrentLocation() async {
+  /*void getCurrentLocation() async {
     Location location = Location();
     location.changeSettings(accuracy: LocationAccuracy.high);
     // GoogleMapController googleMapController = await _controller.future;
@@ -57,6 +57,134 @@ class _MapScreenForKitState extends State<MapScreenForKit>{
 
     }
     );
+  }*/
+  void getCurrentLocation() async {
+    Location location = Location();
+    bool _serviceEnabled;
+    PermissionStatus _permissionGranted;
+
+    _serviceEnabled = await location.serviceEnabled();
+    if (!_serviceEnabled) {
+      _serviceEnabled = await location.requestService();
+      if (!_serviceEnabled) {
+        showDialog<String>(
+            barrierColor: Colors.transparent,
+            useSafeArea: false,
+            context: context,
+            builder: (BuildContext context) =>
+                Container(
+                  //color: Colors.transparent,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Container(
+                        color: Colors.transparent,
+                        padding: const EdgeInsets.fromLTRB(20, 0, 20, 60),
+                        child: Material(
+                          color: Colors.transparent,
+                          child: Container(
+                            width: MediaQuery
+                                .of(context)
+                                .size
+                                .width,
+                            //height: MediaQuery.of(context).size.height/10,
+                            decoration: BoxDecoration(
+                              //color: Color.fromARGB(255, 189, 23, 34).withOpacity(0.9),
+                              //color: Colors.red.withOpacity(0.1),
+                              color: Color.fromARGB(255, 246, 220, 220),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: Container(
+                              padding: EdgeInsets.fromLTRB(30, 5, 30, 5),
+                              child: Text(
+                                "Konumunuza ulaşamadık. Lütfen,telefonunuzun konum özelliğini açınız.",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize: 15, color: Colors.black),),
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 20,)
+                    ],
+                  ),
+                )
+        );
+      }
+    }
+    if (_serviceEnabled) {
+      _permissionGranted = await location.hasPermission();
+      if (_permissionGranted == PermissionStatus.denied ||
+          _permissionGranted == PermissionStatus.deniedForever) {
+        _permissionGranted = await location.requestPermission();
+        if (_permissionGranted != PermissionStatus.granted) {
+          showDialog<String>(
+              barrierColor: Colors.transparent,
+              useSafeArea: false,
+              context: context,
+              builder: (BuildContext context) =>
+                  Container(
+                    //color: Colors.transparent,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Container(
+                          color: Colors.transparent,
+                          padding: const EdgeInsets.fromLTRB(20, 0, 20, 60),
+                          child: Material(
+                            color: Colors.transparent,
+                            child: Container(
+                              width: MediaQuery
+                                  .of(context)
+                                  .size
+                                  .width,
+                              //height: MediaQuery.of(context).size.height/10,
+                              decoration: BoxDecoration(
+                                //color: Color.fromARGB(255, 189, 23, 34).withOpacity(0.9),
+                                //color: Colors.red.withOpacity(0.1),
+                                color: Color.fromARGB(255, 246, 220, 220),
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: Container(
+                                padding: EdgeInsets.fromLTRB(30, 5, 30, 5),
+                                child: Text(
+                                  "Konumunuza ulaşamadık. Lütfen, uygulamanın konumunuza ulaşmasına izin veriniz.",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontSize: 15, color: Colors.black),),
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 20,)
+                      ],
+                    ),
+                  )
+          );
+        }
+      }
+      if (_permissionGranted == PermissionStatus.granted || _permissionGranted == PermissionStatus.grantedLimited) {
+        location.changeSettings(accuracy: LocationAccuracy.high);
+        // GoogleMapController googleMapController = await _controller.future;
+        location.getLocation().then(
+              (location) {
+            user_currentLocation = location;
+            String location_lat = user_currentLocation!.latitude!.toString();
+            String location_lon = user_currentLocation!.longitude!.toString();
+          },
+        );
+        location.onLocationChanged.listen((newLoc) {
+          user_currentLocation = newLoc;
+          String location_lat = user_currentLocation!.latitude!.toString();
+          String location_lon = user_currentLocation!.longitude!.toString();
+
+          setState(() {});
+        }
+        );
+      }
+    }
   }
 
   void setCustomMarkerIcon() {
