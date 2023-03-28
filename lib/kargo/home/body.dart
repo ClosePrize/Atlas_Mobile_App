@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:v01/animations.dart';
 import 'package:v01/kit/home/home.dart';
 import '../../welcome.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -35,10 +34,9 @@ class _KargoBodyState extends State<KargoBody> {
               Navigator.pop(context, 'Onayla');
               Navigator.pushReplacement<void, void>(
                 context,
-                SlideLeftRoute(page: LogosPage())
-                // MaterialPageRoute<void>(
-                //   builder: (BuildContext context) => LogosPage(),
-                // ),
+                MaterialPageRoute<void>(
+                  builder: (BuildContext context) => LogosPage(),
+                ),
               );
               FirebaseAuth.instance.signOut();
             },

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:v01/animations.dart';
 import 'package:v01/kargo/constants.dart';
 import 'package:v01/kit/home/home.dart';
 

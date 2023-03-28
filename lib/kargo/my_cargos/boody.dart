@@ -1,6 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'package:v01/animations.dart';
+=======
+>>>>>>> parent of 4d01c1e (Merge branch 'main' into Mustafa_vol3_m)
 import 'package:v01/kargo/map/mapbody.dart';
 import 'package:v01/kargo/widgets/reusable_widgets.dart';
 import 'package:v01/kargo/map/map.dart';
@@ -141,10 +144,9 @@ class _MyKargosBodyState extends State<MyKargosBody> {
               Navigator.pop(context, 'Onayla');
               Navigator.pushReplacement<void, void>(
                 context,
-                SlideLeftRoute(page: LogosPage())
-                // MaterialPageRoute<void>(
-                //   builder: (BuildContext context) => LogosPage(),
-                // ),
+                MaterialPageRoute<void>(
+                  builder: (BuildContext context) => LogosPage(),
+                ),
               );
               FirebaseAuth.instance.signOut();
             },

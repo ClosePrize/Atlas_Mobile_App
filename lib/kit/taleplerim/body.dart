@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:v01/animations.dart';
 import 'package:v01/kargo/widgets/reusable_widgets.dart';
 import 'package:v01/kargo/map/map.dart';
 import 'package:v01/kargo/constants.dart';
@@ -163,10 +162,9 @@ class _TaleplerimBodyState extends State<TaleplerimBody> {
               Navigator.pop(context, 'Onayla');
               Navigator.pushReplacement<void, void>(
                 context,
-                SlideLeftRoute(page: LogosPage())
-                // MaterialPageRoute<void>(
-                //   builder: (BuildContext context) => LogosPage(),
-                // ),
+                MaterialPageRoute<void>(
+                  builder: (BuildContext context) => LogosPage(),
+                ),
               );
               FirebaseAuth.instance.signOut();
             },
@@ -186,14 +184,12 @@ class _TaleplerimBodyState extends State<TaleplerimBody> {
         backgroundColor:kitPrimaryColor,
         leading: IconButton(
             icon: Icon(
-              Icons.arrow_back, color: Colors.white, size: 30,),
-            onPressed: () =>
-                Navigator.pushReplacement<void, void>(
+              Icons.close_rounded, color: Colors.white, size: 30,),
+            onPressed: () => Navigator.pushReplacement<void, void>(
               context,
-              SlideRightRoute(page: KitHomePage())
-              // MaterialPageRoute<void>(
-              //   builder: (BuildContext context) => KitHomePage(),
-              // ),
+              MaterialPageRoute<void>(
+                builder: (BuildContext context) => KitHomePage(),
+              ),
             )
         ),
         elevation: 1,
