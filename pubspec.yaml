@@ -92,6 +92,7 @@ flutter:
     - assets/besin_kitleri/sokakhayvanimamakiti.png
     - assets/drone.png
     - assets/kitlogo1.jpg
+    - assets/kargomaticon.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see

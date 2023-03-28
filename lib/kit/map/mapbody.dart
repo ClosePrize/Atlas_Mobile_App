@@ -33,6 +33,7 @@ class _MapScreenForKitState extends State<MapScreenForKit>{
 
   void getCurrentLocation() async {
     Location location = Location();
+    location.changeSettings(accuracy: LocationAccuracy.high);
     // GoogleMapController googleMapController = await _controller.future;
     location.getLocation().then(
           (location) {
