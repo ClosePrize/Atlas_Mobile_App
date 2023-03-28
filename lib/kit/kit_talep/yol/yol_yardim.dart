@@ -8,6 +8,7 @@ import 'package:v01/kit/kit_talep/yol/yol_inf.dart';
 import '../../../kargo/constants.dart';
 import '../../taleplerim/talep_onay.dart';
 import '../../widgets/bottomnavigationbar.dart';
+import 'package:v01/kit/sepetim/cart_page_klon.dart';
 import 'package:provider/provider.dart';
 import 'package:v01/kit/widgets/items.dart';
 import 'cart_model_yol.dart';
@@ -54,7 +55,6 @@ class _YolYardimPageState extends State<YolYardimPage> {
       appBar: AppBar(
         backgroundColor:kitPrimaryColor,
         leading: IconButton(
-            // ignore: prefer_const_constructors
             icon: Icon(
               Icons.close_rounded, color: Colors.white, size: 30,),
             onPressed: () => Navigator.pop(context, false)

@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:v01/animations.dart';
 import 'package:v01/kargo/constants.dart';
 import 'package:v01/kit/home/home.dart';
 import '../../kargo/widgets/reusable_widgets.dart';
@@ -92,9 +91,8 @@ class _KitSignUpScreenState extends State<KitSignUpScreen> {
                         print("Created New Account");
                         print(_passwordTextController.text);
                         Navigator.push(context,
-                            SlideRightRoute(page: KitHomePage())
-                            // MaterialPageRoute(builder: (context) => KitHomePage())
-                        );
+                            MaterialPageRoute(
+                                builder: (context) => KitHomePage()));
                       }).onError((error, stackTrace) {
                         print("Error ${error.toString()}");
                       });

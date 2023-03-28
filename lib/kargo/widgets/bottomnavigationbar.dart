@@ -1,6 +1,5 @@
 import 'package:bubble_bottom_bar/bubble_bottom_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:v01/animations.dart';
 import 'package:v01/kargo/home/kargohome.dart';
 import 'package:v01/kargo/my_cargos/my_cargos.dart';
 import 'package:v01/kit/home/home.dart';
@@ -45,10 +44,9 @@ class _KargoHomeNavBarState extends State<KargoHomeNavBar> {
           if (value == 0) {
             Navigator.pushReplacement<void, void>(
               context,
-              SlideLeftRoute(page: MyCargosScreen())
-              // MaterialPageRoute<void>(
-              //   builder: (BuildContext context) =>  MyCargosScreen(),
-              // ),
+              MaterialPageRoute<void>(
+                builder: (BuildContext context) =>  MyCargosScreen(),
+              ),
             );
           }
           if (value == 1) {
@@ -57,10 +55,9 @@ class _KargoHomeNavBarState extends State<KargoHomeNavBar> {
           if (value == 2) {
             Navigator.pushReplacement<void, void>(
               context,
-              SlideRightRoute(page: KargoProfileScreen())
-              // MaterialPageRoute<void>(
-              //   builder: (BuildContext context) =>  KargoProfileScreen(),
-              // ),
+              MaterialPageRoute<void>(
+                builder: (BuildContext context) =>  KargoProfileScreen(),
+              ),
             );
           }
         },
@@ -150,19 +147,17 @@ class _KargoProfileNavBarState extends State<KargoProfileNavBar> {
           if (value == 0) {
             Navigator.pushReplacement<void, void>(
               context,
-              SlideLeftRoute(page: MyCargosScreen())
-              // MaterialPageRoute<void>(
-              //   builder: (BuildContext context) =>  MyCargosScreen(),
-              // ),
+              MaterialPageRoute<void>(
+                builder: (BuildContext context) =>  MyCargosScreen(),
+              ),
             );
           }
           if (value == 1) {
             Navigator.pushReplacement<void, void>(
               context,
-              SlideLeftRoute(page: KargoHomeScreen())
-              // MaterialPageRoute<void>(
-              //   builder: (BuildContext context) =>  KargoHomeScreen(),
-              // ),
+              MaterialPageRoute<void>(
+                builder: (BuildContext context) =>  KargoHomeScreen(),
+              ),
             );
           }
           if (value == 2) {
@@ -249,19 +244,17 @@ class _CargosNavBarState extends State<CargosNavBar> {
           if (value == 1) {
             Navigator.pushReplacement<void, void>(
               context,
-              SlideRightRoute(page: KargoHomeScreen())
-              // MaterialPageRoute<void>(
-              //   builder: (BuildContext context) =>  KargoHomeScreen(),
-              // ),
+              MaterialPageRoute<void>(
+                builder: (BuildContext context) =>  KargoHomeScreen(),
+              ),
             );
           }
           if (value == 2) {
             Navigator.pushReplacement<void, void>(
               context,
-                SlideRightRoute(page: KargoHomeScreen())
-              // MaterialPageRoute<void>(
-              //   builder: (BuildContext context) =>  KargoProfileScreen(),
-              // ),
+              MaterialPageRoute<void>(
+                builder: (BuildContext context) =>  KargoProfileScreen(),
+              ),
             );
           }
         },
@@ -338,28 +331,25 @@ class _CargoAddNavBarState extends State<CargoAddNavBar> {
            if (value == 0) {
             Navigator.pushReplacement<void, void>(
               context,
-              SlideLeftRoute(page: MyCargosScreen())
-              // MaterialPageRoute<void>(
-              //   builder: (BuildContext context) =>  MyCargosScreen(),
-              // ),
+              MaterialPageRoute<void>(
+                builder: (BuildContext context) =>  MyCargosScreen(),
+              ),
             );
           }
           if (value == 1) {
-            Navigator.pop(context, false);
-            // Navigator.pushReplacement<void, void>(
-            //   context,
-            //   MaterialPageRoute<void>(
-            //     builder: (BuildContext context) =>  KargoHomeScreen(),
-            //   ),
-            // );
+            Navigator.pushReplacement<void, void>(
+              context,
+              MaterialPageRoute<void>(
+                builder: (BuildContext context) =>  KargoHomeScreen(),
+              ),
+            );
           }
           if (value == 2) {
             Navigator.pushReplacement<void, void>(
               context,
-              SlideRightRoute(page: KargoProfileScreen())
-              // MaterialPageRoute<void>(
-              //   builder: (BuildContext context) =>  KargoProfileScreen(),
-              // ),
+              MaterialPageRoute<void>(
+                builder: (BuildContext context) =>  KargoProfileScreen(),
+              ),
             );
           }
         },

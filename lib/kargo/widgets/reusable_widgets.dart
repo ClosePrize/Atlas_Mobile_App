@@ -1,5 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
+<<<<<<< HEAD
 import 'package:v01/animations.dart';
+=======
+import 'package:flutter/services.dart';
+>>>>>>> parent of 4d01c1e (Merge branch 'main' into Mustafa_vol3_m)
 import 'package:v01/kit/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:v01/kargo/cargo_add/kargooptions.dart';
@@ -320,10 +324,9 @@ Container firebaseUIButton_1(BuildContext context,Color? color) {
                 Navigator.pop(context, 'Onayla');
                 Navigator.pushReplacement<void, void>(
                   context,
-                  SlideLeftRoute(page: LogosPage())
-                  // MaterialPageRoute<void>(
-                  //   builder: (BuildContext context) => const LogosPage(),
-                  // ),
+                  MaterialPageRoute<void>(
+                    builder: (BuildContext context) => const LogosPage(),
+                  ),
                 );
                 FirebaseAuth.instance.signOut();
               },
