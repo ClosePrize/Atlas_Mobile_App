@@ -81,7 +81,7 @@ class _BesinPageState extends State<BesinPage> {
         );
       }
     }
-    else if (_serviceEnabled) {
+    if (_serviceEnabled) {
       _permissionGranted = await location.hasPermission();
       if (_permissionGranted == PermissionStatus.denied ||
           _permissionGranted == PermissionStatus.deniedForever) {
@@ -133,7 +133,7 @@ class _BesinPageState extends State<BesinPage> {
           );
         }
       }
-      else if (_permissionGranted == PermissionStatus.granted || _permissionGranted == PermissionStatus.grantedLimited) {
+      if (_permissionGranted == PermissionStatus.granted || _permissionGranted == PermissionStatus.grantedLimited) {
         location.changeSettings(accuracy: LocationAccuracy.high);
         // GoogleMapController googleMapController = await _controller.future;
         location.getLocation().then(
