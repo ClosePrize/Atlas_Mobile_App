@@ -14,17 +14,20 @@ class KitHomeNavBar extends StatefulWidget {
 
 class _KitHomeNavBarState extends State<KitHomeNavBar> {
   late int currentIndex;
+  var  currentIndex1;
   
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     currentIndex = 0;
+    currentIndex1 = 1;
   }
 
   void changePage(int? index) {
     setState(() {
-      currentIndex = index!;   
+      currentIndex = index!;
+      currentIndex1 = index!;
     }
     
     );}
@@ -37,9 +40,10 @@ class _KitHomeNavBarState extends State<KitHomeNavBar> {
         fabLocation: BubbleBottomBarFabLocation.end,
         opacity: .2,
         
-        currentIndex:1,
+        currentIndex:currentIndex1,
          onTap: (value) {
           if (value == 0) {
+            changePage(0);
             Navigator.pushReplacement<void, void>(
               context,
               MaterialPageRoute<void>(
@@ -48,9 +52,10 @@ class _KitHomeNavBarState extends State<KitHomeNavBar> {
             );
           }
           if (value == 1) {
-           
+            changePage(1);
           }
           if (value == 2) {
+            changePage(2);
             Navigator.pushReplacement<void, void>(
               context,
               MaterialPageRoute<void>(

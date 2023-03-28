@@ -203,12 +203,12 @@ class _TaleplerimBodyState extends State<TaleplerimBody> {
                     itemCount: siparis_sayisi,
                       itemBuilder: (context, index){
                       return taleplerimbutton(context, (){
-                        if (my_var3(index) == "Dağıtımda" || my_var3(index) == "Kargonuz Adreste"){
+                        //if (my_var3(index) == "Dağıtımda" || my_var3(index) == "Kargonuz Adreste"){
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => GoogleMapForKit()));
-                          }
+                          //}
                         },my_var(index),my_var3(index),my_var1(index),my_var2(index));
                           //http_class.kit[index]['title'],http_class.kit[index]['status'],http_class.kit[index]['created'],http_class.kit[index]['uid']);
                         //demands1![index].title ?? "",demands1![index].status ?? "", demands1![index].created!.replaceRange(10, 27, "") ?? "", demands1![index].uid ?? "");

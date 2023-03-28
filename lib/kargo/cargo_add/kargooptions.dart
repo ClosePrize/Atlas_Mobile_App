@@ -6,6 +6,7 @@ import 'package:v01/kargo/widgets/reusable_widgets.dart';
 import 'package:v01/kargo/widgets/talep_onay.dart';
 import 'package:http/http.dart' as http;
 import 'kargo_inf.dart';
+import 'package:v01/kargo/map/remote.dart';
 class KargoOptions extends StatefulWidget {
   const KargoOptions({super.key});
 
@@ -18,7 +19,7 @@ class _KargoOptionsState extends State<KargoOptions> {
       Demandinf demandinf = Demandinf();
       LocationData? user_currentLocation;
 
-    getCurrentLocation(kitadi1) async {
+    /*getCurrentLocation(kargoadi) async {
       Location location = Location();
       // GoogleMapController googleMapController = await _controller.future;
       location.getLocation().then(
@@ -28,7 +29,7 @@ class _KargoOptionsState extends State<KargoOptions> {
           String location_lon = user_currentLocation!.longitude!.toString();
           Future.delayed(Duration(milliseconds: 500), (){
             if(user_currentLocation != null){
-            sendDemand(kitadi1, location_lat, location_lon);
+            sendDemand(kargoadi, location_lat, location_lon);
             Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -130,7 +131,13 @@ class _KargoOptionsState extends State<KargoOptions> {
         }
         );
       }
-    }
+    }*/
+    var kargomat_loc;
+    @override
+  void initState() {
+      kargomat_loc = GetKargomatLocation().getLocation();
+    super.initState();
+  }
 
   final items = ["Trendyol Grup", "n11","Amazon Türkiye", "Ptt AVM"];
   String? value;
@@ -200,9 +207,15 @@ class _KargoOptionsState extends State<KargoOptions> {
             "Sipariş Numarası", Icons.shopping_bag,false, _siparisTextController), 
                   SizedBox(
               height: 60,),
-              firebaseUIButton(context, "Kargomu Getir", (){
+              firebaseUIButton(context, "Kargomu Getir", () async {
               if(value != null && ((_siparisTextController.text).length) == 10){
-                  getCurrentLocation(value);
+                //getCurrentLocation(value);
+                kargomat_loc = await GetKargomatLocation().getLocation();
+                sendDemand(value!, kargomat_loc[0].lat.toString(), kargomat_loc[0].lon.toString());
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const TalepOnayScreen()));
               }
               else if(value!=null && ((_siparisTextController.text).length) != 10){
                 showDialog(

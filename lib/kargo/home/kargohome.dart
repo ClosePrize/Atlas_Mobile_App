@@ -12,7 +12,6 @@ class KargoHomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-   
       backgroundColor: kbackgroundColor,
       bottomNavigationBar: KargoHomeNavBar(),
       body:KargoBody() ,
@@ -29,6 +28,5 @@ class KargoHomeScreen extends StatelessWidget {
 ),
 floatingActionButtonLocation: FloatingActionButtonLocation.endDocked, 
       );
-    
   }
 }
