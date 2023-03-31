@@ -47,7 +47,7 @@ class _KitHomeNavBarState extends State<KitHomeNavBar> {
             changePage(0);
             Navigator.pushReplacement<void, void>(
               context,
-              SlideLeftRoute(page: TaleplerimScreen());
+              SlideLeftRoute(page: TaleplerimScreen())
             );
           }
           if (value == 1) {
