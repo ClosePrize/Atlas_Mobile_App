@@ -62,7 +62,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           password: _passwordTextController.text)
                       .then((value) {
                     Navigator.push(context,
-                        SlideRightRoute(page: KargoHomeScreen())
+                        SlideRightRoute(page: KargoHomeScreen()));
                   }).onError((error, stackTrace) {
                     if(_emailTextController.text == "" ||_passwordTextController.text == ""){
                       showDialog<String>(
