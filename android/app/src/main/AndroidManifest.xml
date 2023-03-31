@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.v01">
    <application
-        android:label="v01"
+        android:label="Atlas Mobil Uygulaması"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
