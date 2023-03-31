@@ -2,10 +2,11 @@ import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:v01/kargo/home/kargohome.dart';
+import '../../kargo/home/kargohome.dart';
 import 'kargo/login.dart';
 import 'kit/home/home.dart';
 import 'kit/kitsign/kitlogin.dart';
+import 'animations.dart';
 
 class LogosPage extends StatelessWidget {
   const LogosPage({super.key});
@@ -27,11 +28,16 @@ class LogosPage extends StatelessWidget {
                 if (user != null) {
                   print('User signed in!');
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) =>  KitHomePage()));
+                      // MaterialPageRoute(builder: (context) =>  KitHomePage())
+                      SlideRightRoute(page: KitHomePage())
+                  );
                 } else {
                   print('User is currently signed out!');
                   Navigator.push(
-                      context, MaterialPageRoute(builder: (context) => KitSignInScreen()));
+                      context, 
+                      // SlideRightRoute(page: KitSignInScreen())
+                      MaterialPageRoute(builder: (context) => KitSignInScreen())
+                  );
                 }
               });
             },
@@ -51,12 +57,16 @@ class LogosPage extends StatelessWidget {
                 if (user != null) {
                   print('User signed in!');
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) =>  KargoHomeScreen()));
+                      // MaterialPageRoute(builder: (context) =>  KargoHomeScreen())
+                      SlideRightRoute(page: KargoHomeScreen())
+                  );
                 } else {
                   print('User is currently signed out!');
                   Navigator.push(
-                      context, MaterialPageRoute(builder: (context) => SignInScreen()));
-                }
+                      context,
+                      MaterialPageRoute(builder: (context) => SignInScreen())
+                      // SlideRightRoute(page: SignInScreen())
+                  );
               });
             },
             child: Image.asset(

@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:v01/animations.dart';
 import 'package:v01/kargo/home/kargohome.dart';
 import '../../kargo/constants.dart';
 import '../../kargo/widgets/reusable_widgets.dart';
@@ -38,9 +39,10 @@ class _KitProfileScreenState extends State<KitProfileScreen> {
               Navigator.pop(context, 'Onayla');
               Navigator.pushReplacement<void, void>(
                 context,
-                MaterialPageRoute<void>(
-                  builder: (BuildContext context) => LogosPage(),
-                ),
+                SlideLeftRoute(page: LogosPage())
+                // MaterialPageRoute<void>(
+                //   builder: (BuildContext context) => LogosPage(),
+                // ),
               );
               FirebaseAuth.instance.signOut();
             },
@@ -102,9 +104,10 @@ class _KitProfileScreenState extends State<KitProfileScreen> {
                 Icons.close_rounded, color: Colors.white, size: 30,),
               onPressed: () => Navigator.pushReplacement<void, void>(
                 context,
-                MaterialPageRoute<void>(
-                  builder: (BuildContext context) =>  KitHomePage(),
-                ),
+                SlideLeftRoute(page: KitHomePage())
+                // MaterialPageRoute<void>(
+                //   builder: (BuildContext context) =>  KitHomePage(),
+                // ),
               )
           ),
           elevation: 1,

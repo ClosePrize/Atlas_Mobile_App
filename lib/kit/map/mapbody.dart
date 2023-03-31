@@ -236,11 +236,12 @@ class _MapScreenForKitState extends State<MapScreenForKit>{
         backgroundColor:kitPrimaryColor,
         leading: IconButton(
             icon: Icon(
-              Icons.close_rounded, color: Colors.white, size: 30,),
+              Icons.arrow_back, color: Colors.white, size: 30,),
             onPressed: () { //Navigator.pop(context, false);
               //Navigator.push(context, MaterialPageRoute(builder: (context) => TaleplerimScreen()));
               //Navigator.pop(context, false);
               //Navigator.(context, MaterialPageRoute(builder: (context) => TaleplerimScreen()))
+              // Navigator.pop(context, false);
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
