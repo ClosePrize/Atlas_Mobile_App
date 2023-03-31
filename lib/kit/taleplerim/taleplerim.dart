@@ -3,6 +3,9 @@ import 'package:v01/kargo/home/kargohome.dart';
 import 'package:v01/kit/taleplerim/body.dart';
 import 'package:v01/kargo/constants.dart';
 import 'package:v01/kit/widgets/bottomnavigationbar.dart';
+import '../../kargo/constants.dart';
+
+import '../widgets/bottomnavigationbar.dart';
 
 class TaleplerimScreen extends StatelessWidget {
   const TaleplerimScreen({super.key});

@@ -238,6 +238,12 @@ floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
                                 .addItemToCart(index);
                             //sendDemand2(value.shopItems[index][0]);
                             getCurrentLocation(value.shopItems[index][0]);
+                            Navigator.pushReplacement<void, void>(
+                              context,
+                              MaterialPageRoute<void>(
+                                builder: (BuildContext context) =>  KitTalepOnayPage(),
+                              ),
+                            );
                             },
                             child: const Text('Onayla'),
                           ),

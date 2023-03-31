@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
+import 'package:v01/animations.dart';
 import 'package:v01/kit/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:v01/kargo/cargo_add/kargooptions.dart';
@@ -71,7 +72,6 @@ TextField reusableNumberField(String text, IconData icon, bool isPasswordType,
     ],
   );
 }
-
 
 SizedBox reusableTextField_1(String text, IconData icon,/* bool isPasswordType,
     TextEditingController controller*/) {
@@ -353,9 +353,10 @@ Container firebaseUIButton_1(BuildContext context,Color? color) {
                 Navigator.pop(context, 'Onayla');
                 Navigator.pushReplacement<void, void>(
                   context,
-                  MaterialPageRoute<void>(
-                    builder: (BuildContext context) => const LogosPage(),
-                  ),
+                  SlideLeftRoute(page: LogosPage())
+                  // MaterialPageRoute<void>(
+                  //   builder: (BuildContext context) => const LogosPage(),
+                  // ),
                 );
                 FirebaseAuth.instance.signOut();
               },

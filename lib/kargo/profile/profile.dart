@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:v01/kargo/constants.dart';
-import 'package:v01/kargo/profile/body.dart';
-import 'package:v01/kargo/profile/boody.dart';
-import 'package:v01/kargo/widgets/bottomnavigationbar.dart';
-import 'package:v01/kit/home/home.dart';
+import '../../kargo/constants.dart';
+import '../../kargo/profile/body.dart';
+import '../../kargo/profile/boody.dart';
+import '../../kargo/widgets/bottomnavigationbar.dart';
+import '../../kit/home/home.dart';
 
 class KargoProfileScreen extends StatelessWidget{
   const KargoProfileScreen({super.key});
