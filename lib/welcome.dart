@@ -67,7 +67,7 @@ class LogosPage extends StatelessWidget {
                       MaterialPageRoute(builder: (context) => SignInScreen())
                       // SlideRightRoute(page: SignInScreen())
                   );
-              });
+            }});
             },
             child: Image.asset(
               "assets/kargologo.png",

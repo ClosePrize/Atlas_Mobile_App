@@ -45,7 +45,7 @@ class _KitHomeNavBarState extends State<KitHomeNavBar> {
          onTap: (value) {
           if (value == 0) {
             changePage(0);
-            SlideLeftRoute(page: TaleplerimScreen())
+            SlideLeftRoute(page: TaleplerimScreen());
           }
           if (value == 1) {
             changePage(1);

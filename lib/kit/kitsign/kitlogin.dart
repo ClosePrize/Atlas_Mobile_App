@@ -61,7 +61,7 @@ class _KitSignInScreenState extends State<KitSignInScreen> {
                           password: _passwordTextController.text)
                       .then((value) {
                     Navigator.push(context,
-                        SlideRightRoute(page: KitHomePage())
+                        SlideRightRoute(page: KitHomePage()));
                   }).onError((error, stackTrace) {
                     if(_emailTextController.text == "" ||_passwordTextController.text == ""){
                       showDialog<String>(
