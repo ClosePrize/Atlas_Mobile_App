@@ -301,6 +301,11 @@ class _SaglikPageState extends State<SaglikPage> {
   }*/
 
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -376,6 +381,12 @@ floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
                                 .addItemToCart(index);
                             getCurrentLocation(value.shopItems[index][0]);
                             //sendDemand1(value.shopItems[index][0]);
+                            Navigator.pushReplacement<void, void>(
+                              context,
+                              MaterialPageRoute<void>(
+                                builder: (BuildContext context) => KitTalepOnayPage(),
+                                ),
+                              );
                             },
                             child: const Text('Onayla'),
                           ),

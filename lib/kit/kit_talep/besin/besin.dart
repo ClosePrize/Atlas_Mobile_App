@@ -242,6 +242,13 @@ floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
                              //tal123.method();
                              //sendDemand(value.shopItems[index][0]);
                              getCurrentLocation(value.shopItems[index][0]);
+
+                             Navigator.pushReplacement<void, void>(
+                               context,
+                               MaterialPageRoute<void>(
+                                 builder: (BuildContext context) => KitTalepOnayPage(),
+                               ),
+                             );
                              },
                              child: const Text('Onayla'),
                            ),

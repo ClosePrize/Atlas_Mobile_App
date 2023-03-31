@@ -15,13 +15,13 @@ class KargoAddScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: AppBar(
-        backgroundColor:const Color.fromARGB(255, 2, 12, 36),
-        leading: IconButton(
+          backgroundColor:const Color.fromARGB(255, 2, 12, 36),
+          leading: IconButton(
             icon: Icon(
-              Icons.close_rounded, color: Colors.white, size: 35,),
+              Icons.arrow_back, color: Colors.white, size: 30,),
             onPressed: () => Navigator.pop(context, false)
-        ),
-        elevation: 2,
+          ),
+          elevation: 2,
       ),
       backgroundColor: kbackgroundColor,
       bottomNavigationBar: CargoAddNavBar(),

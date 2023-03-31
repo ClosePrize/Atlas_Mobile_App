@@ -1,8 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:v01/kargo/home/kargohome.dart';
-import 'package:v01/kargo/widgets/reusable_widgets.dart';
-import 'package:v01/welcome.dart';
+import '../../animations.dart';
+import '../../kargo/home/kargohome.dart';
+import '../../kargo/widgets/reusable_widgets.dart';
+import '../../welcome.dart';
 import '../../kargo/constants.dart';
 import '../kit_talep/besin/besin.dart';
 import '../kit_talep/saglik/saglik.dart';
@@ -34,9 +35,10 @@ class _KitHomeScreenState extends State<KitHomeScreen>{
               Navigator.pop(context, 'Onayla');
               Navigator.pushReplacement<void, void>(
                 context,
-                MaterialPageRoute<void>(
-                  builder: (BuildContext context) => LogosPage(),
-                ),
+                SlideLeftRoute(page: LogosPage())
+                // MaterialPageRoute<void>(
+                //   builder: (BuildContext context) => LogosPage(),
+                // ),
               );
               FirebaseAuth.instance.signOut();
             },
@@ -87,21 +89,27 @@ class _KitHomeScreenState extends State<KitHomeScreen>{
               ),
               kit_button(context, 'assets/saglık_kitleri/saglikkitleri.png', (){
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => SaglikPage()));
+                    // SlideRightRoute(page: SaglikPage())
+                    MaterialPageRoute(builder: (context) => SaglikPage())
+                );
               } ),
               SizedBox(
                 height: 30,
               ),
               kit_button(context,'assets/yol_yardim_kitleri/yolyardimkitleri.png', (){
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => YolYardimPage()));
+                    // SlideRightRoute(page: YolYardimPage())
+                    MaterialPageRoute(builder: (context) => YolYardimPage())
+                );
               } ),
               SizedBox(
                 height: 30,
               ),
               kit_button(context,'assets/besin_kitleri/besinkitleri.png', (){
                  Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => BesinPage()));
+                    // SlideRightRoute(page: BesinPage())
+                    MaterialPageRoute(builder: (context) => BesinPage())
+                 );
               } ),
               SizedBox(
                 height: 30,
