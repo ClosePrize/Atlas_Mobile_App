@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:v01/animations.dart';
 import 'package:v01/kargo/home/kargohome.dart';
 //import 'package:v01/kit/taleplerim/kit_talep.dart';
 import 'package:v01/kargo/widgets/talep_onay.dart';
@@ -61,7 +62,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           password: _passwordTextController.text)
                       .then((value) {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => KargoHomeScreen()));
+                        SlideRightRoute(page: KargoHomeScreen())
                   }).onError((error, stackTrace) {
                     if(_emailTextController.text == "" ||_passwordTextController.text == ""){
                       showDialog<String>(

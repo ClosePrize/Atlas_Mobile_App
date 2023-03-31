@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:v01/animations.dart';
 import '../../kargo/constants.dart';
 import '../../kargo/widgets/reusable_widgets.dart';
 import '../../kit/home/home.dart';
@@ -36,9 +37,10 @@ class _KargoProfileScreen1State extends State<KargoProfileScreen1> {
               Navigator.pop(context, 'Onayla');
               Navigator.pushReplacement<void, void>(
                 context,
-                MaterialPageRoute<void>(
-                  builder: (BuildContext context) => LogosPage(),
-                ),
+                SlideLeftRoute(page: LogosPage())
+                // MaterialPageRoute<void>(
+                //   builder: (BuildContext context) => LogosPage(),
+                // ),
               );
               FirebaseAuth.instance.signOut();
             },
