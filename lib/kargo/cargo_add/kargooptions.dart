@@ -273,7 +273,7 @@ class _KargoOptionsState extends State<KargoOptions> {
         var uid = user?.uid.toString();
         var _uidTextController = uid.toString();
         demandinf = Demandinf(type: "0", title: value, siparis_numarasi: _siparisTextController.text, uid: _uidTextController, lat: latitude, lon: longitude);
-        var response = await http.post(Uri.parse("http://185.77.96.79:8000/api/demands/"),
+        var response = await http.post(Uri.parse("http://127.0.0.1:8000/api/demands/"),
             headers: {"Content-type": "application/json"},
             body: json.encode(demandinf.toJson()));
         print(response.body);}

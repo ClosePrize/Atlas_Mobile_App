@@ -12,7 +12,7 @@ class RemoteService {
     var _uidTextController = uid.toString();
     print(_uidTextController);
 
-    var uri = Uri.parse('http://185.77.96.79:8000/api/user/'+_uidTextController!);
+    var uri = Uri.parse('http://127.0.0.1:8000/api/user/'+_uidTextController!);
     var response = await client.get(uri);
     if (response.statusCode == 200) {
       var result = response.body;

@@ -71,7 +71,7 @@ class _KargoBodyState extends State<KargoBody> {
                 ,
 
           ),
-          SizedBox(height: 50,),
+          SizedBox(height: 30,),
           Padding(
             padding: const EdgeInsets.only(right: 20, left: 20),
             child: Container(
@@ -84,7 +84,7 @@ class _KargoBodyState extends State<KargoBody> {
                       borderRadius: BorderRadius.all(Radius.circular(12))),
                   padding: EdgeInsets.all(10),
                   child: Container(
-                    padding: EdgeInsets.fromLTRB(10, 20, 10, 20),
+                    padding: EdgeInsets.fromLTRB(10, 15, 10, 15),
                     decoration: BoxDecoration(
                         //color: Colors.grey.withOpacity(0.2),
                         borderRadius: BorderRadius.all(Radius.circular(8)),
@@ -95,7 +95,7 @@ class _KargoBodyState extends State<KargoBody> {
                               spreadRadius:14)
                         ]),
                     width: double.infinity,
-                    height: 272,
+                    //height: 280,
                     child: Text.rich(TextSpan(
                       text: '  Nasıl Kargo Eklenir?  \n\n',
                       style: TextStyle(

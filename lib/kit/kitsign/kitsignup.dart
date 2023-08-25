@@ -115,7 +115,7 @@ class _KitSignUpScreenState extends State<KitSignUpScreen> {
     var uid = user?.uid.toString();
     var _uidTextController = uid.toString();
     user1 = User1(name: _userNameTextController.text, phone: _phoneTextController.text, email: _emailTextController.text ,password: _passwordTextController.text, uid: _uidTextController);
-    var response = await http.post(Uri.parse("http://185.77.96.79:8000/api/register/"),
+    var response = await http.post(Uri.parse("http://127.0.0.1:8000/api/register/"),
         headers: {"Content-type": "application/json"},
         body: json.encode(user1.toJson()));
     print(response.body);
