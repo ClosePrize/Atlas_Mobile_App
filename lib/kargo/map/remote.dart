@@ -10,7 +10,7 @@ class GetUAVLocation {
     var uid = user?.uid.toString();
     var _uidTextController = uid.toString();
 
-    var uri = Uri.parse('http://185.77.96.79:8000/api/uav/');
+    var uri = Uri.parse('http://127.0.0.1:8000/api/uav/');
     var response = await client.get(uri);
     if (response.statusCode == 200) {
       var result1 = response.body;
@@ -28,7 +28,7 @@ class GetKargomatLocation {
     var uid = user?.uid.toString();
     var _uidTextController = uid.toString();
 
-    var uri = Uri.parse('http://185.77.96.79:8000/api/kargomat/');
+    var uri = Uri.parse('http://127.0.0.1:8000/api/kargomat/');
     var response = await client.get(uri);
     if (response.statusCode == 200) {
       var result1 = response.body;

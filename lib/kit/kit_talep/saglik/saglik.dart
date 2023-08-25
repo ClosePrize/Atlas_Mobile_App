@@ -410,7 +410,7 @@ floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
     var uid = user?.uid.toString();
     var _uidTextController = uid.toString();
     saglikdemandinf = saglikDemandinf(type: "1", kitname: kitadi2, uid: _uidTextController, lat: latitude,lon:longitude);
-    var response = await http.post(Uri.parse("http://185.77.96.79:8000/api/demands/"),
+    var response = await http.post(Uri.parse("http://127.0.0.1:8000/api/demands/"),
         headers: {"Content-type": "application/json"},
         body: json.encode(saglikdemandinf.toJson()));
     print(response.body);
