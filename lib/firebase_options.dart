@@ -3,6 +3,7 @@
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
     show defaultTargetPlatform, kIsWeb, TargetPlatform;
+import '.env';
 
 /// Default [FirebaseOptions] for use with your Firebase apps.
 ///
@@ -44,7 +45,7 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: '***REMOVED***',
+    apiKey: apiKey1,
     appId: '1:100051266786:web:d502e9027901e723ae82bb',
     messagingSenderId: '100051266786',
     projectId: 'atlas-23',
@@ -53,7 +54,7 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: '***REMOVED***',
+    apiKey: apiKey2,
     appId: '1:100051266786:android:c5c55979451da47fae82bb',
     messagingSenderId: '100051266786',
     projectId: 'atlas-23',
@@ -61,7 +62,7 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: '***REMOVED***',
+    apiKey: apiKey3,
     appId: '1:100051266786:ios:179eb4a7ce8f6a4cae82bb',
     messagingSenderId: '100051266786',
     projectId: 'atlas-23',
@@ -71,7 +72,7 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: '***REMOVED***',
+    apiKey: apiKey4,
     appId: '1:100051266786:ios:179eb4a7ce8f6a4cae82bb',
     messagingSenderId: '100051266786',
     projectId: 'atlas-23',
